@@ -1,0 +1,246 @@
+
+---
+title: "시청자당 동시 스트림 제한"
+description: "이 주제에서는 Brightcove 재생 제한을 사용할 때 동시 스트림을 제한하는 방법을 배웁니다."
+parent: Guides 
+grandparent: Playback Restrictions
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  
+  <!-- <br/>
+  <aside class="bcls-aside bcls-aside--tip">This feature is available for a specific set of customers with access to the Limited Availability phase of Brightcove Playback Restrictions.</aside> -->
+
+  <section class="bcls-section">
+    <h2 id="Introduction">소개</h2>
+
+    <p>동시 스트림 제한을 사용하여 특정 사용자가 주어진 시간에 시청할 수 있는 비디오 스트림 수를 정의합니다. 사용자당 동시 스트림을 제한하면 시청자가 계정이 없는 친구와 자격 증명을 공유하지 못하게 됩니다.</p>
+    <p>
+      동시 스트림의 최대 수에 도달하고 뷰어 또는 계정 자격 증명을 가진 사람이 추가 스트림을 열려고 하면 가장 오래된 세션이 중지되거나 최신 요청이 차단됩니다. 이 동작을 제어합니다.
+    </p>
+    <p>
+      이 기능은 DRM 워크플로에 연결되어 안전하고 최소한의 통합으로 사용할 수 있습니다.
+    </p>
+
+    <p>이 기능을 처음 사용하는 경우 다음을 참조하십시오. <a href="/playback-restrictions/getting-started/overview-playback-restrictions.html">개요: Brightcove 재생 제한</a>문서.</p>
+
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Account_setup">계정 설정</h2>
+
+    <p>스트림 동시성에 대해 계정을 활성화하려면 계정 관리자에게 문의하세요.</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Implementation">구현</h2>
+    <p>
+      이 기능을 사용하려면 콘텐츠가 DRM을 암호화해야 합니다. 구현하려면 다음 단계를 따르세요.
+    </p>
+    <ol class="bcls-tasklist">
+      <li>
+        <p>클레임 값을 결정합니다.</p>
+        <ul>
+          <li>NS <code translate="No">climit</code>주장은 동시에 재생할 수 있는 시청자 또는 스트림의 수를 나타냅니다. </li>
+          <li>
+            NS <code translate="No">cbeh</code>클레임은 동시성을 차단하는 방법을 정의합니다. 스트림 제한에 도달하면 새 뷰어(다른 IP 주소 및 장치를 의미)를 차단하거나 새 스트림 요청(세션)을 차단할 수 있습니다.
+            <ul>
+              <li><code translate="No">cbeh</code>값<code translate="No">BLOCK_NEW_USER</code> - 새로운 시청자 차단</li>
+              <li><code translate="No">cbeh</code>값<code translate="No">BLOCK_NEW</code> - 새로운 스트림 차단</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>원하는 동시 스트림 제한과 연결된 클레임으로 JSON 웹 토큰(JWT)을 만듭니다. 자세한 내용은<a href="https://general.support.brightcove.com/developer/create-jwt.html">만들기<span translate="No"> JSON 웹 토큰</span> (JWT)</a>문서.
+      </li>
+      <li>
+        재생 제한을 사용하도록 플레이어를 구성하고<span translate="No"> JSON 웹 토큰</span> (JWT) 비디오 콘텐츠를 검색할 때. 자세한 내용은<a href="/playback-rights/getting-started/implementing-epa.html#Configure_your_player">플레이어 구성</a>재생 권한 관리 서비스 구현 문서의 섹션.
+      </li>
+    </ol>
+
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Renewal_interval">갱신 간격</h2>
+    <p>
+      동시 스트림 제한이 적용되도록 하기 위해 정의된 갱신 간격에 따라 재생 중에 DRM 라이선스 갱신 요청이 전송됩니다. 설정 시 이 갱신 간격을 정의해야 합니다.
+    </p>
+    <p>
+      중간 스트림 재생 승인 요청은 공개 키 ID와 함께 JWT 토큰에 동시성 제한을 지정해야 합니다.
+    </p>
+
+    <p>현재 각 갱신 요청은 구매한 라이선스 수에 포함되는 추가 라이선스로 계산됩니다. 간격을 결정할 때 이 점을 고려해야 합니다.</p>
+    <table class="bcls-table">
+      <thead class="bcls-table__head">
+        <tr>
+          <th>갱신 간격</th>
+          <th>2시간 콘텐츠에 대해 스트림당 제공되는 라이선스</th>
+        </tr>
+      </thead>
+      <tbody class="bcls-table__body">
+        <tr>
+          <td>없음</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>15 분</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>5 분</td>
+          <td>24</td>
+        </tr>
+        <tr>
+          <td>2분</td>
+          <td>60</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Understanding_behavior">행동 이해하기</h2>
+    <p>
+      이 기능을 사용하면 스트림 차단 동작을 선택할 수 있습니다.
+    </p>
+    <h3>가장 오래된 스트림 차단</h3>
+    <p>
+      Brightcove는 DRM으로 보호된 콘텐츠의 재생 스트림 제한을 지원합니다. 새로운 갱신 요청이 처리되면 가장 오래된 세션이 중지됩니다. 이를 통해 새로운 사용자 요청에 액세스 권한을 부여하는 동시에 더 이상 유효하지 않을 수 있는 가장 오래된 요청을 차단하여 네트워크 또는 장치 오류에 대한 메시지를 표시할 수 있습니다.
+    </p>
+    <p>
+      이것이 기본 동작입니다.
+    </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image--no-border" src="//learning-services-media.brightcove.com/doc-assets/pas/concurrency-general.png" alt="Block oldest stream">
+      <figcaption class="bcls-caption--image">가장 오래된 스트림 차단</figcaption>
+    </figure>
+
+    <p>
+      <strong>사용자 활동:</strong>
+    </p>
+    <ol>
+      <li>
+        벤, 제이슨, 사라는 영화를 보기 시작합니다.
+      </li>
+      <li>
+        Jamie도 시청하기로 결정하고 Ben의 다가오는 갱신 요청이 거부됩니다.
+      </li>
+      <li>
+        Ben은 영화를 다시 시작하여 이제 Jason의 갱신 요청이 실패하게 됩니다.
+      </li>
+      <li>
+        제이슨은 얼마 후 다른 영화를 보기 시작하여 사라의 영화가 중단됩니다.
+      </li>
+    </ol>
+
+    <h3>새 요청 차단</h3>
+    <p>
+      또는 최대 동시 스트림 수에 도달하면 새 라이선스 요청을 차단할 수 있습니다. 이를 통해 모든 현재 사용자가 계속 시청하면서 새로운 사용자 요청에 대한 메시지를 표시할 수 있습니다.
+    </p>
+    <p>
+      이 동작을 활성화하려면 다음을 설정해야 합니다. <code translate="No">cbeh</code>당신의 주장<a href="https://general.support.brightcove.com/developer/create-jwt.html"> JSON 웹 토큰(JWT)</a>다음과 같이:
+    </p>
+    <pre><code class="language-json" translate="No">&quot;cbeh&quot;: &quot;BLOCK_NEW&quot;</code></pre>
+    <br />
+    <p>
+      다음은 예입니다.
+    </p>
+    <figure class="bcls-figure">
+      <img class="bcls-image--no-border" src="//learning-services-media.brightcove.com/doc-assets/pas/block-new-request.png" alt="Block new request">
+      <figcaption class="bcls-caption--image">새 요청 차단</figcaption>
+    </figure>
+
+    <p>
+      <strong>사용자 활동:</strong>
+    </p>
+    <ol>
+      <li>
+        벤, 제이슨, 사라는 영화를 보기 시작합니다.
+      </li>
+      <li>
+        Jamie는 시청을 시작하려고 하지만 최대 한도 때문에 요청이 차단됩니다.
+      </li>
+      <li>
+        Jason은 시청을 중단하고 다른 시청자가 시청을 시작할 수 있도록 합니다. Jamie는 영화를 보기 시작합니다.
+      </li>
+    </ol>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="PlayReady">플레이레디</h2>
+    <p>PlayReady는 미드스트림 라이선스 확인을 지원하지 않습니다.</p>
+    <h3>현재 브라이트코브 플레이어</h3>
+    <p>Brightcove Player v6.48.x 이상을 사용하는 경우 플레이어는 Edge 브라우저가 PlayReady 대신 Widevine을 사용하는 기본 순서를 설정합니다. 따라서 PlayReady는 문제가 되지 않습니다.</p>
+    <p>Chromium Edge 브라우저에서 EPA DRM 소스 선택에 대한 수정 사항을 찾을 수 있습니다. <a href="https://player.support.brightcove.com/release-notes/brightcove-player-release-notes.html">브라이트코브 플레이어 출시 정보</a> .</p>
+    <h3>이전 버전</h3>
+    <p>이전 버전의 Brightcove Player는 먼저 Chromium Edge 브라우저 기본값인 PlayReady를 사용합니다. 이 경우 중간 스트림 라이선스 확인을 수동으로 수행해야 합니다.</p>
+    <p>
+      플레이어에서 수동 라이선스 갱신을 구현하려면 다음을 참조하세요. <a href="https://docs.microsoft.com/en-us/playready/features/concurrency-limiting"> Microsoft의 동시성 제한</a>문서.
+    </p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Safari">원정 여행</h2>
+    <p>
+      Safari 브라우저에서는 동시성 제한이 지원되지만 갱신 요청은 전송되지 않습니다. 이는 새 세션/스트림이 다른 브라우저보다 더 오랜 기간 동안 차단된다는 것을 의미합니다.
+    </p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Notes">노트</h2>
+    <p>
+      다음 참고 사항이 이 기능에 적용됩니다.
+    </p>
+    <ul>
+      <li>
+        수동 라이선스 갱신 요청은 다음과 같은 경우에 구현해야 합니다.
+        <ul>
+          <li>
+            Widevine으로 보호되는 경우를 제외하고 비 Brightcove 플레이어의 동시성 제한
+          </li>
+          <li>
+            Brightcove Player v6.48.x 이상을 사용하는 경우를 제외하고 모든 장치에서 PlayReady에 대한 동시성 제한
+          </li>
+        </ul>
+      </li>
+      <li>
+        수동 라이센스 갱신은 정의된 갱신 간격보다 짧은 기간에 요청해야 합니다.
+      </li>
+    </ul>
+
+  </section>
+
+  <!-- <section class="bcls-section">
+<h2 id="Limitations">Limitations</h2>
+<p>
+  The following limitations apply to this feature:
+</p>
+
+<ul>
+  <li>
+    Concurrency limit is not yet supported in Safari due to the browser's limitations.
+  </li>
+</ul>
+</section> -->
+
+  <!-- <section class="bcls-section">
+    <h2 id="Related_topics">Related topics</h2>
+
+    <ul>
+      <li>
+        <a href="/playback-rights/getting-started/overview-epa.html">Overview: Managing Playback Rights</a>
+      </li>
+      <li>
+        <a href="/playback-rights/getting-started/implementing-epa.html">Implementing Playback Rights</a>
+      </li>
+      <li>
+        <a href="/playback-rights/guides/using-epa-with-bcp.html">Using Playback Rights with Brightcove Player</a>
+      </li>
+      <li>
+        <a href="/playback-rights/guides/using-epa-with-sdks.html">Using Playback Rights with the Native SDKs</a>
+      </li>
+    </ul>
+  </section> -->
+
+</article>

@@ -1,0 +1,24 @@
+
+---
+title: 인페이지 경험 API
+description: ' In-Page Experience API를 사용하여 Brightcove Gallery 인페이지 경험을 관리하는 방법을 알아보세요. 이 API는 주로 갤러리를 CMS 또는 기타 시스템과 통합하는 사용자를 대상으로 합니다. '
+parent: Home
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="card-wrapper">
+    {% for item in site.data.navigation %} {% if item.name == page.title %} {% for subsection in item.docs %}
+            <section class="bcls-card-small" onclick="window.location.href='{{subsection.url}}'">
+              <div class="card-content">
+                <h2>{{ subsection.name }}</h2>
+                <ul>
+                  {% for doc in subsection.docs %}
+                        <li><a href="{{ doc.url }}">{{ doc.name }}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </section>
+        {% endfor %} {% endif %} {% endfor %}
+  </section>
+</article>

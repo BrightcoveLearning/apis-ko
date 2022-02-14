@@ -1,0 +1,202 @@
+
+---
+title: CMS API를 사용하여 텍스트 트랙 관리
+description: '이 주제에서는 CMS API를 사용하여 비디오의 WebVTT 텍스트 트랙을 업데이트하는 방법을 배웁니다. '
+parent: Managing Videos/Assets 
+grandparent: CMS API
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+    <section class="bcls-section">
+    <h2 id="Introduction">소개</h2>
+    
+    <p>텍스트 트랙이 수집(정적 또는 동적)이든 원격이든 상관없이<code translate="no">반점</code>텍스트 트랙과 관련된 메타데이터 업데이트 요청.</p>
+    <h3>노트</h3>
+    <ul>
+      <li>이 문서에서 설명하는 방법은 비디오에 추가된 WebVTT 파일을 업데이트하기 위한 것입니다. 다음을 사용하여 WebVTT 파일을 Video Cloud로 수집할 수 있습니다. <a href="/dynamic-ingest/ingest-guides/ingesting-webvtt-files-text-trackscaptions.html">동적 수집 API</a>또는<a href="/cms/managing-videos/using-cms-api-add-webvtt-captions-text-tracks.html">원격 WebVTT 파일 추가</a> CMS API를 사용하여 동영상에</li>
+    </ul>
+    
+    </section>
+    
+    <section class="section">
+    <h2 id="authorization">권한 부여</h2>
+    
+		<p>CMS API에 대한 요청에는 액세스 토큰이 포함된 인증 헤더가 필요합니다. 클라이언트 자격 증명을 얻고 이를 사용하여 액세스 토큰을 검색하는 방법에 대한 자세한 내용은 다음을 참조하십시오. <a href="/oauth/getting-started/overview-oauth-api-v4.html">브라이트코브 OAuth 개요</a> .</p>
+    
+    <p>비디오 메타데이터를 업데이트하는 데 필요한 작업은 다음과 같습니다. <code translate="No">video-cloud/video/update</code>또는<code translate="No">video-cloud/video/all</code> .</p>
+    </section>
+    
+    <section class="section">
+    <h2 id="syntax">통사론</h2>
+
+		<aside class="bcls-aside bcls-aside--warning">NS <strong>전체 어레이를 패치해야 함</strong> , 변화하는 트랙이나 필드뿐만이 아닙니다.</aside>
+
+		<p>전체 어레이를 얻으려면 먼저 다음 요청을 수행하는 것이 좋습니다.</p>
+<pre><code class="language-http" translate="No">GET
+https://cms.api.brightcove.com/v1/accounts/{account_id}/videos/{video_ID}
+</code></pre>
+    <h3>텍스트 트랙 업데이트</h3>
+		<p>텍스트 트랙을 업데이트할 때 일부 필드는<a href="/cms/references/cms-api-video-fields-reference-stage.html#text_tracks">텍스트 트랙 필드</a>종류에 따라 다르게 취급할 수 있습니다.</p>
+
+		<table class="bcls-table">
+			<caption class="bcls-caption--table">텍스트 트랙 필드</caption>
+			<thead class="bcls-table__head">
+					<tr>
+							<th>들</th>
+							<th>유형</th>
+							<th>원격 텍스트 트랙</th>
+							<th>정적 수집된 텍스트 트랙</th>
+							<th>동적 수집된 텍스트 트랙</th>
+					</tr>
+			</thead>
+			<tbody class="bcls-table__body">
+					<tr>
+							<td><code translate="no">ID</code></td>
+							<td>끈</td>
+							<td colspan="3">읽기 전용 값입니다. 업데이트해야 하는 TT를 식별하는 데 필요합니다.</td>
+					</tr>
+					<tr>
+							<td><code translate="no">계정 ID</code></td>
+							<td>끈</td>
+							<td colspan="3">이 필드의 업데이트는 무시됩니다.</td>
+					</tr>
+					<tr>
+							<td>src<code translate="no"></code></td>
+							<td>끈</td>
+							<td>필수 항목이며 255자로 제한됩니다.</td>
+							<td colspan="2">이 필드의 업데이트는 무시됩니다.</td>
+					</tr>
+					<tr>
+							<td>srclang<code translate="no"></code></td>
+							<td>끈</td>
+							<td colspan="3">32자로 제한됩니다.</td>
+					</tr>
+					<tr>
+							<td><code translate="no">상표</code></td>
+							<td>끈</td>
+							<td colspan="3">255자로 제한됩니다.</td>
+					</tr>
+					<tr>
+							<td><code translate="no">친절한</code></td>
+							<td>열거</td>
+							<td colspan="3">유효한 값은<code translate="no">자막</code> , <code translate="no">캡션</code> , <code translate="no">설명</code> , <code translate="no">장</code> , <code translate="no">메타데이터</code> . 대소문자를 구분합니다.</td>
+					</tr>
+					<tr>
+							<td>mime_type<code translate="no"></code></td>
+							<td>끈</td>
+							<td colspan="2">32자로 제한됩니다.</td>
+							<td>이 필드의 업데이트는 무시됩니다.</td>
+					</tr>
+					<tr>
+							<td>asset_id<code translate="no"></code></td>
+							<td>끈</td>
+							<td colspan="2">읽기 전용 값입니다.</td>
+							<td>이 유형에 적용할 수 없는 필드입니다. 이 필드의 업데이트는 무시됩니다.</td>
+					</tr>
+					<tr>
+							<td>in_band_metadata_track_dispatch_type<code translate="no"></code></td>
+							<td>끈</td>
+							<td colspan="2">이 유형에 적용할 수 없는 필드입니다. </td>
+							<td>이 필드의 업데이트는 무시됩니다.</td>
+					</tr>
+					<tr>
+							<td><code translate="no">출처</code></td>
+							<td>정렬</td>
+							<td colspan="3">읽기 전용 값입니다.</td>
+					</tr>
+					<tr>
+							<td><code translate="no">기본</code></td>
+							<td>부울</td>
+							<td colspan="2"><code translate="no">진실</code>또는<code translate="no">거짓</code> . 여러 개를 추가할 수 없습니다. <code translate="no">기본값=참</code>다른 텍스트 트랙에<code translate="no"> srclang</code> .</td>
+							<td>이 필드의 업데이트는 무시됩니다.</td>
+					</tr>
+			</tbody>
+	</table>
+    <h3>요구</h3>
+    <p>원격, 정적 및 동적 텍스트 트랙에 적용할 수 있습니다.</p>
+    <pre class="line-numbers">
+<code class="language-http" translate="No">PATCH
+https://cms.api.brightcove.com/v1/accounts/{account_id}/videos/{video_ID}</code></pre>
+    
+    <h3>요청 본문 예</h3>
+    <details>
+			<summary>원격 텍스트 트랙</summary>
+			<p>요청 본문은 텍스트 트랙 배열을 포함하는 JSON 객체입니다.</p>
+<pre class="line-numbers"><code class="language-json" translate="No">{
+	"text_tracks" : 
+	[ 
+		{ 
+			"id" : "1234-1234-1234"
+			"src" :     "http://learning-services-media.brightcove.com/captions/bc_smart_ja.   vtt",
+			"srclang" : "ja", 
+			"label" : "日本人", 
+			"kind" : "captions", 
+			"mime_type" : null, 
+			"default" : true 
+		}, 
+		{ 
+			"id" : "5678-5678-5678"
+			"src" : "http://learning-services-media.brightcove.com/captions/bc_smart_es.   vtt",  
+			"srclang" : "es", 
+			"label" : "español", 
+			"kind" : "descriptions",
+			"mime_type" : null,
+			"default" : false 
+		} 
+	] 
+}</code></pre>
+		</details>
+    <details>
+			<summary>정적 텍스트 트랙</summary>
+			<p>요청 본문은 텍스트 트랙 배열을 포함하는 JSON 객체입니다.</p>
+<pre class="line-numbers"><code class="language-json" translate="No">{
+	"text_tracks" : 
+	[ 
+		{ 
+			"id" : "1234-1234-1234"
+			"srclang" : "ja", 
+			"label" : "日本人", 
+			"kind" : "captions", 
+			"mime_type" : null, 
+			"default" : true 
+		}, 
+		{ 
+			"id" : "5678-5678-5678"  
+			"srclang" : "es", 
+			"label" : "español", 
+			"kind" : "descriptions",
+			"mime_type" : null,
+			"default" : false 
+		} 
+	] 
+}</code></pre>
+		</details>
+    <details>
+			<summary>동적 텍스트 트랙</summary>
+			<p>요청 본문은 텍스트 트랙 배열을 포함하는 JSON 객체입니다.</p>
+<pre class="line-numbers"><code class="language-json" translate="No">{
+	"text_tracks" : 
+	[ 
+		{ 
+			"id" : "1234-1234-1234"
+			"srclang" : "ja", 
+			"label" : "日本人", 
+			"kind" : "captions", 
+			"mime_type" : null, 
+			"default" : true 
+		}, 
+		{ 
+			"id" : "5678-5678-5678"  
+			"srclang" : "es", 
+			"label" : "español", 
+			"kind" : "descriptions",
+			"mime_type" : null,
+			"default" : false 
+		} 
+	] 
+}</code></pre>
+		</details>
+  </section>
+</article>
+  

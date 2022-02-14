@@ -1,0 +1,751 @@
+
+---
+title: '라이브 API: SSAI를 사용한 큐 포인트 및 광고 비콘'
+description: 이 주제에서는 라이브 스트림 작업에 Brightcove의 SSAI(서버 측 광고 삽입)를 사용할 때 큐 포인트 및 광고 비콘을 관리하는 방법을 배웁니다.
+parent: SSAI 
+grandparent: Live API 
+---
+
+
+<article class="bcls-article">
+ <h1>{{ page.title }}</h1>
+ <summary>{{ page.description }}</summary>
+{% raw %}
+ <section class="bcls-section">
+  <h2 id="Overview">개요</h2>
+  
+  <p>서버 측 광고 삽입<span translate="No"> (싸이)</span>라이브 스트리밍 이벤트 동안 지정된 시간에 광고를 표시할 수 있습니다. 일반 정보는 다음을 참조하십시오. <a href="/live-api/ssai/live-api-server-side-ad-insertion-ssai.html">라이브 API: 서버 측 광고 삽입<span translate="No"> (싸이)</span></a>문서.</p>
+  
+  <aside class="bcls-aside bcls-aside--information">
+    
+    <ul>
+      <li>사용하기 전에<span translate="No">싸이</span> , 계정에 대해 활성화되어야 합니다. 자세한 내용은 계정 관리자에게 문의하세요.</li>
+   </ul>
+  
+  </aside>
+  </section>
+  
+  <section class="bcls-section">
+  <h2 id="Cue_points">큐 포인트</h2>
+  
+  <p>광고 시간은 다음 두 가지 방법으로 지정할 수 있는 큐 포인트에 의해 실행됩니다.</p>
+  
+  <ul>
+    <li>인코더에서 Brightcove로 전송</li>
+    <li>를 통해 생성된 즉각적인 큐 포인트<span translate="No">라이브 API</span></li>
+  </ul>
+  
+  <h3>인코더에서</h3>
+  
+  <p>Brightcove 라이브 전달 시스템은 인코더가 AMF 형식으로 제출한 큐 포인트를 해석할 수 있습니다.</p>
+  
+  <pre class="line-numbers">
+  <code class="language-bash" translate="No">AMFDataList
+  [0]:onCuePoint
+  [1]:{Obj[]:
+    time: 1.9889, //Difference from PTS of THIS packet to the first PTS of the 1st video frame in the adbreak
+    name: "scte35",
+    type: "event",
+    ad_server_data: "eyJrZXkiOiJ2YWx1ZSJ9",	// optional introduced by Brightcove. It is a base64 encoded json map of parameters e.g. {"key":"value"}
+    parameters: {Obj[]:
+      type: "avail_in",
+      duration: 12.0
+    }
+  }</code></pre>
+  
+  <h4>노트:</h4>
+  
+  <ul>
+    <li>오직<code translate="No">avail_in</code>유형 큐 포인트는 현재 RTMP 입력에서 지원됩니다.</li>
+    <li>SCTE-35 큐 포인트는 RTP 및 SRT 입력에서 지원됩니다.</li>
+  </ul>
+  
+  <aside class="bcls-aside bcls-aside--information">참조<a href="#Appendix">아래 부록</a> Elemental 인코더에 대한 샘플 큐 포인트 설정의 스크린샷.</aside>
+  </section>
+  
+  <section class="bcls-section">
+  <h2 id="Manual_cue_point_insertion">수동 큐 포인트 삽입</h2>
+  
+  <p>다음을 사용하여 즉각적인 큐 포인트를 만들 수 있습니다. <span translate="No">라이브 API</span>를 보내서<code translate="No">POST</code>요구:</p>
+  
+  <table class="bcls-table">
+    <tbody class="bcls-table__body">
+      <tr>
+        <th>방법</th>
+        <td style="width:80em;"><code class="language-http" translate="No">POST</code></td>
+      </tr>
+      <tr>
+        <th>URL</th>
+        <td><code class="language-http" translate="No">https://api.bcovlive.io/v1/jobs/<span class="bcls-input">Job_ID</span>/cuepoint</code></td>
+      </tr>
+      <tr>
+        <th>헤더</th>
+        <td><code class="language-http" translate="No">X-API-KEY: <span class="bcls-input">your API KEY</span></code></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <p>다음을 지정하는 요청 본문을 포함합니다.</p>
+  
+  <table class="bcls-table">
+    <thead class="bcls-table__head">
+      <tr>
+        <th>들</th>
+        <th>유형</th>
+        <th>설명</th>
+      </tr>
+    </thead>
+    <tbody class="bcls-table__body">
+      <tr>
+        <td><code translate="No">duration</code></td>
+        <td>정수</td>
+        <td>휴식 시간(초)입니다.<br />
+        <br />
+        삽입되는 큐 포인트의 지속 시간은<strong>세그먼트 길이의 최소 2배</strong>일에. 참조<a href="#Duration_example">지속 시간 예</a> .</td>
+      </tr>
+      <tr>
+        <td><code translate="No">timecode</code></td>
+        <td>SMPTE 형식</td>
+        <td><strong>선택 과목:</strong> SMPTE 형식의 타임코드, <strong> HH:MM:SS:FF</strong> (FF = 프레임), 변수 세트(키/값 쌍)가 adServer에 전달되어야 하는 시기를 지정합니다.<br />
+        <br />
+        생략하면 큐 포인트가 즉시 삽입됩니다.<br />
+        <br />
+        timecode 속성을 사용하는 경우 인코더는 SMPTE 형식( <code translate="No">HH:MM:SS:FF</code> )에 저장된 타임코드<code translate="No">tc</code>재산을 통해<code translate="No">OnFI</code> . 타임코드는 라이브 스트림의 시작 부분부터입니다.</td>
+      </tr>
+      <tr>
+        <td><code translate="No">ad_server_data</code></td>
+        <td>물체</td>
+        <td><strong>선택 과목:</strong> 전달하는 키/값 쌍은 사용 중인 광고 서버에 따라 다릅니다. 자세한 내용은 광고 서버 설명서 및<a href="/live-api/ssai/live-api-server-side-ad-insertion-ssai.html#Targeting_ads_using_ad_macros">광고 매크로를 사용하여 광고 타겟팅</a>부분.</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h4 id="Duration_example">기간 예</h4>
+  
+  <p>삽입되는 큐 포인트의 지속 시간은<strong>세그먼트 길이의 최소 2배</strong>일에.</p>
+  
+  <p>예를 들어<strong> 10초 큐 포인트</strong>직장에서<code translate="No">"segment_seconds"=4</code> , 잘 작동합니다. 그러나 다음을 사용하여 작업에 동일한 큐 포인트를 삽입하면<code translate="No">"segment_seconds"=6</code>다음 오류가 발생합니다.</p>
+  
+  <pre>
+  <code class="language-json" translate="No">"error": "The parameter duration should be greater than
+    or equal to (2 * target duration) of the job"
+ </code></pre>
+  &nbsp;
+  
+  <h3>샘플 요청 본문</h3>
+  
+  <pre class="line-numbers">
+  <code class="language-json" translate="No">{
+    "duration": 30,
+    "timecode": "15:50:49:16",
+    "ad_server_data" : {
+    "adbreakid": 12312
+    "breaktheme": "fitness"
+    }
+  }</code></pre>
+  
+  <h4>노트</h4>
+  
+  <ol>
+    <li>Wirecast 및 OBS와 같은 소프트웨어 인코더는 다음을 통한 전송 타임코드를 지원하지 않습니다. <code translate="No">OnFI</code> RTMP 스트림의 패킷</li>
+    <li>Elemental 하드웨어 인코더는 다음을 통해 전송 타임코드를 지원합니다. <code translate="No">OnFI</code> RTMP 스트림의 패킷</li>
+  </ol>
+  
+  <h3>샘플 응답</h3>
+  
+  <pre class="line-numbers">
+  <code class="language-json" translate="No">{
+    "id": "Job_ID",
+    "cue_point": {
+      "id": "adBreak-2f58393ada1442d98eca0817fa565ba4",
+      "duration": 30,
+      "accuracy": "segment", [Can be <code translate="No">segment</code> or <code translate="No">frame</code> ]
+      "inserted_at": "2017-07-21T09:30:46.307Z" [ Time when the cue point was inserted in the stream]
+    },
+  }</code></pre>
+  </section>
+  
+  <section class="bcls-section">
+  <h2 id="Beacons">비콘</h2>
+  
+  <p>비콘은 재생 시 광고 재생 여부와 재생 횟수를 추적하기 위해 타사 분석으로 전송되는 데이터 포인트입니다. 이 섹션에서는 다음을 사용하여 설정할 수 있는 비콘 유형을 살펴보겠습니다. <span translate="No">라이브 API</span> , 데이터를 제공하는 데 사용할 수 있는 변수. 다음 섹션에서는 비콘 세트를 만들고 관리하는 데 사용하는 API 요청에 대해 자세히 설명합니다.</p>
+  
+  <h3>비콘 유형</h3>
+  
+  <table class="bcls-table">
+    <caption class="bcls-caption--table">비콘 유형</caption>
+    <thead class="bcls-table__head">
+      <tr>
+        <th style="width:20%;">비콘 유형</th>
+        <th style="width:60%;word-wrap:break-word">설명</th>
+      </tr>
+    </thead>
+    <tbody class="bcls-table__body">
+      <tr>
+        <td style="width:20%"><code translate="No">Load</code></td>
+        <td style="text-align:left;width:60%;word-wrap:break-word">세션당 한 번 실행되고 최상위 매니페스트가 요청될 때만 트리거됩니다.</td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">Play</code></td>
+        <td style="text-align:left;width:60%;word-wrap:break-word">콘텐츠가 요청되었으며 첫 번째 세그먼트가 반환되었습니다.</td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">Heartbeat</code></td>
+        <td style="text-align:left;width:60%;word-wrap:break-word">목표 지속 시간(세그먼트 초)</td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">AdStart</code></td>
+        <td style="text-align:left;width:60%;word-wrap:break-word">개별 광고 시작됨</td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">AdFirstQuartile</code></td>
+        <td style="text-align:left;width:60%;word-wrap:break-word">첫 번째 광고 사분위수(25%)</td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">AdMidpoint</code></td>
+        <td style="text-align:left;width:60%;word-wrap:break-word">두 번째 광고 사분위수(50%)</td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">AdThirdQuartile</code></td>
+        <td style="text-align:left;width:60%;word-wrap:break-word">세 번째 광고 사분위수(75%)</td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">AdComplete</code></td>
+        <td style="text-align:left;width:60%;word-wrap:break-word">개별 광고 완료</td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">AdBreakStart</code></td>
+        <td style="text-align:left;width:60%;word-wrap:break-word">광고 시간이 시작되었습니다</td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">AdBreakComplete</code></td>
+        <td style="text-align:left;width:60%;word-wrap:break-word">광고 시간이 종료되었습니다</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3>비콘/광고 변수</h3>
+  
+  <p>아래 표는 비콘 URL에 대한 데이터를 제공하는 데 사용할 수 있는 변수를 보여줍니다. 변수를 포함하려면 다음과 같이 이중 중괄호로 묶습니다. <code translate="No"><span class="bcls-highlight">{{</span>job.job_id<span class="bcls-highlight">}}</span></code> . 전체 예는 비콘 세트 관리에 대한 다음 섹션을 참조하십시오.</p>
+  <aside class="bcls-aside bcls-aside--information">메모:
+    <ul>
+      <li>​변수 이름에 허용되는 최대 길이는 256이고 값은 1024입니다.</li>
+    </ul>
+  </aside>
+  
+  <table class="bcls-table">
+    <caption class="bcls-caption--table">광고 구성 변수</caption>
+    <thead class="bcls-table__head">
+      <tr>
+        <th style="width:20%;">변하기 쉬운</th>
+        <th style="width:60%;">
+        <div style="word-wrap:break-word;">설명</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="bcls-table__body">
+      <tr>
+        <td style="width:20%"><code translate="No">session.session_id</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">고유 세션 ID</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">job.job_id</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">고유 작업 ID</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">videocloud.video_id</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">VideoCloud 비디오로 생성된 작업에만 사용할 수 있습니다.</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">application_ad_configuration.description</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">세션 생성 시 애플리케이션 값</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">random.int32</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">임의의 32비트 부호 있는 정수</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">random.int64</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">임의의 64비트 부호 있는 정수</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">random.uint32</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">임의의 32비트 부호 없는 정수</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">random.uint64</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">임의의 64비트 부호 없는 정수</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">random.uuid</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">임의의 UUID</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">server.timestamputc</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">ads-api에서 호출이 이루어진 에포크 시간(밀리초)</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">client.useragent</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">세션 생성 시 http 사용자 에이전트 헤더 값</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">client.ipaddress</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">세션 생성 시 http x-forwarded-for 헤더 값(제공된 경우), 그렇지 않은 경우 원격 주소</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">client.referrer</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">세션 생성 시 http 참조 헤더 값(참고: 올바른 철자입니다)</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">client.referer</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">세션 생성 시 http 참조 헤더 값(http 철자법)</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">client.ipuaid</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">client.ipaddress 및 client.useragent의 해시 값</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">live.adbreak</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">(현재 미사용)</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">live.adbreakdurationms</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">광고 시간 길이(밀리초)</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">live.adbreakduration</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">배정밀도 부동 소수점 초 단위의 광고 시간</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">live.adbreakdurationint</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">정수 초 단위의 광고 시간</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">live.adbreak.timestamputc.wallclock</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">광고 서버 호출이 이루어진 에포크 시간(밀리초)</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">live.adbreak.timestamputc.origin</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">원본 청크 목록의 에포크 시간(밀리초)입니다. 이 값은 원본 청크 목록에서 큐 아웃 청크가 생성된 시간을 나타냅니다.</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">live.adbreak.timestamputc.session</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">ssai 청크리스트의 에포크 시간(밀리초)입니다. 이 값은 ssai 청크 목록에서 큐 아웃 청크의 시간을 나타냅니다. 애드브레이크 콘텐츠와 애드브레이크 갭은 일반적으로 동일하지 않기 때문에 첫 번째 애드브레이크 이후<code translate="No">live.adbreak.timestamputc.origin</code>와 다르다<code translate="No">live.adbreak.timestamputc.session</code> . 이 값은 에서 이루어진 시간 조정을 고려합니다. <span translate="No">싸이</span>청크리스트.</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3>SCTE-35 광고 변수</h3>
+  
+  <p>NS <a href="https://www.scte.org/">케이블 통신 엔지니어 협회(SCTE)</a>라이브 스트림에 대한 동적 광고 삽입 표준을 정의합니다. 다음 표에는 SCTE-35 광고 구성 변수가 요약되어 있습니다.</p>
+  
+  <aside class="bcls-aside bcls-aside--information">
+  <p>SCTE-35 광고 매개변수는 현재 FEC(순방향 오류 수정)가 있거나 없는 RTP(실시간 전송 프로토콜) 및 TS(전송 스트림)를 기반으로 하는 SRT(보안 신뢰할 수 있는 전송) 입력 소스에서 모두 지원됩니다. FEC는 RTP에 적극 권장됩니다.</p>
+  이러한 광고 매개변수는 RTMP(실시간 메시징 프로토콜)를 사용하는 입력 스트림에서 사용할 수 없습니다.</aside>
+  
+  <table class="bcls-table">
+    <caption class="bcls-caption--table">SCTE-35 광고 구성 변수</caption>
+    <thead class="bcls-table__head">
+      <tr>
+        <th style="width:20%;">변하기 쉬운</th>
+        <th style="width:60%;">
+        <div style="word-wrap:break-word;">설명</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody class="bcls-table__body">
+      <tr>
+        <td style="width:20%"><code translate="No">scte35_eventID</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">SCTE35 메시지와 함께 전달된 고유한 이벤트 ID입니다.</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">scte35_programID</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">SCTE35 메시지와 함께 전달된 고유한 프로그램 ID입니다.</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">scte35_availNum</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">광고에 사용할 수 있는 특정 연결 시간의 ID로 SCTE35 메시지를 통해 보냅니다.</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">scte35_breakDuration</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">SCTE35 메시지와 함께 전달된 프로그램의 90kHz 클록 틱으로 표시되는 광고 시간의 중단 시간입니다.</div>
+        </td>
+      </tr>
+      <tr>
+        <td style="width:20%"><code translate="No">scte35_spliceTime</code></td>
+        <td style="text-align:left;width:60%;">
+        <div style="word-wrap:break-word;">SCTE35 메시지와 함께 전달된 프로그램의 90kHz 클록의 틱 측면에서 광고 시간을 위한 스플라이스 시간.</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </section>
+  
+  <section class="bcls-section">
+  <h2 id="Managing_beacon_sets">비콘 세트 관리</h2>
+  
+  <p>이 섹션에서는 비콘 세트를 관리하기 위한 API 요청에 대한 세부 정보를 제공합니다. 비콘 유형 및 변수에 대해서는 이전 섹션을 참조하십시오.</p>
+  
+  <p>비콘 세트를 라이브 작업에 추가하려면 먼저 비콘 세트를 생성한 다음 다음과 같이 작업 생성 시 ID를 포함합니다.</p>
+  
+  <pre class="line-numbers">
+  <code class="language-json" translate="No">{
+  "live_stream": true,
+  "region": "us-west-2",
+  "reconnect_time": 30,
+  "ad_insertion": true,
+  "beacon_set": "<span class="bcls-input">beacon_set_id</span>", ...</code></pre>
+  
+  <h3>비콘 세트 생성</h3>
+  
+  <p>비콘 세트를 만들려면<code translate="No">POST</code>요구:</p>
+  
+  <table class="bcls-table">
+    <tbody class="bcls-table__body">
+      <tr>
+        <th>방법</th>
+        <td style="width:80em;"><code class="language-http" translate="No">POST</code></td>
+      </tr>
+      <tr>
+        <th>URL</th>
+        <td><code class="language-http" translate="No">https://api.bcovlive.io/v1/ssai/beaconsets</code></td>
+      </tr>
+      <tr>
+        <th>헤더</th>
+        <td><code class="language-http" translate="No">X-API-KEY: <span class="bcls-input">your API KEY</span></code></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h4>샘플 요청 본문</h4>
+  
+  <pre class="line-numbers">
+  <code class="language-json" translate="No">{
+    "account_id": "<span class="bcls-input">User's Account ID [Optional]</span>",
+    "beacon_urls": [
+      {
+        "beacon_url": "https://myserver.com/beaconRX/{{job.job_id}}/load?position=load&amp;sid={{session.session_id}}&amp;jid={{job.job_id}}&amp;app={{application_ad_configuration.description}}&amp;rnd32={{random.int32}}&amp;rnd64={{random.int64}}&amp;bid={{random.uuid}}&amp;t={{server.timestamputc}}&amp;ua={{client.useragent}}&amp;ip={{client.ipaddress}}&amp;ref={{client.referrer}}&amp;ref={{client.referer}}&amp;ab={{live.adbreak}}&amp;abd={{live.adbreakduration}}&amp;abdi={{live.adbreakdurationint}}",
+        "beacon_type": "Load"
+      },
+      {
+        "beacon_url": "https://myserver.com/beaconRX/{{job.job_id}}/play?position=play&amp;sid={{session.session_id}}&amp;jid={{job.job_id}}&amp;app={{application_ad_configuration.description}}&amp;rnd32={{random.int32}}&amp;rnd64={{random.int64}}&amp;bid={{random.uuid}}&amp;t={{server.timestamputc}}&amp;ua={{client.useragent}}&amp;ip={{client.ipaddress}}&amp;ref={{client.referrer}}&amp;ref={{client.referer}}&amp;ab={{live.adbreak}}&amp;abd={{live.adbreakduration}}&amp;abdi={{live.adbreakdurationint}}",
+        "beacon_type": "Play"
+      }
+    ]
+  }</code></pre>
+  
+  <aside class="bcls-aside bcls-aside--information">NS <code translate="No">account_id</code>필드는 라이브 계정 ID입니다. 생략하면 요청한 사용자의 계정 ID가 사용됩니다.</aside>
+  
+  <h4>샘플 응답</h4>
+  
+  <pre class="line-numbers">
+  <code class="language-json" translate="No">{
+    "beacon_set": {
+      "beacon_urls": [{
+      "beacon_url": "https://myserver.com/beaconRX/{{job.job_id}}/load?position=load&amp;sid={{session.session_id}}&amp;jid={{job.job_id}}&amp;app={{application_ad_configuration.description}}&amp;rnd32={{random.int32}}&amp;rnd64={{random.int64}}&amp;bid={{random.uuid}}&amp;t={{server.timestamputc}}&amp;ua={{client.useragent}}&amp;ip={{client.ipaddress}}&amp;ref={{client.referrer}}&amp;ref={{client.referer}}&amp;ab={{live.adbreak}}&amp;abd={{live.adbreakduration}}&amp;abdi={{live.adbreakdurationint}}",
+      "beacon_type": "Load"
+    },
+    {
+      "beacon_url": "https://myserver.com/beaconRX/{{job.job_id}}/play?position=play&amp;sid={{session.session_id}}&amp;jid={{job.job_id}}&amp;app={{application_ad_configuration.description}}&amp;rnd32={{random.int32}}&amp;rnd64={{random.int64}}&amp;bid={{random.uuid}}&amp;t={{server.timestamputc}}&amp;ua={{client.useragent}}&amp;ip={{client.ipaddress}}&amp;ref={{client.referrer}}&amp;ref={{client.referer}}&amp;ab={{live.adbreak}}&amp;abd={{live.adbreakduration}}&amp;abdi={{live.adbreakdurationint}}",
+      "beacon_type": "Play"
+    }],
+    "beacon_set_id": "Inserted Beacon Set ID",
+    "account_id": "USER's ACCOUNT ID"
+    }
+    "inserted": true
+  }</code></pre>
+  
+  <h3>비콘 세트 업데이트</h3>
+  
+  <p>비콘 세트를 업데이트하는 것은 하나를 만드는 것과 유사합니다. 제출<code translate="No">PUT</code>요구:</p>
+  
+  <table class="bcls-table">
+    <tbody class="bcls-table__body">
+      <tr>
+        <th>방법</th>
+        <td style="width:80em;"><code class="language-http" translate="No">PUT</code></td>
+      </tr>
+      <tr>
+        <th>URL</th>
+        <td><code class="language-http" translate="No">https://api.bcovlive.io/v1/ssai/beaconsets/beaconset/<span class="bcls-input">beacon_set_id</span></code></td>
+      </tr>
+      <tr>
+        <th>헤더</th>
+        <td><code class="language-http" translate="No">X-API-KEY: <span class="bcls-input">your API KEY</span></code></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h4>샘플 요청 본문</h4>
+  
+  <pre class="line-numbers">
+  <code class="language-json" translate="No">{
+    "account_id": "<span class="bcls-input">User's Account ID [Optional]</span>",
+    "beacon_urls": [
+      {
+      "beacon_url": "https://myserver.com/beaconRX/load",
+      "beacon_type": "Load"
+      },
+      {
+      "beacon_url": "https://myserver.com/beaconRX/play",
+      "beacon_type": "Play"
+      }
+    ]
+  }</code></pre>
+  
+  <aside class="bcls-aside bcls-aside--information">NS <code translate="No">account_id</code>필드는 라이브 계정 ID입니다. 생략하면 요청한 사용자의 계정 ID가 사용됩니다.</aside>
+  
+  <h4>샘플 응답</h4>
+  
+  <pre class="line-numbers">
+  <code class="language-json" translate="No">{
+    "beacon_set": {
+      "account_id": "User's Account ID",
+      "beacon_set_id": "Beacon set ID",
+      "beacon_urls": [{
+        "beacon_url": "https://myserver.com/beaconRX/load",
+        "beacon_type": "Load"
+        },
+        {
+        "beacon_url": "https://myserver.com/beaconRX/play",
+        "beacon_type": "Play"
+      }],
+      "updated_beacon_set": {
+        "beacon_set_id": "Beacon set ID",
+        "beacon_urls": [{
+          "beacon_url": "https://myserver.com/beaconRX/load",
+          "beacon_type": "Load"
+        },
+        {
+          "beacon_url": "https://myserver.com/beaconRX/play",
+          "beacon_type": "Play"
+        }],
+        "account_id": "User's Account ID"
+      }
+    }
+  }</code></pre>
+  
+  <h3>비콘 세트 받기</h3>
+  
+  <p>계정에 대한 비콘 세트를 검색하려면 다음을 제출하십시오. <code translate="No">GET</code>요구:</p>
+  
+  <table class="bcls-table">
+    <tbody class="bcls-table__body">
+      <tr>
+        <th>방법</th>
+        <td style="width:80em;"><code class="language-http" translate="No">GET</code></td>
+      </tr>
+      <tr>
+        <th>URL</th>
+        <td><code class="language-http" translate="No">https://api.bcovlive.io/v1/ssai/beaconsets/account/<span class="bcls-input">Account ID</span></code></td>
+      </tr>
+      <tr>
+        <th>헤더</th>
+        <td><code class="language-http" translate="No">X-API-KEY: <span class="bcls-input">your API KEY</span></code></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <aside class="bcls-aside bcls-aside--information">여기서 계정 ID는 라이브 계정 ID입니다.</aside>
+  
+  <h4>샘플 응답</h4>
+  
+  <pre class="line-numbers">
+  <code class="language-json" translate="No">[{
+      "account_id": "User's Account ID",
+      "beacon_set_id": "Beacon set ID1",
+      "beacon_urls": [{
+      "beacon_url": "https://myserver.com/beaconRX/load",
+      "beacon_type": "Load"
+    }]
+    },
+    {
+      "account_id": "User's Account ID",
+      "beacon_set_id": "Beacon set ID2",
+      "beacon_urls": [{
+      "beacon_url": "https://myserver.com/beaconRX2/load",
+      "beacon_type": "Load"
+      },
+      {
+      "beacon_url": "https://myserver.com/beaconRX2/play",
+      "beacon_type": "Play"
+      }]
+  }]</code></pre>
+  
+  <h3>요청하는 사용자에 대한 비콘 세트 가져오기</h3>
+  
+  <p>요청 URL에 계정 ID를 포함하지 않고 요청하는 사용자의 계정에 대한 비콘 세트를 가져올 수도 있습니다.</p>
+  
+  <table class="bcls-table">
+    <tbody class="bcls-table__body">
+      <tr>
+        <th>방법</th>
+        <td style="width:80em;"><code class="language-http" translate="No">GET</code></td>
+      </tr>
+      <tr>
+        <th>URL</th>
+        <td><code class="language-http" translate="No">https://api.bcovlive.io/v1/ssai/beaconsets</code></td>
+      </tr>
+      <tr>
+        <th>헤더</th>
+        <td><code class="language-http" translate="No">X-API-KEY: <span class="bcls-input">your API KEY</span></code></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h4>샘플 응답</h4>
+  
+  <pre class="line-numbers">
+  <code class="language-json" translate="No">[{
+      "account_id": "User's Account ID",
+      "beacon_set_id": "Beacon set ID1",
+      "beacon_urls": [{
+      "beacon_url": "https://myserver.com/beaconRX/load",
+      "beacon_type": "Load"
+    }]
+    },
+    {
+      "account_id": "User's Account ID",
+      "beacon_set_id": "Beacon set ID2",
+      "beacon_urls": [{
+      "beacon_url": "https://myserver.com/beaconRX2/load",
+      "beacon_type": "Load"
+      },
+      {
+      "beacon_url": "https://myserver.com/beaconRX2/play",
+      "beacon_type": "Play"
+      }]
+  }]</code></pre>
+  
+  <h3>id로 설정된 비콘 가져오기</h3>
+  
+  <p>ID로 설정된 단일 비콘을 검색하려면<code translate="No">GET</code>요구:</p>
+  
+  <table class="bcls-table">
+    <tbody class="bcls-table__body">
+      <tr>
+        <th>방법</th>
+        <td style="width:80em;"><code class="language-http" translate="No">GET</code></td>
+      </tr>
+      <tr>
+        <th>URL</th>
+        <td><code class="language-http" translate="No">https://api.bcovlive.io/v1/ssai/beaconsets/beaconset/<span class="bcls-input">beacon_set_id</span></code></td>
+      </tr>
+      <tr>
+        <th>헤더</th>
+        <td><code class="language-http" translate="No">X-API-KEY: <span class="bcls-input">your API KEY</span></code></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h4>샘플 응답</h4>
+  
+  <pre class="line-numbers">
+  <code class="language-json" translate="No">{
+      "account_id": "User account ID",
+      "beacon_set_id": "Beacon set ID",
+      "beacon_urls": [{
+        "beacon_type": "Load",
+        "beacon_url": "https://myserver.com/beaconRX2/load"
+    },
+    {
+      "beacon_type": "Play",
+      "beacon_url": "https://myserver.com/beaconRX2/play"
+    }]
+  }</code></pre>
+  
+  <h3>비콘 세트 삭제</h3>
+  
+  <p>마지막으로 비콘 세트를 삭제하려면<code translate="No">DELETE</code>요구:</p>
+  
+  <table class="bcls-table">
+    <tbody class="bcls-table__body">
+      <tr>
+        <th>방법</th>
+        <td style="width:80em;"><code class="language-http" translate="No">DELETE</code></td>
+      </tr>
+      <tr>
+        <th>URL</th>
+        <td><code class="language-http" translate="No">https://api.bcovlive.io/v1/ssai/beaconsets/beaconset/<span class="bcls-input">beacon_set_id</span></code></td>
+      </tr>
+      <tr>
+        <th>헤더</th>
+        <td><code class="language-http" translate="No">X-API-KEY: <span class="bcls-input">your API KEY</span></code></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h4>샘플 응답</h4>
+  
+  <p>응답은 다음과 같습니다.</p>
+  
+  <pre class="line-numbers">
+  <code class="language-json" translate="No">{
+    "beacon_set_id": "Beacon set ID",
+    "deleted": true
+  }</code></pre>
+  </section>
+  
+  <section class="bcls-section">
+  <h2 id="Appendix">부록</h2>
+  
+  <p>아래는 Elemental 인코더에 대한 샘플 큐 포인트 설정을 보여주는 스크린샷입니다.</p>
+  
+  <figure class="bcls-figure"><img class="bcls-image" alt="Elemental Cue Point Setup" src="/assets/images/live-api/18835/elemental-screenshot.png" />
+  <figcaption class="bcls-caption--image">원소 큐 포인트 설정</figcaption>
+  </figure>
+  </section>
+  {% endraw %}
+  </article>
+ 

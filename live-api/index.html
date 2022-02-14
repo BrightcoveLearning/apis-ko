@@ -1,0 +1,25 @@
+
+---
+title: 라이브 API
+description: Live API에 대한 주제.
+parent: Home
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+	<aside class="bcls-aside bcls-aside--information">참고: 여기 주제는 Live API를 다룹니다. 또한 참조<a href="https://live.support.brightcove.com/index.html">라이브 모듈에 대한 문서</a> .</aside>
+  <section class="card-wrapper">
+    {% for item in site.data.navigation %} {% if item.name == page.title %} {% for subsection in item.docs %}
+            <section class="bcls-card-small" onclick="window.location.href='{{subsection.url}}'">
+              <div class="card-content">
+                <h2>{{ subsection.name }}</h2>
+                <ul>
+                  {% for doc in subsection.docs %}
+                        <li><a href="{{ doc.url }}">{{ doc.name }}</a></li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </section>
+        {% endfor %} {% endif %} {% endfor %}
+  </section>
+</article>

@@ -1,0 +1,84 @@
+
+---
+title: '자주하는 질문: 포렌식 워터마킹'
+description: "이 항목에서는 Brightcove Forensic Watermarking과 관련된 여러 자주 묻는 질문에 대한 답변을 볼 수 있습니다."
+parent: Forensic Watermarking
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <style type="text/css">
+    세부 정보 요약{ font-size: 1.15rem; }
+  </style>
+  
+  <section class="bcls-section">
+    <h2 id="Introduction">소개</h2>
+    <p>
+      FW(포렌식 워터마킹)를 사용하면 불법 복제 및 무단 콘텐츠 공유로부터 프리미엄 콘텐츠를 보호할 수 있습니다. 이 기능은 비디오에 보이지 않는 워터마크를 추가하여 콘텐츠 유출을 추적할 수 있습니다.
+    </p>
+    <p>이 기능에 대해 자세히 알아보려면<a href="/general/overview-forensic-watermarking.html">개요: 포렌식 워터마킹</a>문서.</p>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="General_questions">일반적인</h2> 
+      <details>
+          <summary>콘텐츠 감지는 어떻게 작동합니까?</summary>
+          <p>탐지 프로세스는 파일에 다운로드, 캡처 또는 기록할 수 있는 콘텐츠 부분을 기반으로 합니다. NAGRA의 특정 도구, <strong>포장업자</strong> , 생성<strong> .pak</strong>파일. 이 파일은 전달된 고유한 시퀀스를 검색하기 위해 NAGRA에 제출된 다음 사용자와 일치합니다. 사용자는 시퀀스를 일치시킬 책임이 있습니다. 탐지 서비스는 NAGRA에서 직접 획득합니다. 일반적으로 불법 콘텐츠를 찾기 위해 인터넷을 크롤링하기 위해 콘텐츠 소유자가 고용한 제3자가 수행합니다.</p>
+      </details>
+      <br/>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Integrations">통합</h2>
+    <details>
+      <summary>Chromecast 또는 AirPlay와 같은 장치에서 포렌식 워터마킹이 지원됩니까?</summary>
+        <p>예, 워터마크 토큰은 캐스트 수신자에게 전달됩니다. 이는 웹 플레이어 및 네이티브 SDK에서 지원됩니다.</p>
+      </details>
+      <br/>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="Reporting">추적 및 보고</h2>
+    <details>
+      <summary>NAGRA는 고객이 사용한 트랜잭션 수를 어떻게 추적합니까?</summary>
+      <p>NAGRA는 당사 소프트웨어의 일부가 거래 보고를 위해 NAGRA에 연결되어 있는지 추적할 방법이 없습니다.</p>
+      <p>귀하는 사용된 거래 수의 증거로 제공하기 위해 24시간마다 하루 순 시청자 수가 포함된 보고서를 Analytics API에서 다운로드할 책임이 있습니다.</p>
+    </details>
+    <br/>
+    <details>
+      <summary>보고는 어떻게 처리됩니까?</summary>
+      <p>포렌식 워터마크가 있는 비디오 시청자에 대한 분석 보고서는 Analytics API를 통해 제공됩니다.</p>
+      <p>자세한 내용은<a href="/general/overview-forensic-watermarking.html#Analytics_reports">개요: 포렌식 워터마킹</a>문서.</p>
+    </details>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="General_questions">트랜스코딩</h2>
+      <details>
+          <summary>FW를 성공적으로 사용하는 데 필요한 최소 비디오 길이는 얼마입니까?</summary>
+          <p>5 분</p>
+      </details>
+      <br/>
+  </section>
+
+  <section class="bcls-section">
+    <h2 id="General_questions">웹 플레이어</h2>
+      <details>
+          <summary>콘텐츠에 보이지 않는 워터마크가 있음을 표시하는 오버레이가 있습니까?</summary>
+          <p>Brightcove Player는 오버레이를 지원합니다.<br/>
+            예시: <a href="https://studio.support.brightcove.com/players/configuring-player-overlay-using-overlay-plugin.html">오버레이 플러그인을 사용하여 플레이어 오버레이 구성</a> .
+          </p>
+      </details>
+      <br/>
+  </section>
+
+  <!-- <section class="bcls-section">
+    <h2 id="General_questions">Native SDKs</h2>
+      <details>
+          <summary>Is Forensic Watermarking supported with devices such as Chromecast or AirPlay?</summary>
+          <p>Yes, the watermark token is passed along to the cast receiver</p>
+      </details>
+      <br/>
+  </section> -->
+  
+</article>

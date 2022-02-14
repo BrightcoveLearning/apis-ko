@@ -1,0 +1,195 @@
+
+---
+title: '빠른 시작: MPEG2-TS 입력용 라이브 작업 생성'
+description: '이 튜토리얼은 MPEG2-TS 입력을 받아들일 라이브 작업을 만드는 과정을 안내합니다. 작업은 Live API를 사용하여 생성됩니다. '
+parent: Code Samples 
+grandparent: Live API
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+<section class="bcls-section">
+<h2 id="Overview">개요</h2>
+
+<figure class="bcls-figure"><img alt="general-block-diagram" src="/assets/images/live-api/18727/block-diagram-small.png" />블록다이어그램</figure>
+
+<p>이 자습서에서는 API 수준에서 라이브 스트리밍 작업을 만드는 방법을 설명합니다. <a href="/live-api/index.html">브라이트코브 라이브</a> MPEG2-TS 입력을 허용합니다. MPEG2-TS 입력을 사용하는 핵심은 다음을 선택하는 것입니다. <code translate="No">protocol</code> MPEG2-TS를 지원하고 인코더가 제공할 수 있습니다. Live API에서 지원하는 TS 지원 프로토콜은 다음과 같습니다.</p>
+
+<ul>
+	<li><code translate="No">rtp</code></li>
+	<li><code translate="No">rtp-fec</code></li>
+	<li><code translate="No">srt</code></li>
+</ul>
+
+<p>기본 입력 프로토콜은 다음과 같으므로 TS 입력을 사용하려면 이러한 프로토콜 중 하나를 명시적으로 지정해야 합니다. <code translate="No">rtmp</code> .</p>
+
+<p>클리핑, SSAI 큐 포인트 또는 ID3 태그에 SMPTE 타임코드를 사용하려면 SEI Picture Timing 메시지의 H.264(AVC) 비디오에 삽입해야 합니다.</p>
+
+<p>이러한 프로토콜은 인코더와 Live 간의 통신에 TCP가 아닌 UDP(User Datagram Protocol)를 사용하므로 방화벽/라우터를 올바르게 구성하고 인코더의 IP에서 인터넷으로 UDP 출력을 허용해야 합니다.</p>
+
+<aside class="bcls-aside bcls-aside--information">로컬 네트워크에 열린 포트가 있는 경우 Brightcove는 각 SRT 및 RTP 작업에 대해 포트를 동적으로 할당하며, 범위는 10000~65535입니다.</aside>
+
+<p>사용하는 경우<code translate="No">rtp-fec</code> , FEC 정보는 미디어와 다른 포트에서 전송되므로 예를 들어 포트 2000을 사용하는 경우 포트 2002 및 2004도 열어야 합니다(2D FEC를 사용하는 경우).</p>
+
+<p>이 튜토리얼에서는<a translate="No" href="https://general.support.brightcove.com/developer/concepts-set-curl.html">곱슬 곱슬하다</a> API 요청을 만들 수 있지만<a translate="No" href="https://apis.support.brightcove.com/general/use-insomnia-api-requests.html">불명 증</a> , <a translate="No" href="https://apis.support.brightcove.com/general/use-postman-api-requests.html">우편 집배원</a>또는 대신 다른 REST 클라이언트.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="create_a_live_job">라이브 작업 만들기</h2>
+
+<p>먼저 라이브 일자리를 창출하겠습니다. 당신은 필요합니다<code translate="No">API-KEY</code>라이브 API의 경우. 액세스 권한이 없고 액세스 권한을 얻는 데 관심이 있는 경우 계정 관리자에게 문의하십시오.</p>
+
+<ol class="bcls-tasklist-restart">
+	<li>
+	<p>다음을 복사하여 붙여넣기<span translate="No">곱슬 곱슬하다</span>텍스트 편집기에 명령:</p>
+
+	<pre class="line-numbers">
+  <code class="language-bash" translate="No">curl -X POST \
+    https://api.bcovlive.io/v1/jobs \
+    -H 'Content-Type: application/json' \
+    -H 'x-api-key: <span class="bcls-input">{{bcov-live-api-key}}</span>' \
+    -d '{
+      "live_stream": true,
+      "region": "<span class="bcls-input">{{closest_aws_region}}</span>",
+      "protocol": "<span class="bcls-input">{{your_protocol}}</span>",
+      "cidr_whitelist": ["<span class="bcls-input">{{your_encoder_IPrange}}</span>", "<span class="bcls-input">{{your_backup_encoder_IPrange}}</span>"],
+      "outputs": [{
+          "label": "hls360p",
+          "live_stream": true,
+          "height": 360,
+          "video_bitrate": 365,
+          "segment_seconds": 6,
+          "keyframe_interval": 60
+     },
+     {
+          "label": "hls432p",
+          "live_stream": true,
+          "height": 432,
+          "video_bitrate": 730,
+          "segment_seconds": 6,
+          "keyframe_interval": 60
+     },
+     {
+          "label": "hls540p",
+          "live_stream": true,
+          "height": 540,
+          "video_bitrate": 2000,
+          "segment_seconds": 6,
+          "keyframe_interval": 60
+     },
+     {
+          "label": "hls720p3M",
+          "live_stream": true,
+          "height": 540,
+          "video_bitrate": 2000,
+          "segment_seconds": 6,
+          "keyframe_interval": 60
+     },
+     {
+          "label": "hls720p4.5M",
+          "live_stream": true,
+          "height": 720,
+          "video_bitrate": 4500,
+          "segment_seconds": 6,
+          "keyframe_interval": 60
+     }]
+  }'</code></pre>
+	</li>
+	<li>
+	<p><strong>다음과 같이 교체합니다.</strong></p>
+
+	<ul>
+		<li><code translate="No">{{bcov-live-api-key}}</code> Brightcove 라이브 API 키로. 예를 들어: <code translate="No">abcdfeg-this-is-a-fake-api-key-FgJajjasd12hJHsZ</code></li>
+		<li><code translate="No">{{closest_aws_region}}</code>인코더에 가장 가까운 사용 가능한 지역은 다음을 참조하십시오. <a href="/live-api/getting-started/overview-brightcove-live-api.html#Support_aws_regions">가장 가까운 이용 가능한 지역</a>인코더에. 예를 들어: <code translate="No">us-west-2</code></li>
+		<li><code translate="No">{{your_protocol}}</code>인코더가 제공할 입력 프로토콜: <code translate="No">rpt</code> , <code translate="No">rtp-fec</code> , 또는<code translate="No">srt</code></li>
+		<li><code translate="No">{{your_encoder_IPrange}}</code>인코더가 사용할 IP 범위<code translate="No">1.2.3.4/32</code></li>
+		<li><code translate="No">{{your_backup_encoder_IPrange}}</code> (있는 경우) 백업 인코더가 사용할 IP 범위<code translate="No">1.2.3.4/32</code></li>
+	</ul>
+	</li>
+	<li>이러한 변경을 수행한 후 코드를 복사하여 터미널 또는 사용하는 명령줄 앱에 붙여넣고 실행합니다.</li>
+	<li>
+	<p>응답은 다음과 같아야 합니다. <code translate="No">rtp-fec</code>규약:</p>
+
+	<pre class="line-numbers">
+  <code class="language-json" translate="No">{
+      "id": "42c913e5373844a99a6285367f2704ec",
+      "outputs": [... removed for simplicity ...],
+      "stream_url": "<span class="bcls-highlight">rtp:</span>//ec2-34-212-0-224.us-west-2.compute.amazonaws.com:12675",
+      "stream_name": "42c913e5373844a99a6285367f2704ec.stream",
+      "static": false,
+      "encryption": {},
+      "playback_url": "https://bcovlive-a.akamaihd.net/42c913e5373844a99a6285367f2704ec/us-west-2/NA/playlist.m3u8",
+      "playback_url_dvr": "https://bcovlive-a.akamaihd.net/42c913e5373844a99a6285367f2704ec/us-west-2/NA/playlist_dvr.m3u8"
+  }</code></pre>
+
+	<p>또는 다음과 같이<code translate="No">srt</code> :</p>
+
+	<pre class="line-numbers">
+  <code class="language-json" translate="No">{
+      "id": "cdb820f2d7764b91a79536dac799fb77",
+      "outputs": [... removed for simplicity ...],
+      "stream_url": "srt://ec2-34-212-0-224.us-west-2.compute.amazonaws.com:13820",
+      "stream_name": "cdb820f2d7764b91a79536dac799fb77.stream",
+      "static": false,
+      "encryption": {},
+      "playback_url": "https://bcovlive-a.akamaihd.net/cdb820f2d7764b91a79536dac799fb77/us-west-2/NA/playlist.m3u8",
+      "playback_url_dvr": "https://bcovlive-a.akamaihd.net/cdb820f2d7764b91a79536dac799fb77/us-west-2/NA/playlist_dvr.m3u8"
+  }</code></pre>
+	</li>
+</ol>
+
+<aside class="bcls-aside bcls-aside--information">SRT 스트림에 대한 포트(위의 예에서 13820)는 각 작업에 대해 고유하며 작업 생성 요청 응답에서 가져와야 합니다!</aside>
+
+<p>이 작업은 5개의 변환을 생성합니다. <strong>기반을 둔</strong> ~에<a href="https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices">애플 추천</a> .</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="Configure_your_encoder_ts">인코더 구성(TS+FEC)</h2>
+
+<p>여기에 표시된 단계는 다음을 가정합니다. <a href="https://www.elemental.com/products/aws-elemental-live">엘리멘탈 라이브 박스</a>이 자습서의 단계를 테스트하는 데 사용된 인코더입니다. 다른 인코더가 있는 경우 설정이 비슷해야 합니다.</p>
+
+<p>이를 위한 가장 중요한 설정<code translate="No">rtp-fec</code>입력은 다음과 같습니다.</p>
+
+<ul>
+	<li>타임코드 소스를 "시스템 시계"로 구성</li>
+	<li>"정방향 오류 수정"을 "열 및 행"으로 설정하고 "열 깊이" 및 "행 길이" 값을 설정합니다.
+	<ul>
+		<li><strong>컬럼 깊이:</strong> 4("열 깊이" TS 패킷마다 1개의 추가 FEC 패킷이 추가됨)</li>
+		<li><strong>행 길이:</strong> 10("행 길이" TS 패킷마다 1개의 추가 FEC 패킷이 추가됨)</li>
+		<li>추가된 데이터는 다음과 같이 계산할 수 있습니다. TotalBitrate = MediaBitrate * (1/(ColumnDepth + 1) + 1/(RowLength + 1)</li>
+	</ul>
+	</li>
+	<li>영상 내 "타임코드 삽입" 확인</li>
+	<li>권장: 프레임 속도 = 소스 팔로우</li>
+</ul>
+
+<p>이것은 이 TS+FEC 샘플에 사용한 구성입니다.</p>
+
+<figure class="bcls-figure"><img alt="elemental-live-job-config" title="Elemental live config" src="/assets/images/live-api/18727/elemental-live-job-config-fec-v1a.png" />
+<figcaption class="bcls-caption--image">엘리멘탈 라이브 구성</figcaption>
+</figure>
+</section>
+
+<section class="bcls-section">
+<h2 id="Configure_your_encoder_srt">인코더 구성(SRT)</h2>
+
+<p>여기에 표시된 설정은 다음을 기반으로 합니다. <a href="https://www.haivision.com/products/kb-series/">하이비전 KB</a>이 자습서의 단계를 테스트하는 데 사용된 인코더입니다. 다른 인코더가 있는 경우 설정이 비슷해야 합니다.</p>
+
+<p>이것은 이 SRT 샘플에 사용한 구성입니다.</p>
+
+<figure class="bcls-figure"><img alt="Haivision-live-job-config" title="Haivision live config" src="/assets/images/live-api/18727/haivision-kb-srt-config.png" />
+<figcaption class="bcls-caption--image">하이비전 라이브 구성</figcaption>
+</figure>
+</section>
+
+<section class="bcls-section">
+<h2 id="test_playback">테스트 재생</h2>
+
+<p>당신은 이것을 사용할 수 있습니다<a href="https://videojs.github.io/videojs-contrib-hls/"> VideoJS HLS 데모 페이지</a>재생을 테스트하려면 값을 붙여넣기만 하면 됩니다. <code translate="No">playback_url</code>생성 작업 응답에서 반환됨:</p>
+
+<figure class="bcls-figure"><img alt="videojs-hls-playback" title="VideoJS HLS playback demo page" src="/assets/images/live-api/18727/videojs-hls-playback-small.png" />
+<figcaption class="bcls-caption--image">VideoJS HLS 재생 데모 페이지</figcaption>
+</figure>
+</section>
+</article>

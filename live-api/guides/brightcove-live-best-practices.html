@@ -1,0 +1,439 @@
+
+---
+title: '브라이트코브 라이브: 모범 사례'
+description: '이 주제에서는 Live API를 사용하여 라이브 스트림을 만드는 모범 사례에 대한 가이드를 제공합니다.'
+parent: Guides 
+grandparent: Live API
+---
+ <h1>이 페이지가 이동되었습니다. <a href="https://live.support.brightcove.com/get-started/live-module-guidelines-and-best-practices.html">새로운 위치</a> 3초 안에. 북마크를 업데이트하세요!</h1>
+<script type="text/javascript">
+var t = setTimeout(함수() { window.location.href = 'https://live.support.brightcove.com/get-started/live-module-guidelines-and-best-practices.html'; } , 3000);
+</script>
+
+<h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+  <section class="bcls-section">
+<h2 id="Overview">개요</h2>
+
+<p>Brightcove Live는 라이브 스트리밍 이벤트 또는 연중무휴 라이브 스트림을 생성하기 위한 강력한 서비스를 제공합니다. 이 가이드에서는 실시간 스트림 최적화를 위한 모범 사례를 간략하게 설명합니다.</p>
+</section>
+
+<section class="bcls-section">
+  <h2 id="Content_context">콘텐츠 컨텍스트</h2>
+  <p>스트리밍되는 콘텐츠 유형은 입력 품질을 유지하는 데 필요한 설정에 영향을 미치므로 고려해야 합니다. 절충점이 있으며 가능한 가장 높은 설정을 사용하면 프레임 건너뛰기와 같은 문제가 발생할 수 있습니다.</p>
+  <p>아래 정보를 기반으로 라이브 이벤트 전에 품질 및 성능에 대해 다양한 설정 조합을 테스트하는 것이 좋습니다.</p>
+	<p>주요 입력 매개변수는 다음 표에 요약되어 있습니다.</p>
+	<table class="bcls-table">
+    <caption class="bcls-caption--table">라이브 스트리밍을 위한 주요 입력 매개변수</caption>
+    <thead class="bcls-table__head">
+        <tr>
+            <th>매개변수</th>
+            <th>노트</th>
+        </tr>
+    </thead>
+    <tbody class="bcls-table__body">
+        <tr>
+            <td>입력 비트 전송률</td>
+            <td>인코더가 보내는 비트 전송률입니다. 속도가 높을수록 네트워크 손실에 더 취약하므로 가능한 한 낮게 유지해야 합니다.</td>
+        </tr>
+        <tr>
+            <td>입력 해상도</td>
+            <td>이것은 소스 콘텐츠와 일치해야 합니다. 이를 원본 소스보다 크게 만드는 이점은 없으며 이 값이 높을수록 이를 지원하는 데 더 높은 비트 전송률이 필요합니다.</td>
+        </tr>
+        <tr>
+            <td>상단 프로필 비율에 대한 입력 비트 전송률</td>
+            <td>
+              입력 비트 전송률은 상위 프로필의 전송률보다 높아야 하지만 너무 높으면 프레임 손실 또는 기타 문제가 발생할 수 있습니다. 예를 들어 상위 전송률이 1080p 30fps인 경우 입력은 이상적으로는 약 4MBPS여야 합니다. 이것은 프로필의 영향을 받습니다.
+              <p>높은 비트 전송률 최고 출력이 필요한 경우 테스트할 가치가 있습니다. <code> copy_video</code>입력 인코딩을 출력으로 복사하는 설정입니다.</p>
+            </td>
+        </tr>
+        <tr>
+          <td>프로필</td>
+          <td>
+            다른 프로필(기준선, 기본, 높음)은 데이터를 오름차순으로 압축합니다(기준선: 가장 낮음, 높음: 가장 높음). 압축률이 높을수록 전송 속도가 향상되지만 데이터를 디코딩하는 데 더 많은 CPU 리소스가 필요합니다. 인코더가 사용 가능한 리소스에 크게 제한되지 않는 한 기준 프로필은 피해야 합니다. 반면에 높은 비트 전송률에서 높은 프로필을 사용하면 필요한 디코딩 CPU 리소스가 증가하기 때문에 프레임을 건너뛸 가능성이 더 높습니다.
+            <p>또한 참조<a href="#gop_structure"> GOP 구조</a>아래에.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>프레임 속도</td>
+          <td>
+            소스와 일치해야 합니다.
+            <p>더 높은 전송률은 그에 비례하여 더 높은 입력 비트 전송률을 필요로 합니다. 예를 들어 액션 스포츠 콘텐츠의 경우 60fps 입력 스트림은 30fps 스트림보다 훨씬 더 많은 데이터를 전달합니다.</p>
+            <p>60fps와 같은 높은 전송률은 높은 비트 전송률의 복잡한 콘텐츠에서 프레임 건너뛰기 문제가 발생할 가능성이 더 큽니다.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>키프레임 속도</td>
+          <td>
+            이에 대한 가장 효율적인 설정은 세그먼트 지속 시간 x 프레임 속도입니다. 예를 들어 6초 세그먼트와 30fps가 있는 경우 키프레임 속도를 180(6x30)으로 설정하면 디코더 로드가 가장 낮습니다.
+            <p>그러나 변동을 고려하여 프레임 속도의 2배로 설정합니다(예: 프레임 속도가 30fps인 경우 60).</p>
+          </td>
+        </tr>
+        <tr>
+          <td>GOP 구조</td>
+          <td>보다<a href="#gop_structure"> GOP 구조</a>아래에.</td>
+        </tr>
+    </tbody>
+</table>
+</section>
+
+<section class="bcls-section">
+  <h2 id="Key_issues">스트리밍의 주요 문제</h2>
+  <p>인코더에서 Brightcove로의 스트리밍 환경 문제와 관련하여 일반적으로 발생하는 몇 가지 문제가 있습니다.</p>
+  <ol>
+    <li>
+      입력에 영향을 미치는 네트워크 불안정성:
+      <ol>
+        <li>인터넷은 일반적으로 매우 안정적이지만 오류가 없으며 문제가 발생합니다. 문제는 더 높은 비트 전송률에서 발견될 가능성이 더 큽니다.</li>
+        <li>실시간보다 비디오를 업로드하는 데 시간이 더 오래 걸리면 입력 드리프트가 발생할 수 있습니다(비디오를 수신한 시간이 전송된 시간보다 상당히 늦음).</li>
+      </ol>
+    </li>
+    <li>
+      트랜스코더 과부하로 인해 프레임 건너뛰기: 트랜스코더에 충분한 오버헤드가 있는지 확인하기 위해 최선을 다하는 동안 콘텐츠 복잡성, 네트워크 딸꾹질/캐치업 또는 트랜스코더에 대한 기타 중단이 갑자기 급증하면 프레임 건너뛰기가 발생할 수 있습니다. 입력이 복잡할수록 건너뛴 프레임이 발생할 가능성이 높아집니다. 또한 5분 이상 긴 시간 동안 정지 이미지에서 변경하고 작업 콘텐츠에 대한 갑작스러운 변경으로 인해 과부하가 발생할 수 있는 알려진 문제가 있습니다.
+    </li>
+    <li>가변 프레임 지속 시간을 보내는 인코더: 프레임 속도는 일정해야 하며 일정한 키프레임 간격을 허용해야 합니다. 예를 들어 29.97(30000/1001) 또는 23.976(24000/1001)과 같은 프레임 속도의 경우 일정한 간격으로 키프레임을 설정할 수 없으므로 피해야 합니다.</li>
+    <li>지속 시간이 일정하지 않은 키프레임을 보내는 인코더의 경우 키프레임 속도는 프레임 속도(초)의 최소 2배여야 합니다. 예를 들어, 프레임 속도가 30fps인 경우 키프레임 간격은 2초인 60프레임이어야 하며 세그먼트당 최대 간격이 한 번이어야 합니다. 예를 들어, 6초 세그먼트가 있는 경우 최대 간격은 180프레임이 됩니다. 30fps</li>
+  </ol>
+</section>
+
+<section class="bcls-section">
+  <h2 id="Content_types">콘텐츠 유형</h2>
+  <p>일반적으로 더 복잡한 콘텐츠는 이러한 설정 중 더 높은 값을 사용해야 하므로 건너뛴 프레임에 더 취약합니다. 아래 표는 복잡성 순서대로 몇 가지 예를 보여줍니다. 이는 예시일 뿐이며 모든 인코더 설정이 다르기 때문에 유의하십시오. 테스트 및 검증을 수행해야 합니다.</p>
+  <table class="bcls-table">
+    <caption class="bcls-caption--table">콘텐츠 유형 예</caption>
+    <thead class="bcls-table__head">
+        <tr>
+            <th>컨텐츠 타입</th>
+            <th>설정 예</th>
+        </tr>
+    </thead>
+    <tbody class="bcls-table__body">
+        <tr>
+            <td>웹캠</td>
+            <td>
+              <ul>
+                <li>해결: 360p</li>
+                <li>비트레이트: 1MBPS</li>
+                <li>프로필: 기준선</li>
+              </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>웹 컨퍼런스</td>
+            <td>
+              <ul>
+                <li>해결: 480p</li>
+                <li>비트레이트: 2.5MBPS</li>
+                <li>프로필: 기본</li>
+              </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>생기</td>
+            <td>
+              <ul>
+                <li>해결: 720p</li>
+                <li>비트레이트: 2.5MBPS</li>
+                <li>프로필: 기본</li>
+              </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>토킹 헤드 / 뉴스</td>
+            <td>
+              <ul>
+                <li>해결: 720p</li>
+                <li>비트레이트: 4MBPS</li>
+                <li>프로필: 기본</li>
+              </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>라이브 콘서트</td>
+            <td>
+              <ul>
+                <li>해결: 1080p(또는 소스)</li>
+                <li>비트레이트: 5MBPS</li>
+                <li>프로필: 높은</li>
+              </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>라이브 스포츠</td>
+            <td>
+              <ul>
+                <li>해결: 1080p(또는 소스)</li>
+                <li>비트레이트: 6MBPS</li>
+                <li>프로필: 높은</li>
+              </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>라이브 스포츠 높은 FPS</td>
+            <td>
+              <ul>
+                <li>해결: 1080p(또는 소스)</li>
+                <li>비트레이트: 10MBPS</li>
+                <li>프로필: 높은</li>
+              </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</section>
+
+<section class="bcls-section">
+  <h2 id="verification">검증 및 테스트</h2>
+  <p>이상적으로 고객은 가장 복잡한(가장 많이 변경되는 콘텐츠)에서 가능한 가장 낮은 설정으로 시작하고 출력이 허용될 때까지 다양한 설정을 늘려 콘텐츠로 테스트해야 합니다. 이는 일반적으로 설정이 높을수록 네트워크 또는 트랜스코딩에서 문제가 발생할 가능성이 더 높기 때문입니다.</p>
+</section>
+
+<section class="bcls-section">
+  <h2 id="gop_structure">GOP 구조</h2>
+  <p>비디오의 GOP(Group of Pictures) 구조는 먼저 다음과 같이 사용되는 프로필에 따라 다릅니다.</p>
+  <ol>
+    <li><strong>기준선</strong>프로필은 I 및 P 프레임과 CAVLC 엔트로피 인코딩만 지원합니다.</li>
+    <li><strong>기본</strong>그리고<strong>높은</strong> I, B 및 P 프레임 및 CABAC 엔트로피 인코딩 지원</li>
+  </ol>
+  <p>메인 및 하이 프로필은 일반적으로 더 나은 품질에서 더 나은 압축을 제공하지만 건너뛴 프레임에 더 취약할 수 있으므로 인코딩 및 디코딩을 위해 추가 계산이 필요합니다. 또한 이러한 프로파일은 B(양방향) 프레임을 사용하므로 인코딩 프로세스에서 약간의 지연이 발생합니다.</p>
+  <p>베이스라인 프로파일은 인코딩 및 디코딩하는 데 더 적은 CPU가 필요하지만 압축이 적기 때문에 품질을 유지하기 위해 더 높은 비트 전송률이 필요하므로 네트워크 문제에 더 취약합니다.</p>
+  <h3>프레임 유형 및 성능에 미치는 영향에 대한 참고 사항:</h3>
+  <ol>
+    <li><strong>나는 프레임</strong> : 가장 많은 대역폭을 사용합니다. 전체 장면 변경 또는 세그먼트 경계에 가장 적합합니다. 즉, 콘텐츠가 변경될수록 더 많이 필요합니다(짧은 GOP 길이).</li>
+    <li><strong>P 프레임</strong> : I 프레임 사이의 기본 단위입니다.</li>
+    <li><strong>B 프레임</strong> : 이전 프레임과 미래 프레임을 모두 사용하면 추가할수록 압축률은 높아지지만 CPU와 대기 시간이 높아집니다.</li>
+  </ol>
+  <p>사용<strong>나는 프레임</strong>이상적으로는 세그먼트 시작(패스스루를 사용하는 경우 중요) 또는 장면 변경으로 제한되어야 합니다. 전체 또는 많은 수의 I 프레임은 과도한 로드로 인해 프레임을 건너뛸 수 있으므로 피해야 합니다.</p>
+  <h3>추가 참고 사항:</h3>
+  <ul>
+    <li>키 프레임의 조밀한 배치를 방지하기 위한 옵션 사용(예: <code> min_keyin</code> = 3+).</li>
+    <li>키 프레임 삽입의 주기를 규칙적으로 보장하는 옵션을 사용하십시오. 예를 들어, GOP 길이를 초 단위로 지정하는 대신 정확한 분수 또는 프레임 단위로 지정하십시오.</li>
+  </ul>
+</section>
+
+<section class="bcls-section">
+  <h2 id="bitrate">비트레이트</h2>
+  <ul>
+    <li>최소 입력 대역폭: 2.5Mbps</li>
+    <li>최대 입력 대역폭: 10Mbps</li>
+  </ul>
+  
+  <ul>
+    <li>스트림을 "거의 CBR"로 만듭니다. <code>최대 비트 전송률</code> = 1.1 * target_bitrate.</li>
+    <li>가능한 경우 엄격한 HRD 준수 속도 제어 모드를 사용합니다.</li>
+  </ul>
+</section>
+
+<section class="bcls-section">
+  <h2 id="Protocol">규약</h2>
+  <p>인터넷은 보장된 전송 네트워크가 아니며 인터넷 연결이 "양호한" 것으로 간주될 수 있지만 고품질의 안정적인 라이브 비디오 스트리밍에는 충분하지 않을 수 있습니다. ISP에서의 소량의 혼잡, 라우터 간의 계획되지 않은 장애 조치 또는 유사한 문제와 같이 고객 인코더와 Brightcove 트랜스코딩 플랫폼 간의 경로가 약간 중단되면 비디오 출력이 중단될 수 있습니다. 고위험 라이브 방송에서는 관리되는 네트워크에서 전용 광섬유, 예약된 위성 대역폭 또는 커밋된 대역폭으로 구성된 여러 전용 네트워크를 사용하는 것이 일반적입니다. 이것은 상당한 비용을 수반하며 대부분의 경우 인터넷을 통해 충분히 좋은 결과를 얻을 수 있습니다. 그러나 결함 없는 전송을 유지하는 것이 중요한 경우 AWS Direct Connect 또는 일정 수준의 전용 대역폭을 제공할 수 있는 ISP를 고려하십시오.</p>
+  <p>권장하는 옵션은 다음과 같습니다(순서대로).</p>
+  <ol>
+    <li><strong>SRT</strong> - 일부 제어 및 오류 복원력과 함께 전송 속도(UDP)의 우수한 조합을 제공합니다. 모든 인코더에서 사용할 수 있는 것은 아니지만 srt-transmit과 같은 로컬 RTP에서 번역할 수 있는 도구가 있습니다.</li>
+    <li><strong>RTMP</strong> - TCP 기반이므로 우수한 수준의 오류 복원력을 제공하지만 상당한 오버헤드가 발생한다는 단점이 있습니다. 다중 오디오 트랙과 같은 모든 기능을 RTMP에서 사용할 수 있는 것은 아닙니다.</li>
+    <li><strong>RTP-FEC</strong> - 약간의 오류 복원력과 함께 빠른 UDP 기반 전송을 제공합니다.</li>
+    <li><strong>RTP</strong> - 오류 복원력이 없는 빠른 전송 및 고급 기능 제공</li>
+  </ol>
+  <aside class="bcls-aside bcls-aside--information">참고: RTMP를 사용하는 경우 조각이 순서대로 도착하지 않을 수 있으므로 슬라이스를 비활성화하는 것이 좋습니다.</aside>
+</section>
+
+<section class="bcls-section">
+<h2 id="Certified_encoders">지원되는 인코더</h2>
+
+<p>보다<a href="https://live.support.brightcove.com/general/supported-encoders-live-events.html">라이브 이벤트에 지원되는 인코더</a> Live와 함께 작동하는 것으로 알려진 인코더 목록. 다른 인코더도 작동할 수 있지만 테스트되지는 않았습니다.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="Supported_CDNs">지원되는 CDN</h2>
+
+<ul>
+	<li>아카마이</li>
+	<li>아마존 클라우드프론트</li>
+</ul>
+
+<aside class="bcls-aside bcls-aside--information">위의 CDN은 공식적으로 지원되지만 다른 파일 기반 CDN도 작동해야 합니다.</aside>
+
+</section>
+
+<section class="bcls-section">
+<h2 id="retries">재시도</h2>
+
+<p>인코더에서 RTMP 연결에 대한 재시도를 활성화하는 것이 좋습니다. 5초의 재시도 간격으로 재시도를 많이 시도하면 인코더와 진입점 간의 간헐적인 연결 문제가 완화됩니다.</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="job_settings">작업 설정</h2>
+
+<p>권장 작업 설정</p>
+
+<table class="bcls-table">
+	<caption class="bcls-caption--table">작업 설정</caption>
+	<thead class="bcls-table__head">
+		<tr>
+			<th>들</th>
+			<th>권장 값</th>
+		</tr>
+	</thead>
+	<tbody class="bcls-table__body">
+		<tr>
+			<td><code translate="No">ad_audio_loudness_level</code></td>
+			<td><code translate="No">-23 </code> (EBU R.128 표준)</td>
+		</tr>
+	</tbody>
+</table>
+</section>
+
+<section class="bcls-section">
+<h2 id="input_requirements">입력 요구 사항</h2>
+
+<p>다음 표는 입력 라이브 스트림에 대한 요구 사항을 보여줍니다.</p>
+
+<table class="bcls-table">
+	<caption class="bcls-caption--table">입력 요구 사항</caption>
+	<thead class="bcls-table__head">
+		<tr>
+			<th>안건</th>
+			<th>요구 사항</th>
+		</tr>
+	</thead>
+	<tbody class="bcls-table__body">
+		<tr>
+			<td>규약</td>
+			<td><code translate="No">rtmp</code> , <code translate="No">rpt</code> , <code translate="No">rtp-fec</code> , 또는<code translate="No">srt</code> (제외<code translate="No">rtmp</code> MPEG2-TS 입력용)<sup>[1-1]<strong><a href="#note1-1"></a></strong></sup></td>
+		</tr>
+		<tr>
+			<td>비디오 형식</td>
+			<td>h.264</td>
+		</tr>
+		<tr>
+			<td>오디오 형식</td>
+			<td>AAC</td>
+		</tr>
+		<tr>
+			<td>최대 오디오 샘플링 속도</td>
+			<td>최대 48000Hz(Brightcove 지원은 요청 시 이 값을 늘릴 수 있음)</td>
+		</tr>
+		<tr>
+			<td>해결</td>
+			<td>최대 1080p(폭: 1920픽셀, 높이: 1080픽셀)</td>
+		</tr>
+		<tr>
+			<td>비트레이트</td>
+			<td>최소한 가장 높은 출력 비트 전송률(최대값)만큼 높아야 합니다. 10MBPS.
+			<p>거의 모든 경우에 Brightcove 지원팀은 입력 스트림에 고정 비트 전송률을 사용하면 문제가 발생할 가능성이 크게 줄어든다는 사실을 발견했습니다.</p>
+			</td>
+		</tr>
+		<tr>
+			<td>프레임 속도</td>
+			<td>30fps(제출 가능<a href="https://supportportal.brightcove.com/s/login/?language=en_US">지원 요청</a>제한을 60fps로 올리기 위해)</td>
+		</tr>
+		<tr>
+			<td>슬라이스</td>
+			<td>인코더에 이 옵션이 있는 경우 다음으로 설정하십시오. <code translate="no"> 1</code></td>
+		</tr>
+	</tbody>
+</table>
+
+<h3>노트</h3>
+
+<ul>
+	<li id="note1-1"><sup>[1-1]<strong></strong></sup> TS 입력에 여러 비디오/오디오 트랙이 있는 경우 각각에 대해 첫 번째 트랙을 선택합니다. 또한 인터넷을 통한 UDP를 통한 일반 TS는 매우 신뢰할 수 없으므로 FEC를 사용하는 것이 좋습니다. FEC의 경우 <em>더 작은</em> 행/열에 값을 사용할수록 오류 수정이 더 안정적으로 수행됩니다(대역폭이 증가하는 대신.</li>
+</ul>
+</section>
+
+<section class="bcls-section">
+<h2 id="slate_source_file_recommendations">슬레이트 소스 파일 권장 사항</h2>
+
+<ul>
+	<li><strong>해결</strong> : (인코딩 래더에서 최고)</li>
+	<li><strong>FPS</strong> : (소스와 동일)</li>
+	<li><strong>비트레이트</strong> : (인코딩 래더에서 최고 또는 그 이상)</li>
+	<li><strong>오디오</strong> : (최상의 변환 또는 입력과 동일한 비트 전송률, 채널, 샘플링 주파수 및 샘플당 비트 수)</li>
+</ul>
+</section>
+
+<section class="bcls-section">
+<h2 id="output_recommendations" class="bcls-section">출력 권장 사항</h2>
+
+<p>다음은 권장되는 출력 설정이지만 많은 인코더의 경우 RTMP 입력은 10MBPS(비디오 + 오디오) 및 30fps의 프레임 속도로 제한됩니다.</p>
+
+<table class="bcls-table">
+	<caption class="bcls-caption--table">출력 권장 사항</caption>
+	<thead class="bcls-table__head">
+		<tr>
+			<th>안건</th>
+			<th>추천</th>
+		</tr>
+	</thead>
+	<tbody class="bcls-table__body">
+		<tr>
+			<td>비디오 코덱</td>
+			<td><code translate="No">h264</code>현재 유일한 옵션입니다</td>
+		</tr>
+		<tr>
+			<td>오디오 코덱</td>
+			<td><code translate="No">aac</code>현재 유일한 옵션입니다</td>
+		</tr>
+		<tr>
+			<td>너비</td>
+			<td>그렇지 않은 경우<code translate="No">width</code>또는<code translate="No">height</code>가 제공되면 소스 차원이 사용됩니다. 둘 중 하나라면<code translate="No">width</code>또는<code translate="No">height</code>가 제공되면 소스의 종횡비를 유지하기 위해 다른 차원이 계산됩니다.</td>
+		</tr>
+		<tr>
+			<td>키</td>
+			<td>그렇지 않은 경우<code translate="No">width</code>또는<code translate="No">height</code>가 제공되면 소스 차원이 사용됩니다. 둘 중 하나라면<code translate="No">width</code>또는<code translate="No">height</code>가 제공되면 소스의 종횡비를 유지하기 위해 다른 차원이 계산됩니다.</td>
+		</tr>
+		<tr>
+			<td>비트레이트</td>
+			<td>입력 비트 전송률보다 작거나 같음</td>
+		</tr>
+		<tr>
+			<td>키프레임 속도</td>
+			<td>2초</td>
+		</tr>
+	</tbody>
+</table>
+</section>
+
+<section id="AWS_regions">AWS 리전
+<p>참조<a href="/live-api/getting-started/overview-brightcove-live-api.html#Support_aws_regions">라이브 API 개요</a> .</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="FAQ">자주하는 질문</h2>
+
+<dl>
+	<dt class="bcls-question">라이브 작업을 생성한 후 얼마나 빨리 스트리밍을 시작해야 합니까?</dt>
+	<dd class="bcls-answer">Brightcove Live에는 상태가 다음에서 전환될 때 두 가지 조건이 있습니다. <code translate="No">waiting </code>에게<code translate="No">finishing </code> :
+	<ol>
+		<li>작업이<strong>대기 중</strong>상태(아직 시작되지 않음) 및<code translate="No">max_waiting_time_ms</code>경과하면 작업이 완료/비활성화됩니다.</li>
+		<li>작업이<strong>연결이 끊긴</strong>상태(시작되었지만 연결 해제됨) 및<code translate="No">reconnect_time</code>경과하면 작업이 완료/비활성화됩니다.</li>
+	</ol>
+
+	<p>만약<code translate="No">event_length </code> 30분을 초과하면 작업이 30분 후에 종료됩니다. 만약<code translate="No">event_length </code> 30분 미만이면 작업이 종료됩니다. <code translate="No">event_length </code> .</p>
+
+	<p>예를 들어, <code translate="No">event_length </code>시간이 60분이면 라이브 작업은 30분 후에 종료됩니다. 만약<code translate="No">event_length </code> 15분이면 라이브 작업이 15분 후에 종료됩니다.</p>
+
+	<p>NS <code translate="No">reconnect_time </code>대기 상태에는 영향을 미치지 않습니다.</p>
+	</dd>
+	<dt class="bcls-question">동시 라이브 job_settings에 대한 제한 사항은 무엇입니까?</dt>
+	<dd class="bcls-answer">
+	<p>최대 5개 활성<strong>대기 중, 시작되지 않음</strong>작업은 언제든지 허용됩니다.</p>
+
+	<p>동시 작업에 대한 추가 제한 사항:</p>
+
+	<ul>
+		<li>개수<code translate="No">channel</code> (24x7) 작업은 계정 유형에 따라 지역당 0개 또는 적은 수로 제한됩니다.</li>
+		<li>동시 수<strong>달리기</strong><code translate="No">event</code>작업은 지역별로 제한되며 일반적으로 100개로 제한됩니다.</li>
+		<li>동시 수<strong>연결 대기 중</strong><code translate="No">event</code>작업은 5개로 제한됩니다.</li>
+		<li>지역별 SEP 작업 수는 3개 또는 10개로 제한됩니다(참조<a href="/live-api/getting-started/overview-brightcove-live-api.html#Support_aws_regions">지원되는 AWS 리전</a> ).</li>
+	</ul>
+
+	<p>이러한 제한은 지원팀에서 계정 수준에서 조정할 수 있습니다. 추가 용량이 필요한 경우 계정 관리자에게 문의하세요.</p>
+	</dd>
+	<dt class="bcls-question">입력 대역폭이 충분하다면 Brightcove Live가 1080p 품질을 제공할 수 있습니까?</dt>
+	<dd class="bcls-answer">네, 모든 계정에서 1080p 입력이 가능합니다.</dd>
+	<dt class="bcls-question">DRM을 사용할 수 있습니까?</dt>
+	<dd class="bcls-answer">예! 실제 계정에 DRM 지원을 추가하는 데 관심이 있는 경우 계정 관리자에게 문의하세요.</dd>
+</dl>
+</section>
+</article>

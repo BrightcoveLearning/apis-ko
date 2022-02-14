@@ -1,0 +1,55 @@
+<section class="bcls-section" id="workingSample">
+  <h2>비디오 보고서 생성기</h2>
+
+  <fieldset class="bcls-fieldset">
+    <legend>입력</legend>
+
+    <p>계정 정보를 입력하지 않으면 Brightcove 샘플 계정이 사용됩니다.</p>
+
+    <p>계정 ID: <input id="account_id" type="text" value="" placeholder="1752604059001" /></p>
+
+    <p>클라이언트 ID: <input id="client_id" type="text" size="60" value="" placeholder="c5d0a622-5479-46d8-8d8a-5f034b943fab" /></p>
+
+    <p>클라이언트 암호: <input id="client_secret" type="text" size="60" value="" placeholder="w7NQYu0vUloM4GYYy2SXAxrvyFpt8fwI35qAFZcS13-VIgs0itwKNsAwHOS80sOWK" /></p>
+
+    <p>검색할 동영상: <select name="videoCount" id="videoCount">
+        <option value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="500">500</option>
+        <option value="All">모두</option>
+      </select></p>
+
+    <p>시작 오프셋: <input id="initial_offset" type="text" value="0" size="20" /><br>
+    (이미 검색한 동영상 수로 설정)</p>
+
+    <p>보고서 형식: <select name="report_type" id="report_type">
+      <option value="json">JSON</option>
+      <option value="csv">CSV</option>
+    </select></p>
+
+    <aside class="bcls-aside bcls-aside--warning">선택하면<code translate="No">All</code> , 잠시 기다리십시오! 위의 오프셋 옵션을 사용하여 보고서를 일괄적으로 실행할 수도 있습니다. 이는 대용량 비디오 라이브러리에 권장됩니다.</aside>
+
+    <p><button class="bcls-button" id="makeReport">보고서 생성</button></p>
+  </fieldset>
+
+  <fieldset class="bcls-fieldset">
+    <legend>통나무</legend>
+
+    <div id="logger" style="color:rgb(237, 104, 38)">
+      <p id="logText">입력을 기다리는 중...</p>
+    </div>
+
+    <p>현재 API 요청</p>
+
+    <pre class="line-numbers">
+<code id="apiRequest" class="language-http">API 요청이 여기에 표시됩니다...</code></pre>
+  </fieldset>
+</section>
+
+<section id="csvDisplay" class="bcls-section">
+  <h2>기존 동영상 보고서</h2>
+
+  <p>아래 데이터를 복사하여 빈 텍스트 파일에 붙여넣고 .csv 확장자로 저장합니다. 그런 다음 파일을 열어 스프레드시트 응용 프로그램에서 볼 수 있습니다.</p>
+  <textarea name="csvData" id="csvData" class="bcls-code" style="height:30em;"></textarea>
+</section>

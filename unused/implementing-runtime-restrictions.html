@@ -1,0 +1,85 @@
+
+---
+title: "런타임 제한 구현"
+description: "이 주제에서는 Brightcove 재생 제한을 사용할 때 Jason Web Token(JWT)을 생성하고 등록하는 방법을 배웁니다."
+parent: Getting Started 
+grandparent: Playback Restrictions
+layout: staging
+---
+ <h1>{{ page.title }}</h1>
+<article class="bcls-article">
+  <summary>{{ page.description }}</summary>
+
+  <br/>
+  <aside class="bcls-aside bcls-aside--tip">이 기능은 Brightcove 재생 제한의 제한된 가용성 단계에 대한 액세스 권한이 있는 특정 고객에게만 제공됩니다.</aside>
+
+<section class="bcls-section">
+<h2 id="Introduction">소개</h2>
+
+<p>Brightcove 재생 제한은 DRM으로 보호되거나 HLSe(HTTP 라이브 스트리밍 암호화) 콘텐츠와 함께 Dynamic Delivery를 사용할 때 추가 보안 수준을 제공합니다. </p>
+
+<p>이 기능을 사용하면 재생을 승인하는 토큰을 요구하여 콘텐츠 재생을 제어할 수 있습니다. 암호화된 HLS를 해독하는 데 필요한 키 또는 DRM으로 보호된 콘텐츠를 해독하는 데 필요한 라이선스를 얻으려면 유효한 JWT(Jason Web Tokens)가 필요합니다.</p>
+
+<p>이 기능에 익숙하지 않은 경우 다음을 참조하십시오. <a href="/playback-restrictions/getting-started/overview-playback-restrictions.html">개요: Brightcove 재생 제한</a>문서.</p>
+
+</section>
+
+<section class="bcls-section">
+<h2 id="Workflow">워크플로</h2>
+
+<p>재생 인증 서비스를 사용하려면 다음 단계를 따르세요.</p>
+<ol class="bcls-tasklist">
+  <li>
+    <a href="#Create_a_JSON_Web_Token">만들기<span translate="No"> JSON 웹 토큰</span></a>
+  </li>
+  <li>
+    <a href="#Configure_the_player">토큰을 사용하도록 플레이어 구성</a>
+  </li>
+</ol>
+
+</section>
+
+<section class="bcls-section">
+<h2 id="Create_a_JSON_Web_Token">만들기<span translate="No"> JSON 웹 토큰</span></h2>
+
+<p>Brightcove의 Playback API와 통신할 때 사용할 토큰을 만들려면<a href="https://general.support.brightcove.com/developer/create-json-web-token.html">만들기<span translate="No"> JSON 웹 토큰</span> (JWT)</a>문서.</p>
+
+</section>
+
+<section class="bcls-section">
+<h2 id="Configure_the_player">플레이어 구성</h2>
+
+<p>토큰은 재생 요청과 함께 전달됩니다. 토큰이 유효하지 않거나 만료된 경우 콘텐츠에 대한 액세스가 제한됩니다. 플레이어는 토큰을 사용하도록 구성되어야 합니다.</p>
+
+<h3>웹 플레이어</h3>
+<p>
+  Brightcove 웹 플레이어 구성에 대한 자세한 내용은 다음을 참조하십시오. <a href="https://player.support.brightcove.com/playback/license-protection-with-bcp.html"> Brightcove Player로 키/라이센스 보호</a>문서.
+</p>
+<h3>기본 안드로이드 플레이어</h3>
+<p>
+  Android용 기본 플레이어 구성에 대한 자세한 내용은<a href="https://sdks.support.brightcove.com/features/license-protection-with-sdks.html">네이티브 SDK를 통한 키/라이선스 보호</a>문서.
+</p>
+<h3>기본 iOS 플레이어</h3>
+<p>
+  iOS용 기본 플레이어 구성에 대한 자세한 내용은<a href="https://sdks.support.brightcove.com/features/license-protection-with-sdks.html">네이티브 SDK를 통한 키/라이선스 보호</a>문서.
+</p>
+</section>
+
+<section class="bcls-section">
+<h2 id="Limitations">제한 사항</h2>
+
+<p>이 기능에는 다음 제한 사항이 적용됩니다.</p>
+<ul>
+  <li>
+    HLSe(AES-128)의 경우 토큰이 마스터 매니페스트 요청에 추가되고 암호화 키 URL로 전파됩니다. 이러한 URL은 마스터 매니페스트에 추가되므로 고객은 콘텐츠 노출을 최소화하기 위해 사용 횟수를 제한하는 것을 고려해야 합니다.
+  </li>
+  <li>
+    HLSe(AES-128)의 경우 플레이어는 비디오를 재생할 때 일반적으로 변환당 하나씩 여러 요청을 합니다. NS <a href="https://general.support.brightcove.com/developer/create-json-web-token.html#Claims_for_Playback_Restrictions">최대 주장</a>이러한 요청을 처리할 수 있을 만큼 충분히 높게 설정해야 합니다. 콘텐츠 노출을 최소화하려면 추가 소유권 주장을 고려해야 합니다. 변환을 전환하면 새 라이센스가 요청됩니다.
+  </li>
+  <li>
+    추적<a href="https://general.support.brightcove.com/developer/create-json-web-token.html#Claims_for_Playback_Restrictions"> maxu 및 maxip 주장</a>결국 일관성이 있습니다. 즉, 이러한 클레임을 사용하는 토큰을 빠르게 연속해서 여러 번 재사용하는 경우 해당 클레임이 선언한 것보다 더 많이 승인된 토큰을 볼 수 있습니다. 추적은 몇 초 이내에 일관성을 유지하고 해당 기간이 지나면 토큰이 예상대로 차단됩니다.
+  </li>
+</ul>
+</section>
+
+</article>
