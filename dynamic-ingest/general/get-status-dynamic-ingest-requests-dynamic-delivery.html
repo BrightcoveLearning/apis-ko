@@ -1,7 +1,6 @@
-
 ---
 title: '동적 수집 요청 상태 가져오기'
-description: '당신이 사용할 때<span translate="No">동적 수집 API</span> Video Cloud 계정에 비디오를 추가하기 위해 가장 알고 싶은 것은 비디오가 처리된 시간과 변환이 성공적으로 생성되었는지 여부입니다. '
+description: '당신이 사용할 때<span translate="No">Dynamic Ingest API</span> Video Cloud 계정에 비디오를 추가하기 위해 가장 알고 싶은 것은 비디오가 처리된 시간과 변환이 성공적으로 생성되었는지 여부입니다. '
 parent: 'General Information' 
 grandparent: Dynamic Ingest API
 ---
@@ -11,7 +10,7 @@ grandparent: Dynamic Ingest API
     <section class="bcls-section">
     <h2 id="introduction">소개</h2>
 
-    <p>이 문서는 상태를 요청하여 작업 상태를 추적하는 방법을 설명합니다. <span translate="No"> CMS API</span>또는 사용하여<span translate="No">동적 수집 API</span><a href="/dynamic-ingest/general/notifications-dynamic-delivery-video-cloud.html">알림</a> . 프로세스를 자동화하는 샘플 대시보드 앱도 제공합니다.</p>
+    <p>이 문서는 상태를 요청하여 작업 상태를 추적하는 방법을 설명합니다. <span translate="No"> CMS API</span>또는 사용하여<span translate="No">Dynamic Ingest API</span><a href="/dynamic-ingest/general/notifications-dynamic-delivery-video-cloud.html">알림</a> . 프로세스를 자동화하는 샘플 대시보드 앱도 제공합니다.</p>
 
     <p>수집 작업의 상태는 지난 7일 동안 제출된 작업에만 사용할 수 있습니다.</p>
     </section>
@@ -164,7 +163,7 @@ grandparent: Dynamic Ingest API
       <li>만약<code translate="No">status </code>값이 "SUCCESS"이고 비디오가 성공적으로 처리되었습니다.</li>
     </ul>
 
-    <p>알림을 받으려면 "콜백" 필드를 포함해야 합니다. <span translate="No">동적 수집 API</span>하나 이상의 콜백 주소를 가리키는 요청:</p>
+    <p>알림을 받으려면 "콜백" 필드를 포함해야 합니다. <span translate="No">Dynamic Ingest API</span>하나 이상의 콜백 주소를 가리키는 요청:</p>
 
     <pre class="line-numbers">
     <code class="language-json" translate="No">{
@@ -180,7 +179,7 @@ grandparent: Dynamic Ingest API
     <section class="bcls-section" id="sample">
     <h2>샘플 대시보드</h2>
 
-    <p>이 섹션에서는 알림을 조합하여 Dynamic Ingest API용 간단한 대시보드를 구축하는 방법을 설명합니다. 알림 처리기에서 알림을 구문 분석합니다. <span translate="No">동적 수집 API</span>처리 완료 알림을 식별합니다. 그런 다음 JSON 파일의 각 비디오에 대한 객체 배열에 비디오 알림을 추가합니다. 대시보드 자체는 알림 데이터를 가져오기 위해 JSON 파일을 가져오는 HTML 페이지입니다. id를 사용하여 요청합니다. <a href="/cms/getting-started/overview-cms-api.html"> CMS API</a>동영상 메타데이터를 가져옵니다.</p>
+    <p>이 섹션에서는 알림을 조합하여 Dynamic Ingest API용 간단한 대시보드를 구축하는 방법을 설명합니다. 알림 처리기에서 알림을 구문 분석합니다. <span translate="No">Dynamic Ingest API</span>처리 완료 알림을 식별합니다. 그런 다음 JSON 파일의 각 비디오에 대한 객체 배열에 비디오 알림을 추가합니다. 대시보드 자체는 알림 데이터를 가져오기 위해 JSON 파일을 가져오는 HTML 페이지입니다. id를 사용하여 요청합니다. <a href="/cms/getting-started/overview-cms-api.html"> CMS API</a>동영상 메타데이터를 가져옵니다.</p>
     <!-- You can view the dashboard <a href="//solutions.brightcove.com/bcls/di-api/di-log.html">here</a> --><!-- <p>All the files for this app, along with instructions for setting it up for your account, are in <a href="https://github.com/BrightcoveLearning/dynamic-ingest-dashboard">this repository</a>.</p> -->
 
     <p>다음은 앱의 상위 수준 아키텍처입니다.</p>

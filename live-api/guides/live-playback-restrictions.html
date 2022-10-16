@@ -1,6 +1,6 @@
-
 ---
-title: 라이브 스트림 설명과 함께 재생 제한: 이 주제에서는 라이브 스트림에서 재생 제한을 사용하는 방법을 배웁니다.
+title: 라이브 스트림 설명과 함께 Playback Restrictions
+description: 이 주제에서는 라이브 스트림에서 Playback Restrictions을 사용하는 방법을 배웁니다.
 parent: Guides 
 grandparent: Live API
 ---
@@ -12,29 +12,29 @@ grandparent: Live API
 
   <section class="bcls-section">
     <h2 id="Introduction">소개</h2>
-    <p>다음을 포함하여 DRM에서 제공하는 보호 기능을 확장하기 위해 라이브 작업에 대해 재생 제한을 활성화할 수 있습니다.</p>
+    <p>다음을 포함하여 DRM에서 제공하는 보호 기능을 확장하기 위해 라이브 작업에 대해 Playback Restrictions을 활성화할 수 있습니다.</p>
     <ul>
-      <li>특정 사용자 에이전트로 재생 제한</li>
+      <li>특정 사용자 에이전트로 Playback Restrictions</li>
       <li>IP 주소 수 제한</li>
       <li>총 사용자 제한</li>
     </ul>
 
-    <p>포괄적인 제한 세트의 경우 재생 권한 API를 사용하여 구성할 수 있습니다. 이 경우 다음을 연결합니다. <code translate="No">playback_rights_id</code>동영상으로. 자세한 내용은<a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html#Asset_level_restrictions">자산 수준 제한</a>개요 섹션: Brightcove 재생 제한 문서.</p>
+    <p>포괄적인 제한 세트의 경우 재생 권한 API를 사용하여 구성할 수 있습니다. 이 경우 다음을 연결합니다. <code translate="No">playback_rights_id</code>동영상으로. 자세한 내용은<a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html#Asset_level_restrictions">자산 수준 제한</a>개요 섹션: Brightcove Playback Restrictions 문서.</p>
 
-    <p>런타임 제한의 경우 JWT(JSON Web Token) 클레임을 지정할 수 있습니다. 이러한 제한에는 스트림 동시성 및 장치 제한이 포함됩니다. 자세한 내용은<a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html#Runtime_restrictions">런타임 제한</a>개요 섹션: Brightcove 재생 제한 문서.</p>
+    <p>런타임 제한의 경우 JWT(JSON Web Token) 클레임을 지정할 수 있습니다. 이러한 제한에는 스트림 동시성 및 장치 제한이 포함됩니다. 자세한 내용은<a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html#Runtime_restrictions">런타임 제한</a>개요 섹션: Brightcove Playback Restrictions 문서.</p>
 
-    <p>라이브 스트림을 사용하면 사용자의 DRM CRT를 재정의할 수도 있습니다. 자세한 내용은<a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html#License_Keys_Protection">라이센스 키 보호</a>개요 섹션: Brightcove 재생 제한 문서.</p>
+    <p>라이브 스트림을 사용하면 사용자의 DRM CRT를 재정의할 수도 있습니다. 자세한 내용은<a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/overview-playback-restrictions.html#License_Keys_Protection">라이센스 키 보호</a>개요 섹션: Brightcove Playback Restrictions 문서.</p>
 
-    <p>어떤 모드를 선택하든 작업 요청에는 다음이 포함되어야 합니다. <code translate="No">videocloud.video</code> Video Cloud 비디오가 생성되고 라이브 작업에 연결되도록 속성. NS <code translate="No">playback_rights_id</code>속성은 Video Cloud 비디오에서 업데이트하여 다음을 통해 재생 제한을 변경할 수 있습니다. <a href="https://apis.support.brightcove.com/cms/references/reference.html#operation/UpdateVideo"> CMS API</a> .</p>
+    <p>어떤 모드를 선택하든 작업 요청에는 다음이 포함되어야 합니다. <code translate="No">videocloud.video</code> Video Cloud 비디오가 생성되고 라이브 작업에 연결되도록 속성. NS <code translate="No">playback_rights_id</code>속성은 Video Cloud 비디오에서 업데이트하여 다음을 통해 Playback Restrictions을 변경할 수 있습니다. <a href="https://apis.support.brightcove.com/cms/references/reference.html#operation/UpdateVideo"> CMS API</a> .</p>
     <p>당신은 또한 필요합니다<a href="https://general.support.brightcove.com/developer/create-json-web-token.html"> JSON 웹 토큰(JWT) 생성</a>적절한 주장과 함께. JWT는 모든 라이선스 서버 요청에 포함되어야 합니다. 자신의 플레이어를 구현하는 경우 이 값을 다음 중 하나에 전달해야 합니다. <code translate="No">BCOV-Auth</code>헤더 또는<code translate="No">bcov_auth</code>쿼리 매개변수(DRM 토큰 추가).</p>
   </section>
 
   <section class="bcls-section">
     <h2 id="Create_Live_job">라이브 작업 만들기</h2>
-    <p>재생 제한을 활용하는 라이브 작업을 만들 수 있습니다. 라이브 스트림 생성에 대한 자세한 내용은<a href="/live-api/getting-started/quick-start-create-live-stream-using-brightcove-live-api.html"> Brightcove Live API를 사용하여 라이브 스트림 만들기</a>문서.</p>
+    <p>Playback Restrictions을 활용하는 라이브 작업을 만들 수 있습니다. 라이브 스트림 생성에 대한 자세한 내용은<a href="/live-api/getting-started/quick-start-create-live-stream-using-brightcove-live-api.html"> Brightcove Live API를 사용하여 라이브 스트림 만들기</a>문서.</p>
 
     <h3>새 필드</h3>
-    <p>다음 새 필드는 라이브 작업에 재생 제한을 추가하는 데 사용됩니다.</p>
+    <p>다음 새 필드는 라이브 작업에 Playback Restrictions을 추가하는 데 사용됩니다.</p>
     <ul>
       <li>
         <h4><code translate="No">drm</code>물체:</h4>
@@ -50,13 +50,13 @@ grandparent: Live API
         <aside class="bcls-aside bcls-aside--information">이 필드는 CMS API를 사용하여 비디오에 추가해야 합니다. <em>~ 후에</em> 비디오를 만들 때 추가할 수 없기 때문에 라이브 작업을 만듭니다.</aside>
         <dl>
           <dt><code translate="No">playback_rights_id</code> (끈)</dt>
-          <dd>지정된 재생 제한을 비디오와 연결합니다.</dd>
+          <dd>지정된 Playback Restrictions을 비디오와 연결합니다.</dd>
         </dl>
       </li> 
     </ul>
 
     <h3 id="Sample_request_response">샘플 요청 및 응답</h3>
-    <p>다음은 재생 제한이 있는 라이브 작업을 생성하기 위한 샘플 라이브 API 요청 본문입니다.</p>
+    <p>다음은 Playback Restrictions이 있는 라이브 작업을 생성하기 위한 샘플 Live API 요청 본문입니다.</p>
     <aside class="bcls-aside bcls-aside--information">라이브 작업을 위해 생성된 비디오를 업데이트하기 위한 CMS API 요청도 있습니다. <code translate="No">playback_rights_id</code> . (이 필드는<strong>비디오 업데이트</strong>요청이므로 Live API 요청이 동영상을 만든 후에 추가해야 합니다.)</aside>
 
     <h3>샘플 요청 본문</h3>
@@ -216,7 +216,7 @@ grandparent: Live API
 
   <section class="bcls-section">
     <h2 id="Add_restrictions_to_the_live_job">라이브 작업에 제한 추가</h2>
-    <p>라이브 스트림을 생성한 후 다음을 사용하여 라이브 작업에 대해 생성된 비디오 재생 제한을 추가할 수 있습니다. <a href="https://apis.support.brightcove.com/cms/getting-started/overview-cms-api.html"> CMS API</a> .</p>
+    <p>라이브 스트림을 생성한 후 다음을 사용하여 라이브 작업에 대해 생성된 비디오 Playback Restrictions을 추가할 수 있습니다. <a href="https://apis.support.brightcove.com/cms/getting-started/overview-cms-api.html"> CMS API</a> .</p>
     
     <h3>CMS API 요청</h3>
     <p>비디오에 재생 권한 ID를 추가하려면<a href="https://apis.support.brightcove.com/cms/references/reference.html#operation/UpdateVideo">비디오 업데이트</a>다음 요청 본문을 사용하여 CMS API에 요청합니다.</p>
@@ -227,7 +227,7 @@ grandparent: Live API
 
   <section class="bcls-section">
     <h2 id="Deliver_the_stream">스트림 전달</h2>
-    <p>Brightcove 웹 플레이어 또는 Brightcove 기본 플레이어 SDK 중 하나를 사용하여 라이브 스트림을 제공하는 경우 재생 제한에 대한 구현은 VOD의 경우와 동일합니다. 다음을 참조하십시오.</p>
+    <p>Brightcove 웹 플레이어 또는 Brightcove 기본 플레이어 SDK 중 하나를 사용하여 라이브 스트림을 제공하는 경우 Playback Restrictions에 대한 구현은 VOD의 경우와 동일합니다. 다음을 참조하십시오.</p>
     <ul>
       <li><a href="https://apis.support.brightcove.com/playback-restrictions/getting-started/implementing-playback-rights.html#Configure_your_player">플레이어 구성</a>재생 권한 구현 문서 섹션</li>
     </ul>

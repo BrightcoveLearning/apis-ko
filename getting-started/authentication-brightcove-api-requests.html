@@ -1,10 +1,10 @@
-
 ---
 title: 'API 요청에 대한 인증'
 description: '이 주제에서는 Brightcove REST API에 대한 요청에 대한 인증을 다룹니다. '
 parent: General 
 grandparent: Home
 ---
+
  <h1>{{ page.title }}</h1>
 <article class="bcls-article">
   <summary>{{ page.description }}</summary>
@@ -16,20 +16,20 @@ grandparent: Home
     <p>그러나 먼저 두 API가 인증에 대해 서로 다른 접근 방식을 사용한다는 점에 유의하십시오.</p>
 
     <section class="bcls-subsection">
-      <h3 id="policy_key">정책 키 인증: 재생 API</h3>
+      <h3 id="policy_key">정책 키 인증: Playback API</h3>
 
-      <p>NS <a href="/playback/index.html">재생 API</a>주로 플레이어 또는 웹 포털에서 비디오 및 재생 목록 데이터를 검색하는 데 사용되며<code translate="No">policy_key</code> , 인증을 위해 일반적으로 인수로 전달됩니다. <code translate="No">Accept</code>헤더:</p>
+      <p>NS <a href="/playback/index.html">Playback API</a>주로 플레이어 또는 웹 포털에서 비디오 및 재생 목록 데이터를 검색하는 데 사용되며<code translate="No">policy_key</code> , 인증을 위해 일반적으로 인수로 전달됩니다. <code translate="No">Accept</code>헤더:</p>
 
       <pre>
         <code class="language-http" translate="No">Accept: application/json;pk={policy_key}</code></pre>
 
-      <p>정책 키는 Brightcove 플레이어에 대해 자동으로 생성되며 다음에서 가져올 수 있습니다. <a href="/policy/getting-started/policy-keys.html#Getting_the_policy_key">플레이어 구성</a> , 또는 다음을 사용하여 생성된<a href="/policy/index.html">정책 API</a></p>
+      <p>정책 키는 Brightcove 플레이어에 대해 자동으로 생성되며 다음에서 가져올 수 있습니다. <a href="/policy/getting-started/policy-keys.html#Getting_the_policy_key">플레이어 구성</a> , 또는 다음을 사용하여 생성된<a href="/policy/index.html">Policy API</a></p>
     </section>
 
     <section class="bcls-subsection">
-      <h3 id="authentication_api_key">API 키 인증: 라이브 API</h3>
+      <h3 id="authentication_api_key">API 키 인증: Live API</h3>
 
-      <p>NS <a href="https://live.support.brightcove.com/live-api/">라이브 API</a>계정이 요청을 인증하도록 설정할 때 제공되는 API 키를 사용합니다. API 키는<code translate="No">X-API-KEY</code>헤더:</p>
+      <p>NS <a href="https://live.support.brightcove.com/live-api/">Live API</a>계정이 요청을 인증하도록 설정할 때 제공되는 API 키를 사용합니다. API 키는<code translate="No">X-API-KEY</code>헤더:</p>
 
       <pre>
         <code class="language-http" translate="No">X-API-KEY : {YOUR_APIKey}</code></pre>

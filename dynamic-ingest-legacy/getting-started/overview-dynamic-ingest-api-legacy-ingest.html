@@ -1,10 +1,9 @@
-
 ---
-title: '개요: 동적 수집 API'
-description: '<p>이 항목에서는 사용 방법을 배웁니다. <span translate="No">동적 수집 API</span>동영상 콘텐츠를 업로드하고 관리합니다. </p>
+title: '개요: Dynamic Ingest API'
+description: '<p>이 항목에서는 사용 방법을 배웁니다. <span translate="No">Dynamic Ingest API</span>동영상 콘텐츠를 업로드하고 관리합니다. </p>
 <aside class="bcls-aside bcls-aside--information">이 개요는 동적 수집을 위한 것입니다. <strong>레거시 수집 시스템</strong> . 새로운 Video Cloud 계정이 있거나 계정을 다음으로 전환한 경우<strong>동적 전달</strong> , 이동<a href="/dynamic-ingest/getting-started/overview-dynamic-ingest-api-dynamic-delivery.html">대신 이 페이지</a> . </aside>'
 parent: 'Getting Started' 
-grandparent: <span translate="No">동적 수집 API</span>레거시 레이아웃: 스테이징
+grandparent: <span translate="No">Dynamic Ingest API</span>레거시 레이아웃: 스테이징
 --- <h1>{{ page.title }}</h1>
 <article class="bcls-article">
   <summary>{{ page.description }}</summary>
@@ -195,7 +194,7 @@ grandparent: <span translate="No">동적 수집 API</span>레거시 레이아웃
     <section class="bcls-section">
     <h2 id="replaceVideo">비디오 교체</h2>
 
-    <p>비디오를 새 버전이나 새 변환 세트로 교체하려면<span translate="No">동적 수집 API</span>호출은 정확히 동일합니다. <a href="/dynamic-ingest-legacy/code-samples/dynamic-ingest-api-sample-ingesting-videos-legacy-ingest.html">새 비디오 수집</a> - 유일한 차이점은 사전에 전화를 걸 필요가 없다는 것입니다. <span translate="No"> CMS API</span> Video Cloud 시스템에서 비디오 개체를 만들고 ID를 가져옵니다. 지정된 URL의 소스 비디오 파일이 원래 수집된 것과 동일한 경우 단순히 새로운 변환 세트를 얻게 됩니다. 소스 파일이 새 파일인 경우 기존 비디오를 교체합니다. 모든 비디오는 재변환이 완료될 때까지 기존 변환으로 계속 재생할 수 있습니다.</p>
+    <p>비디오를 새 버전이나 새 변환 세트로 교체하려면<span translate="No">Dynamic Ingest API</span>호출은 정확히 동일합니다. <a href="/dynamic-ingest-legacy/code-samples/dynamic-ingest-api-sample-ingesting-videos-legacy-ingest.html">새 비디오 수집</a> - 유일한 차이점은 사전에 전화를 걸 필요가 없다는 것입니다. <span translate="No"> CMS API</span> Video Cloud 시스템에서 비디오 개체를 만들고 ID를 가져옵니다. 지정된 URL의 소스 비디오 파일이 원래 수집된 것과 동일한 경우 단순히 새로운 변환 세트를 얻게 됩니다. 소스 파일이 새 파일인 경우 기존 비디오를 교체합니다. 모든 비디오는 재변환이 완료될 때까지 기존 변환으로 계속 재생할 수 있습니다.</p>
 
     <p>참조<a href="/dynamic-ingest-legacy/code-samples/dynamic-ingest-api-sample-re-transcoding-videos-legacy-ingest.html">여기에서 작업 샘플</a> .</p>
     </section>
@@ -203,7 +202,7 @@ grandparent: <span translate="No">동적 수집 API</span>레거시 레이아웃
     <section class="bcls-section">
     <h2 id="retranscode">비디오 재코드 변환</h2>
 
-    <p>선택했다면<a href="https://studio.support.brightcove.com/admin/managing-ingest-profiles.html">마스터를 아카이브</a>동영상을 통해<span translate="No">동적 수집 API</span>또는 Studio 업로드 모듈을 사용하는 경우 마스터에서 비디오를 다시 트랜스코딩할 수도 있습니다. 다시 수집 요청에 대한 URL은 동일하지만 요청 본문에는 다음이 포함됩니다.</p>
+    <p>선택했다면<a href="https://studio.support.brightcove.com/admin/managing-ingest-profiles.html">마스터를 아카이브</a>동영상을 통해<span translate="No">Dynamic Ingest API</span>또는 Studio 업로드 모듈을 사용하는 경우 마스터에서 비디오를 다시 트랜스코딩할 수도 있습니다. 다시 수집 요청에 대한 URL은 동일하지만 요청 본문에는 다음이 포함됩니다.</p>
 
     <pre class="line-numbers">
     <code class="language-javascript" translate="No">// request
@@ -220,7 +219,7 @@ grandparent: <span translate="No">동적 수집 API</span>레거시 레이아웃
     <p>노트:</p>
 
     <ul>
-      <li>마스터가 아카이브되지 않았거나 비디오가 <em>~ 아니다</em> 를 사용하여 섭취<span translate="No">동적 수집 API</span>또는 업로드 모듈에서 오류가 발생합니다.</li>
+      <li>마스터가 아카이브되지 않았거나 비디오가 <em>~ 아니다</em> 를 사용하여 섭취<span translate="No">Dynamic Ingest API</span>또는 업로드 모듈에서 오류가 발생합니다.</li>
       <li>권장되는 표준 수집 프로필(videocloud-default-v1, screencast-1280, 고해상도, smart-player-transition, 단일 비트 전송률 표준 및 단일 비트 전송률 높음)은 모두 마스터를 보관합니다. 사용자 지정 수집 프로필을 사용하는 경우 다음을 수행해야 합니다. <a href="https://studio.support.brightcove.com/admin/managing-ingest-profiles.html">마스터가</a>나중에 마스터에서 다시 코드 변환할 수 있도록 하려면 아카이브해야 합니다.</li>
       <li>마스터는<strong>절대</strong>재변환 중 수정됨</li>
       <li>마스터 보관 및 배포 설정은 다음과 같습니다. <strong>절대</strong>재변환 중 수정됨</li>
@@ -232,7 +231,7 @@ grandparent: <span translate="No">동적 수집 API</span>레거시 레이아웃
     <section class="bcls-section">
     <h2 id="capture-images">이미지</h2>
 
-    <p>당신은 사용할 수 있습니다<span translate="No">동적 수집 API</span>비디오에서 포스터 및 썸네일 이미지를 캡처하거나 자신의 이미지를 추가합니다. 자세한 내용은<a href="/dynamic-ingest/ingest-guides/images-and-dynamic-ingest-api.html">이미지 및 Dynamic Ingest API</a> .</p>
+    <p>당신은 사용할 수 있습니다<span translate="No">Dynamic Ingest API</span>비디오에서 포스터 및 썸네일 이미지를 캡처하거나 자신의 이미지를 추가합니다. 자세한 내용은<a href="/dynamic-ingest/ingest-guides/images-and-dynamic-ingest-api.html">이미지 및 Dynamic Ingest API</a> .</p>
 
     <aside class="bcls-aside bcls-aside--information">보호된 S3 버킷에서 이미지를 가져올 경우 Video Cloud가 파일에 액세스할 수 있도록 버킷 정책을 설정해야 합니다. 보다<a href="/dynamic-ingest/general/using-dynamic-ingest-s3.html#setPolicy"> S3에서 동적 수집 사용</a>자세한 내용은.</aside>
     </section>

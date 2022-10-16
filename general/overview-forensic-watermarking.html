@@ -1,4 +1,3 @@
-
 ---
 title: '개요: 포렌식 워터마킹'
 description: "이 주제에서는 Brightcove의 포렌식 워터마킹 기능에 대한 높은 수준의 개요를 제공합니다."
@@ -230,7 +229,7 @@ echo "Public key to saved in $PUBLIC_TXT"
 
   <section class="bcls-section">
     <h2 id="Analytics_reports">분석 보고서</h2>
-    <p>포렌식 워터마크가 있는 비디오 시청자에 대한 분석 보고서는<a href="/analytics/index.html">애널리틱스 API</a>오직. 보고서는 JSON, CSV 또는 XLXS 형식으로 반환될 수 있습니다.</p>
+    <p>포렌식 워터마크가 있는 비디오 시청자에 대한 분석 보고서는<a href="/analytics/index.html">Analytics API</a>오직. 보고서는 JSON, CSV 또는 XLXS 형식으로 반환될 수 있습니다.</p>
     <p>애널리틱스 데이터에서:</p>
     <pre><code translate="no">1 거래 = 24시간 동안 동영상당 1명의 고유 뷰어</code></pre>
     <aside class="bcls-aside bcls-aside--information language-editable">아래에 제공된 일부 예는 태그를 추가했다고 가정합니다. <code translate="No">watermarked</code>포렌식 워터마킹으로 동영상에 그렇지 않은 경우 다음을 사용하여 요청을 필터링해야 합니다. <code translate="No">where=video=={video_id}</code>필터(첫 번째 예에서와 같이).</aside>
@@ -266,7 +265,7 @@ echo "Public key to saved in $PUBLIC_TXT"
   <section class="bcls-section">
     <h2 id="APIs">아피스</h2>
     <p>포렌식 워터마킹과 관련된 API 및 필드는 다음과 같습니다.</p>
-    <h3><a href="/dynamic-ingest/index.html">동적 수집 API</a></h3>
+    <h3><a href="/dynamic-ingest/index.html">Dynamic Ingest API</a></h3>
     <p>계정이 포렌식 워터마킹에 대해 활성화되면 다음을 추가하여 비디오에 포렌식 워터마킹을 추가할 수 있습니다. <code translate="No">forensic_watermarking</code>필드를 수집 요청에 추가하고 다음으로 설정합니다. <code translate="No">true</code> . 이것은 비디오의 원래 수집, 교체 또는 재변환에 대해 수행할 수 있습니다.</p>
     <h4>샘플 요청 본문</h4>
 <pre class="line-numbers"><code class="language-json" translate="No">{
@@ -325,7 +324,7 @@ echo "Public key to saved in $PUBLIC_TXT"
   "forensic_watermarking": "INACTIVE"
 }</code></pre> -->
 
-    <h3>재생 API</h3>
+    <h3>Playback API</h3>
     <p>Playback API GET 비디오 응답에는<code translate="No">forensic_watermarking</code> (계정이 포렌식 워터마킹에 대해 활성화된 경우). 값이<code translate="No">ACTIVE</code> , 포렌식 워터마크가 있는 변환은 플레이어에게 소스로 전달됩니다. 그렇지 않으면 워터마크가 없는 변환이 전달됩니다.</p>
     <h3><a href="https://zencoder.support.brightcove.com/index.html">젠코더</a></h3>
       <p>Zencoder에서 포렌식 워터마킹으로 출력을 생성하려면 비디오당 2개의 출력을 지정해야 합니다. <code translate="no"> "forensic_watermark": "NS"</code>그리고 다른<code translate="no"> "forensic_watermark": "NS"</code> (이 두 값은<code translate="no">포렌식 워터마크</code>필드가 있을 수 있음).</p>
@@ -427,7 +426,7 @@ echo "Public key to saved in $PUBLIC_TXT"
     <h2 id="supported_features">지원되는 기능</h2>
     <ul>
       <li>DRM</li>
-      <li>재생 제한</li>
+      <li>Playback Restrictions</li>
       <li>재변환</li>
       <li>소스 파일 교체</li>
       <li>CAE</li>

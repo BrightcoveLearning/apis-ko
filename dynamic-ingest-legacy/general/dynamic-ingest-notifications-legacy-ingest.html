@@ -1,14 +1,13 @@
-
 ---
 title: '동적 수집 알림'
 description: '이 주제에서는 수집 작업의 진행 상황에 대한 정보를 제공하는 동적 수집 알림에 대해 알아봅니다. 이 문서는 레거시 수집 시스템에만 적용됩니다. Dynamic Delivery의 경우<a href="/dynamic-ingest/general/notifications-dynamic-delivery-video-cloud.html">동적 수집에 대한 알림</a>'
 parent: 'General Information' 
-grandparent: <span translate="No">동적 수집 API</span>레거시 레이아웃: 스테이징
+grandparent: <span translate="No">Dynamic Ingest API</span>레거시 레이아웃: 스테이징
 --- <h1>{{ page.title }}</h1>
 <article class="bcls-article">
   <summary>{{ page.description }}</summary>
     <section class="bcls-section">
-    <h2 id="diAPI">동적 수집 API 알림</h2>
+    <h2 id="diAPI">Dynamic Ingest API 알림</h2>
     
     <p>수집 프로세스의 결과에 대한 알림을 수신하기 위해 하나 이상의 콜백 URL을 지정할 수 있습니다. 지정하는 URL은 POST 요청을 수락할 수 있는 앱용이어야 합니다. 알림은 JSON 형식으로 전송됩니다.</p>
     
@@ -176,23 +175,18 @@ grandparent: <span translate="No">동적 수집 API</span>레거시 레이아웃
     <section class="bcls-section">
     <h2 id="sampleApp">기본 샘플 앱</h2>
     
-    <p>아래는 간단한 로깅 앱의 코드입니다. <span translate="No">동적 수집 API</span>공고. 이 앱은 PHP로 작성되었지만 앱에 공개 URL이 있고 http(s) POST 요청을 처리할 수 있는 한 모든 언어를 사용할 수 있습니다.</p>
+    <p>아래는 간단한 로깅 앱의 코드입니다. <span translate="No">Dynamic Ingest API</span>공고. 이 앱은 PHP로 작성되었지만 앱에 공개 URL이 있고 http(s) POST 요청을 처리할 수 있는 한 모든 언어를 사용할 수 있습니다.</p>
     
     <p>이 앱이 생성하는 로그 파일을 볼 수 있습니다<a href="//solutions.brightcove.com/bcls/di-api/di-log.txt">여기.</a></p>
     
     <p class="BCL-aside">참고: 이 앱을 직접 구현하려는 경우 앱에 로그 파일에 쓸 수 있는 권한이 있는지 확인해야 합니다. 또한 로그 파일은 빠르게 커질 수 있음을 기억하십시오. 아마도 정기적으로 비우고 싶을 것입니다.</p>
     
     <pre class="line-numbers">
-    <code class="language-php">&lt;?php // POST는 JSON 데이터에 대해 작동하지 않습니다. $problem = "오류 없음"; 노력하다{ $json = file_get_contents('php://input'); $decoded = json_decode($json, true); }잡기(예외 $e) { $problem = $e-&gt;getMessage(); } // 알림을 예쁜 인쇄된 JSON으로 변환 $notification = json_encode($decoded, JSON_PRETTY_PRINT); $logEntry = $알림. "\\n알림 수신 오류: ".$problem. "\\n
----
----
----
----
----
----
----
----
----
+    <code class="language-php">&lt;?php // POST는 JSON 데이터에 대해 작동하지 않습니다. $problem = "오류 없음"; 노력하다{ $json = file_get_contents('php://input'); $decoded = json_decode($json, true); }잡기(예외 $e) { $problem = $e-&gt;getMessage(); } // 알림을 예쁜 인쇄된 JSON으로 변환 $notification = json_encode($decoded, JSON_PRETTY_PRINT); $logEntry = $알림. "\\n알림 수신 오류: ".$problem. "\\n---
+------
+------
+------
+------
 ----\\n"; // 마지막으로, 로그 파일을 찾을 수 있는 위치를 PHP에 알려주고 PHP에 이 파일을 열고 // 이전에 생성한 문자열을 추가합니다. $logFileLocation = "di-log.txt"; $fileHandle = fopen($logFileLocation, 'a') 또는 die("-1"); fwrite($fileHandle, $logEntry); fclose($fileHandle); // 앱을 직접 탐색하면 아래 줄이 표시됩니다. echo "Dynamic Ingest callback app is running"; ?&gt;</code></pre>
     </section>
     </article>

@@ -1,9 +1,8 @@
-
 ---
-title: 라이브 설명과 함께 PAS/EPA 사용: 이 주제에서는 라이브 스트림과 함께 PAS(Playback Authorization Service) 또는 EPA(Playback Rights Management Service) 사용에 대해 설명합니다.
+title: 라이브 설명과 함께 PAS/EPA 
+description: 이 주제에서는 라이브 스트림과 함께 PAS(Playback Authorization Service) 또는 EPA(Playback Rights Management Service) 사용에 대해 설명합니다.
 parent: Guides 
 grandparent: Live API
-layout: staging
 ---
  <h1>{{ page.title }}</h1>
 <article class="bcls-article" id="bcls_article">
@@ -13,7 +12,7 @@ layout: staging
     <h2 id="Introduction">소개</h2>
     <p>라이브 작업에 대해 PAS 또는 EPA를 활성화하여 DRM에서 제공하는 보호 기능을 확장할 수 있습니다. PAS는 특정 사용자 에이전트로 재생을 제한하거나 IP 주소 변경 또는 총 사용 횟수를 제한하는 제한된 제한 세트를 제공합니다. Live의 경우 고객이 해당 사용자의 DRM CRT를 재정의할 수도 있습니다. 이러한 제한 사항은 재생 권한에 직접 지정됩니다. <a href="https://general.support.brightcove.com/developer/create-jwt-stage.html#Claims_for_Playback_Authorization"> JWT</a> .</p>
     <p>EPA는 훨씬 더 포괄적인 제한 사항을 제공합니다. 이러한 제한 중 하나는 재생 권한 관리 API를 통해 구성되며 재생 권한을 사용하여 참조됩니다. <code translate="No">id</code> . 이것<code translate="No">id</code>비디오와 연결할 수 있습니다( <code translate="No">playback_rights_id</code>아래에 표시된 속성) 또는<a href="https://general.support.brightcove.com/developer/create-jwt-stage.html#Claims_for_Playback_Rights"> JWT</a> . 두 번째 세트에는 동시성 제한 및 장치 수와 같은 사용자 수준 제한이 포함됩니다. 이는 JWT 클레임에 직접 지정됩니다(사용자 ID [v <code translate="No">uid</code>주장하다]).</p>
-    <p>두 모드 모두 작업 요청에는 다음이 포함되어야 합니다. <code translate="No">videocloud.video</code> Video Cloud 비디오가 생성되고 라이브 작업에 연결되도록 속성. NS <code translate="No">playback_rights_id</code>속성은 Video Cloud 비디오에서 업데이트하여 다음을 통해 재생 제한을 변경할 수 있습니다. <a href="https://apis.support.brightcove.com/cms/references/reference.html#operation/UpdateVideo"> CMS API</a> .</p>
+    <p>두 모드 모두 작업 요청에는 다음이 포함되어야 합니다. <code translate="No">videocloud.video</code> Video Cloud 비디오가 생성되고 라이브 작업에 연결되도록 속성. NS <code translate="No">playback_rights_id</code>속성은 Video Cloud 비디오에서 업데이트하여 다음을 통해 Playback Restrictions을 변경할 수 있습니다. <a href="https://apis.support.brightcove.com/cms/references/reference.html#operation/UpdateVideo"> CMS API</a> .</p>
     <p>당신은 또한 필요합니다<a href="https://general.support.brightcove.com/developer/create-jwt-stage.html"> JWT 생성</a>사용 중인 항목에 따라 PAS 또는 EPA에 적절한 청구가 포함됩니다. JWT는 모든 라이선스 서버 요청에 포함되어야 합니다. 자신의 플레이어를 구현하는 경우 이 값을 다음 중 하나에 전달해야 합니다. <code translate="No">BCOV-Auth</code>헤더 또는<code translate="No">bcov_auth</code>쿼리 매개변수(DRM 토큰 추가).</p>
   </section>
   <section class="bcls-section">
@@ -35,7 +34,7 @@ layout: staging
   </section>
   <section class="bcls-section">
     <h2 id="Sample_request_response">샘플 요청 및 응답</h2>
-    <p>아래는 EPA로 라이브 작업을 생성하기 위한 샘플 라이브 API 요청 본문입니다. 참고 라이브 작업을 위해 생성된 비디오를 업데이트하기 위한 CMS API 요청도 있습니다. <code translate="No">playback_rights_id</code> . (이 필드는<strong>비디오 업데이트</strong>요청이므로 Live API 요청이 동영상을 만든 후에 추가해야 합니다.)</p>
+    <p>아래는 EPA로 라이브 작업을 생성하기 위한 샘플 Live API 요청 본문입니다. 참고 라이브 작업을 위해 생성된 비디오를 업데이트하기 위한 CMS API 요청도 있습니다. <code translate="No">playback_rights_id</code> . (이 필드는<strong>비디오 업데이트</strong>요청이므로 Live API 요청이 동영상을 만든 후에 추가해야 합니다.)</p>
     <h3>샘플 요청 본문</h3>
 <pre class="line-numbers"><code class="language-json" translate="No">{
   "live_stream": true,

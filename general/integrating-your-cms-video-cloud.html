@@ -1,9 +1,9 @@
-
 ---
 title: 'CMS를 Video Cloud와 통합'
 description: '이 주제에서는 Brightcove Video Cloud를 CMS와 통합하는 것과 관련된 기본 작업을 학습합니다. 여기에는 사용자가 CMS 내에서 수행하는 일반적인 기능과 해당 기능을 제공하는 데 사용할 수 있는 Brightcove API 작업이 나열됩니다.'
-parent: General Information 
+parent: General Information
 ---
+
 
 
 <!-- 
@@ -75,7 +75,7 @@ parent: General Information
     <section class="bcls-section">
     <h2 id="addingVideos">비디오 추가</h2>
     
-    <p>사용자가 비디오를 추가할 수 있도록 하려면<span translate="No">비디오 클라우드</span> CMS에서 다음을 사용하여 수행할 수 있습니다. <a href="/dynamic-ingest/getting-started/overview-dynamic-ingest-api-dynamic-delivery.html"><span translate="No">동적 수집 API</span></a> . 사용자가 S3 버킷 또는 공개 서버일 수 있는 리포지토리에 비디오를 업로드하도록 하는 것이 좋습니다. Dynamic Ingest 시스템은 비디오를 가져와서 비디오에 추가할 수 있습니다. <span translate="No">비디오 클라우드</span>아래에 설명된 2단계 프로세스를 통해 시스템.</p>
+    <p>사용자가 비디오를 추가할 수 있도록 하려면<span translate="No">비디오 클라우드</span> CMS에서 다음을 사용하여 수행할 수 있습니다. <a href="/dynamic-ingest/getting-started/overview-dynamic-ingest-api-dynamic-delivery.html"><span translate="No">Dynamic Ingest API</span></a> . 사용자가 S3 버킷 또는 공개 서버일 수 있는 리포지토리에 비디오를 업로드하도록 하는 것이 좋습니다. Dynamic Ingest 시스템은 비디오를 가져와서 비디오에 추가할 수 있습니다. <span translate="No">비디오 클라우드</span>아래에 설명된 2단계 프로세스를 통해 시스템.</p>
     
     <h3>비디오 개체 추가<span translate="No">비디오 클라우드</span></h3>
     
@@ -102,7 +102,7 @@ parent: General Information
     
     <h3>비디오 수집</h3>
     
-    <p>비디오 개체를 만들 때<span translate="No"> CMS API</span>돌아올 것이다<span translate="No"> JSON</span>비디오 속성을 포함하는 객체. 당신은 비디오를 추출합니다<code translate="No">id</code> ~로부터<span translate="No"> JSON</span> , 전화를 걸 때 사용합니다. <span translate="No">동적 수집 API</span>비디오의 수집 및 트랜스코딩을 요청하려면 다음 단계를 따르세요.</p>
+    <p>비디오 개체를 만들 때<span translate="No"> CMS API</span>돌아올 것이다<span translate="No"> JSON</span>비디오 속성을 포함하는 객체. 당신은 비디오를 추출합니다<code translate="No">id</code> ~로부터<span translate="No"> JSON</span> , 전화를 걸 때 사용합니다. <span translate="No">Dynamic Ingest API</span>비디오의 수집 및 트랜스코딩을 요청하려면 다음 단계를 따르세요.</p>
     
     <pre class="line-numbers">
     <code class="language-http" translate="No">https://ingest.api.brightcove.com/v1/accounts/<strong><em>ACCOUNT_ID</em></strong>/videos/<strong><em>VIDEO_ID</em></strong>/ingest-requests
@@ -143,9 +143,9 @@ parent: General Information
       <li><code translate="No">high-resolution</code></li>
     </ul>
     
-    <p>그러나 필요한 경우 다음을 사용하여 추가 사용자 지정 수집 프로필을 만들 수 있습니다. <a href="/ingest-profiles/getting-started/overview-ingest-profiles-api-dynamic-delivery-context-aware-encoding.html"><span translate="No">프로파일 수집 API</span></a>또는 사용<a href="https://studio.support.brightcove.com/admin/managing-ingest-profiles.html"><span translate="No">비디오 클라우드</span>사진관</a> .</p>
+    <p>그러나 필요한 경우 다음을 사용하여 추가 사용자 지정 수집 프로필을 만들 수 있습니다. <a href="/ingest-profiles/getting-started/overview-ingest-profiles-api-dynamic-delivery-context-aware-encoding.html"><span translate="No">Ingest Profiles API</span></a>또는 사용<a href="https://studio.support.brightcove.com/admin/managing-ingest-profiles.html"><span translate="No">비디오 클라우드</span>사진관</a> .</p>
     
-    <aside class="bcls-aside bcls-aside--warning">다음을 사용하여 프로필을 검색하는 경우<a href="/ingest-profiles/"><span translate="No">프로파일 수집 API</span></a>에 대한 결과<strong>레거시 수집 계정</strong> Dynamic Delivery 프로필이 포함되지만 이를 사용하면 오류가 발생합니다. 클라이언트 측에서 이러한 프로필을 필터링해야 합니다. 의 존재로 Dynamic Delivery 프로필을 인식할 수 있습니다. <code translate="No">dynamic_origin</code>재산:
+    <aside class="bcls-aside bcls-aside--warning">다음을 사용하여 프로필을 검색하는 경우<a href="/ingest-profiles/"><span translate="No">Ingest Profiles API</span></a>에 대한 결과<strong>레거시 수집 계정</strong> Dynamic Delivery 프로필이 포함되지만 이를 사용하면 오류가 발생합니다. 클라이언트 측에서 이러한 프로필을 필터링해야 합니다. 의 존재로 Dynamic Delivery 프로필을 인식할 수 있습니다. <code translate="No">dynamic_origin</code>재산:
     
     <pre class="line-numbers">
     <code class="language-json" translate="No">{
@@ -222,11 +222,11 @@ parent: General Information
     </code>
     </pre>
     
-    <p>보다<a href="/dynamic-ingest/ingest-guides/images-and-dynamic-ingest-api.html">이미지와<span translate="No">동적 수집 API</span></a>자세한 사항은.</p>
+    <p>보다<a href="/dynamic-ingest/ingest-guides/images-and-dynamic-ingest-api.html">이미지와<span translate="No">Dynamic Ingest API</span></a>자세한 사항은.</p>
     
     <h4>캡션 또는 챕터에 대한 텍스트 트랙 추가</h4>
     
-    <p>당신은 또한 사용할 수 있습니다<span translate="No">동적 수집 API</span>텍스트 트랙을 추가하려면<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Video_Text_Tracks_Format"> WebVTT</a>수집 시점 또는 이후에 파일을 비디오로 변환합니다. 텍스트 트랙은 추가하는 데 사용됩니다. <a href="https://player.support.brightcove.com/general/adding-captions-videos-programmatically.html">캡션</a>또는<a href="https://studio.support.brightcove.com/media/adding-chapters-video.html">장</a>동영상으로.</p>
+    <p>당신은 또한 사용할 수 있습니다<span translate="No">Dynamic Ingest API</span>텍스트 트랙을 추가하려면<a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Video_Text_Tracks_Format"> WebVTT</a>수집 시점 또는 이후에 파일을 비디오로 변환합니다. 텍스트 트랙은 추가하는 데 사용됩니다. <a href="https://player.support.brightcove.com/general/adding-captions-videos-programmatically.html">캡션</a>또는<a href="https://studio.support.brightcove.com/media/adding-chapters-video.html">장</a>동영상으로.</p>
     
     <pre class="line-numbers">
     <code class="language-json" translate="No">{
@@ -373,11 +373,11 @@ parent: General Information
     <section class="bcls-section" id="creatingPlayers">
     <h2>플레이어 생성</h2>
     
-    <p>Brightcove 플레이어는 다음을 통해 만들 수 있습니다. <a href="/player-management/getting-started/overview-player-management-api.html"><span translate="No">플레이어 관리 API</span></a> . API를 사용하면 플레이어를 만들고, 속성을 업데이트하고, URL 형식으로 포함 코드를 가져올 수 있습니다. <code translate="No">iframe</code>태그 또는 페이지에 포함할 HTML 블록입니다.</p>
+    <p>Brightcove 플레이어는 다음을 통해 만들 수 있습니다. <a href="/player-management/getting-started/overview-player-management-api.html"><span translate="No">Player Management API</span></a> . API를 사용하면 플레이어를 만들고, 속성을 업데이트하고, URL 형식으로 포함 코드를 가져올 수 있습니다. <code translate="No">iframe</code>태그 또는 페이지에 포함할 HTML 블록입니다.</p>
     
     <p class="BCL-aside">계정당 최대 200명의 플레이어가 있을 수 있지만 일반적으로 절대적으로 필요한 만큼 적은 수의 플레이어를 보유하는 것이 사용자에게 덜 혼란스럽습니다. 단일 비디오 또는 재생 목록을 재생하려면 별도의 플레이어가 있어야 하지만 그렇지 않으면 스타일이 다르거나 플러그인을 통해 다른 기능이 추가되는 경우에만 다른 플레이어가 필요합니다.</p>
     
-    <p>플레이어를 만들려면 간단히<span translate="No">우편</span>에 요청<span translate="No">플레이어 관리 API</span> :</p>
+    <p>플레이어를 만들려면 간단히<span translate="No">우편</span>에 요청<span translate="No">Player Management API</span> :</p>
     
     <pre class="line-numbers">
     <code class="language-http" translate="No">https://players.api.brightcove.com/v2/accounts/account_id/players
@@ -427,7 +427,7 @@ parent: General Information
     <section class="bcls-section" id="customizingPlayers">
     <h2>플레이어 커스터마이징</h2>
     
-    <p>NS <a href="https://player.support.brightcove.com/getting-started/overview-brightcove-player.html">브라이트코브 플레이어</a>표준 웹 기술로 구축: HTML, CSS 및<span translate="No">자바스크립트</span> . 동일한 기술을 사용하여 플레이어를 사용자 정의할 수 있습니다. 이것은 플레이어가 게시된 페이지에서 수행할 수 있지만 가장 좋은 방법은 플레이어를 통해 플레이어 자체에 사용자 정의를 추가하는 것입니다. <a href="/player-management/guides/player-configuration-guide.html">구성</a> , 다음을 통해 플레이어 업데이트<span translate="No">반점</span>에 요청<span translate="No">플레이어 관리 API</span>이전 섹션에서 설명한 대로.</p>
+    <p>NS <a href="https://player.support.brightcove.com/getting-started/overview-brightcove-player.html">브라이트코브 플레이어</a>표준 웹 기술로 구축: HTML, CSS 및<span translate="No">자바스크립트</span> . 동일한 기술을 사용하여 플레이어를 사용자 정의할 수 있습니다. 이것은 플레이어가 게시된 페이지에서 수행할 수 있지만 가장 좋은 방법은 플레이어를 통해 플레이어 자체에 사용자 정의를 추가하는 것입니다. <a href="/player-management/guides/player-configuration-guide.html">구성</a> , 다음을 통해 플레이어 업데이트<span translate="No">반점</span>에 요청<span translate="No">Player Management API</span>이전 섹션에서 설명한 대로.</p>
     
     <p>다음을 통해 플레이어에 추가 기능을 추가할 수도 있습니다. <span translate="No">자바스크립트</span><a href="https://player.support.brightcove.com/plugins/brightcove-player-plugins.html">플러그인</a> , 그리고 광범위한<a href="https://docs.brightcove.com/brightcove-player/current-release/index.html">플레이어 API</a>코드를 플레이어와 통합하는 데 도움이 됩니다. Brightcove는 광고 활성화, 최종 화면 사용자 지정 및 오버레이 추가와 같은 작업을 위해 미리 만들어진 여러 플러그인을 제공합니다.</p>
     </section>
@@ -435,7 +435,7 @@ parent: General Information
     <section class="bcls-section" id="publishingVideos">
     <h2>동영상 게시</h2>
     
-    <p>에서<a href="#creatingPlayers">플레이어 만들기 섹션</a>위에서 우리는 다음을 사용하여 플레이어 구성 개체를 가져올 때<span translate="No">플레이어 관리 API</span> , 반환된 데이터에는 HTML 페이지에 플레이어를 포함하기 위한 iframe 태그와 플레이어를 페이지에 직접 포함하려는 경우 전체 HTML에 대한 URL이 포함됩니다.</p>
+    <p>에서<a href="#creatingPlayers">플레이어 만들기 섹션</a>위에서 우리는 다음을 사용하여 플레이어 구성 개체를 가져올 때<span translate="No">Player Management API</span> , 반환된 데이터에는 HTML 페이지에 플레이어를 포함하기 위한 iframe 태그와 플레이어를 페이지에 직접 포함하려는 경우 전체 HTML에 대한 URL이 포함됩니다.</p>
     
     <aside class="bcls-aside bcls-aside--tip">플레이어의 CSS와<span translate="No">자바스크립트</span>페이지에서 사용되는 기타 스타일시트 및 스크립트. 보다<a href="https://player.support.brightcove.com/publish/choosing-correct-embed-code.html">이 문서</a>차이점에 대한 자세한 내용과 다양한 상황에서 사용할 임베딩에 대한 보다 구체적인 권장 사항은</aside>
     
@@ -473,7 +473,7 @@ parent: General Information
     <section class="bcls-section" id="analytics">
     <h2>분석 보고서 가져오기</h2>
     
-    <p>NS <a href="/analytics/getting-started/overview-analytics-api-v1.html"><span translate="No">애널리틱스 API</span></a>다양한 방법으로 분석 보고서를 생성할 수 있습니다. <code translate="No">dimensions</code> . 참조<a href="/analytics/dimension-guides/index.html">치수 가이드</a>자세한 내용은.</p>
+    <p>NS <a href="/analytics/getting-started/overview-analytics-api-v1.html"><span translate="No">Analytics API</span></a>다양한 방법으로 분석 보고서를 생성할 수 있습니다. <code translate="No">dimensions</code> . 참조<a href="/analytics/dimension-guides/index.html">치수 가이드</a>자세한 내용은.</p>
       
     <p>보고서의 날짜 범위, 반환할 측정항목을 지정할 수 있으며 다음에서 데이터를 가져올 수 있습니다. <span translate="No"> JSON</span> , <span translate="No"> CSV</span> , 또는<span translate="No"> xlxs</span>체재</p>
     
@@ -491,9 +491,9 @@ parent: General Information
       <dt>미디어 관리</dt>
       <dd>
       <dl>
-        <dt><a href="/ingest-profiles/getting-started/overview-ingest-profiles-api-dynamic-delivery-context-aware-encoding.html"><span translate="No">프로파일 수집 API</span></a></dt>
+        <dt><a href="/ingest-profiles/getting-started/overview-ingest-profiles-api-dynamic-delivery-context-aware-encoding.html"><span translate="No">Ingest Profiles API</span></a></dt>
         <dd>추가된 비디오에 대해 생성할 변환을 지정하는 사용자 정의 수집 프로필을 생성하는 데 사용됩니다. <span translate="No">비디오 클라우드</span></dd>
-        <dt><a href="/dynamic-ingest/getting-started/overview-dynamic-ingest-api-dynamic-delivery.html"><span translate="No">동적 수집 API</span></a></dt>
+        <dt><a href="/dynamic-ingest/getting-started/overview-dynamic-ingest-api-dynamic-delivery.html"><span translate="No">Dynamic Ingest API</span></a></dt>
         <dd>비디오 및 관련 미디어 자산을 추가하는 데 사용됩니다. <span translate="No">비디오 클라우드</span></dd>
         <dt><a href="/cms/getting-started/overview-cms-api.html"><span translate="No">CMS API</span></a></dt>
         <dd>수집을 위한 비디오 개체를 만들고 비디오 및 재생 목록을 관리하는 데 사용됩니다.</dd>
@@ -504,11 +504,11 @@ parent: General Information
       <dl>
         <dt><a href="https://player.support.brightcove.com/getting-started/overview-brightcove-player.html">브라이트코브 플레이어</a></dt>
         <dd>플레이어에는 다음이 포함됩니다. <span translate="No">자바스크립트</span>런타임에 플레이어와 상호작용하는 API</dd>
-        <dt><a href="/player-management/getting-started/overview-player-management-api.html"><span translate="No">플레이어 관리 API</span></a></dt>
+        <dt><a href="/player-management/getting-started/overview-player-management-api.html"><span translate="No">Player Management API</span></a></dt>
         <dd>플레이어를 생성 및 구성하고 플레이어 내장 코드를 가져오는 데 사용됩니다.</dd>
       </dl>
       </dd>
-      <dt><a href="/analytics/getting-started/overview-analytics-api-v1.html"><span translate="No">애널리틱스 API</span></a></dt>
+      <dt><a href="/analytics/getting-started/overview-analytics-api-v1.html"><span translate="No">Analytics API</span></a></dt>
       <dd>비디오 성능에 대한 분석 보고서를 얻는 데 사용</dd>
     </dl>
     </section>

@@ -1,1301 +1,1297 @@
-﻿<!doctype html>
-<html lang="ko">
+<!doctype html>
+<html lang="en-us">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="이 섹션에서는 브라이트코브 비콘을 시작하는 데 도움이 되는 가이드를 제공합니다.">
+  <meta name="description" content="">
   
-  <title>시작하기 홈</title>
+  <title></title>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">  
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&amp;display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/prism.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/styles.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/landing-page.css">
   <link rel="stylesheet" href="https://support.brightcove.com/site-assets/css/site/tabs.css">
   <link rel="stylesheet" href="/assets/css/local.css">
-  <link data-react-helmet="true" rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500&display=swap">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/381443caa8.js" crossorigin="anonymous"></script>
-  <script src="https://support.brightcove.com/site-assets/js/site/google-analytics.js"></script>
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-2728311-17"></script>
+<script translate="no">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XBJC11HF8Z');
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XBJC11HF8Z"></script>
+<script translate="no">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XBJC11HF8Z');
+</script>
   <script src="/assets/js/sajari-head.js"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
 </head>
-
 <body class="body">
-
-<header>
+ <header>
   <div class="div-header">
-    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/Video_Cloud_Logo.svg" alt="제품 로고" style="max-height: 100px;max-width: 232px;"/></a>
-<!-- GTranslate: https://gtranslate.io/ -->
-<select onchange="doGTranslate(this);"><option value="">언어 선택</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
+    <a href="/"><img class="product-logo" src="https://support.brightcove.com/site-assets/images/site/product-logos/SVG/COVE004_Brightcove_Video_Cloud_Logo_RGB_K.svg" alt="Brightcove"></a>
+<!-- GTranslate: https://gtranslate.io/ -->    
+<select class="bcls-select" onchange="doGTranslate(this);"><option value="">언어 선택</option><option value="en|en" translate="No">English</option><option value="en|zh-TW" translate="No">繁體中文</option><option value="en|fr" translate="No">Français</option><option value="en|de" translate="No">Deutsche</option><option value="en|ja" translate="No">日本語</option><option value="en|ko" translate="No">한국어</option><option value="en|es" translate="No">Español</option></select>
 
-<script>
-/* <![CDATA[ */
+<script translate="no">
+/* <![CDATA[ */  
 function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;if(lang_pair=='')return;var lang=lang_pair.split('|')[1];var plang=location.hostname.split('.')[0];if(plang.length !=2 && plang.toLowerCase() != 'zh-cn' && plang.toLowerCase() != 'zh-tw')plang='en';location.href=location.protocol+'//'+(lang == 'en' ? '' : lang+'.')+location.hostname.replace('www.', '').replace(RegExp('^' + plang + '\\.'), '')+location.pathname+location.search;}
 /* ]]> */
 </script>
 
-    
 
 
-    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><img src="https://support.brightcove.com/site-assets/images/site/support.png" alt="지원"/> 고객 지원 문의</a> <span style="vertical-align: top;margin-left:1em;margin-right:1em;">|</span> <a href="https://status.brightcove.com/"><img src="https://support.brightcove.com/site-assets/images/site/status.png" alt="시스템 상태"/> 시스템 상태</a></span> <br/>
+    <span class="secondary-nav"><a href="https://supportportal.brightcove.com/s/login/?"><i data-feather="help-circle"></i> 연락처 지원</a><span style="vertical-align: middle;margin-left:1em;margin-right:1em;"> |</span><a href="https://status.brightcove.com/"><i data-feather="cloud"></i> 시스템 상태</a></span>
+    <br>
     
   </div>
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb arr-right">
-      
-      <li class="breadcrumb-item"><a href="/">홈</a></li>
-      
-      
-      
-      <li class="breadcrumb-item"><a href="/policy/references/">시작하기</a></li>
-      
-      <li class="breadcrumb-item active" aria-current="page">시작하기 홈</li>
-    </ol>
+    
+    <li class="breadcrumb-item first-item"><a href="/">집</a></li>
+     
+        <li class="breadcrumb-item"><a href="/policy/">Policy</a></li>
+        
+        <li class="breadcrumb-item active" aria-current="page"></li>
+       
   </nav>
-</header>
-<div class="container">
+</header> <div class="container">
     <div class="row">
       <div class="col-sm-3 left-side-bar">
-        <select id="site_select" class="bcls-select" style="margin-right: 1rem;">
-					<option value="">기타 브라이트코브 문서</option>
-					
-						
-							<option value="https://support.brightcove.com">설명서 홈</option>
-						
-					
-						
-							<option value="https://audience.support.brightcove.com">브라이트코브 대상</option>
-						
-					
-						
-							<option value="https://beacon.support.brightcove.com">브라이트코브 비콘</option>
-						
-					
-						
-							<option value="https://campaign.support.brightcove.com">브라이트코브 캠페인</option>
-						
-					
-						
-							<option value="https://engage.support.brightcove.com">브라이트코브 참여</option>
-						
-					
-						
-							<option value="https://live.support.brightcove.com">Brightcove Live</option>
-						
-					
-						
-							<option value="https://gallery.support.brightcove.com">Brightcove Gallery</option>
-						
-					
-						
-							<option value="https://ssai.support.brightcove.com">Brightcove SSAI</option>
-						
-					
-						
-							<option value="https://social.support.brightcove.com">브라이트코브 소셜</option>
-						
-					
-						
-							<option value="https://studio.support.brightcove.com">비디오 클라우드 스튜디오</option>
-						
-					
-						
-							<option value="https://player.support.brightcove.com">브라이트코브 플레이어 개발</option>
-						
-					
-						
-							<option value="https://apis.support.brightcove.com">비디오 클라우드 플랫폼 API</option>
-						
-					
-						
-							<option value="https://sdks.support.brightcove.com">비디오 클라우드 디바이스 SDK</option>
-						
-					
-						
-							<option value="https://integrations.support.brightcove.com">통합 및 CMS 커넥터</option>
-						
-					
-						
-							<option value="https://general.support.brightcove.com">비디오 클라우드 일반 정보</option>
-						
-					
-						
-							<option value="https://zencoder.support.brightcove.com">Zencoder</option>
-						
-					
+				<select id="site_select" class="bcls-select" style="margin-left: 1rem;">
+					<option value="">기타 Brightcove 문서</option>
+					 
+							<option value="https://support.brightcove.com">문서 홈</option>
+						  
+							<option value="">-- 비디오 클라우드 --</option>
+						  
+							<option value="https://studio.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;비디오 클라우드 스튜디오</option>
+						  
+							<option value="https://player.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;브라이트코브 플레이어 개발</option>
+						  
+							<option value="https://apis.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;비디오 클라우드 플랫폼 API</option>
+						  
+							<option value="https://sdks.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;비디오 클라우드 장치 SDK</option>
+						  
+							<option value="https://integrations.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;통합 및 CMS 커넥터</option>
+						  
+							<option value="https://general.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;비디오 클라우드 일반 정보</option>
+						  
+							<option value="">-- 비디오 필수품 --</option>
+						  
+							<option value="https://beacon.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;브라이트코브 비콘</option>
+						  
+							<option value="https://live.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;브라이트코브 라이브</option>
+						  
+							<option value="https://zencoder.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;젠코더</option>
+						  
+							<option value="">-- 비디오 클라우드 애드온 --</option>
+						  
+							<option value="https://campaign.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;브라이트코브 캠페인</option>
+						  
+							<option value="https://engage.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;브라이트코브 인게이지</option>
+						  
+							<option value="https://gallery.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;브라이트코브 갤러리</option>
+						  
+							<option value="https://studio.support.brightcove.com/social/index.html">&nbsp;&nbsp;&nbsp;&nbsp;브라이트코브 소셜</option>
+						  
+							<option value="https://ssai.support.brightcove.com">&nbsp;&nbsp;&nbsp;&nbsp;브라이트코브 SSAI</option>
+						 
 				</select>
         <nav class="sidenav" id="side_nav">
-          
-            
-            <h5><a href="/index.html">홈</a></h5>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/getting-started/index.html">시작하기 <strong>+</strong></a></h5>
+           
+            <h5><a href="/index.html">집</a></h5>
+              
+              <h5 class="submenu-header"><a href="/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a></h5>
               <ul class="sidenav-submenu" style="display:none;">
-                
-                  
+                 
                     <li><a href="/getting-started/getting-started-brightcove-apis.html">개요: 플랫폼 API</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/authentication-brightcove-api-requests.html">API 요청에 대한 인증</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/concepts-testing-tools-brightcove-apis.html">브라이트코브 API용 테스트 도구</a></li>
-                  
-                
-                  
-                    <li><a href="/getting-started/learning-guide-using-rest-apis.html">학습 가이드: REST API 사용</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/general/index.html">일반 정보 <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/general/all-api-references.html">모든 API 참조</a></li>
-                  
-                
-                  
-                    <li><a href="/general/overview-context-aware-encoding.html">컨텍스트 인식 인코딩 개요</a></li>
-                  
-                
-                  
-                    <li><a href="/general/managing-api-authentication-credentials.html">API 인증 자격 증명 관리</a></li>
-                  
-                
-                  
-                    <li><a href="/general/integrating-your-cms-video-cloud.html">CMS를 비디오 클라우드와 통합</a></li>
-                  
-                
-                  
-                    <li><a href="/general/platform-api-code-samples.html">플랫폼 API 코드 샘플</a></li>
-                  
-                
-                  
-                    <li><a href="/general/video-cloud-api-training-videos.html">플랫폼 API 교육 비디오</a></li>
-                  
-                
-                  
-                    <li><a href="/general/concepts-api-tester.html">온라인 API 테스터</a></li>
-                  
-                
-                  
-                    <li><a href="/general/use-insomnia-api-requests.html">API 요청에 불면증 사용</a></li>
-                  
-                
-                  
-                    <li><a href="/general/use-postman-api-requests.html">API 요청에 우편 배달부 사용</a></li>
-                  
-                
-                  
-                    <li><a href="/general/audio-content.html">오디오 콘텐츠</a></li>
-                  
-                
-                  
-                    <li><a href="/general/known-issues.html">플랫폼 API 알려진 문제</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/analytics/index.html">애널리틱스 API <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/analytics/getting-started/index.html">시작하기 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/analytics/getting-started/overview-analytics-api-v1.html">개요: 애널리틱스</a></li>
-                        
-                        <li><a href="/analytics/getting-started/analytics-api-explorer.html">분석 API 탐색기</a></li>
-                        
-                        <li><a href="/analytics/getting-started/overview-video-data-endpoint.html">개요: 비디오 데이터 엔드포인트</a></li>
-                        
-                        <li><a href="/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html">개요: 치수, 필드 및 매개변수</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/analytics/general/index.html">일반 정보<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/analytics/general/faq-analytics-api.html">자주 묻는 질문: 애널리틱스</a></li>
-                        
-                        <li><a href="/analytics/general/analytics-api-glossary.html">분석 API 용어집</a></li>
-                        
-                        <li><a href="/analytics/general/analytics-api-unique-users.html">고유 사용자</a></li>
-                        
-                        <li><a href="/analytics/general/live-metrics.html">라이브 지표</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/analytics/references/index.html">참고 문헌<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/analytics/references/reference.html">분석 API 참조</a></li>
-                        
-                        <li><a href="/analytics/references/analytics-api-release-notes.html">릴리즈 노트</a></li>
-                        
-                        <li><a href="/analytics/references/known-issues.html">알려진 문제</a></li>
-                        
-                        <li><a href="/analytics/references/analytics-api-error-reference.html">오류 참조</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/analytics/dimension-guides/index.html">치수 가이드 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-account.html">차원: <code>계정</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-browsertype.html">치수: <code>브라우저 유형</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-date.html">치수: <code>날짜</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-datehour.html">치수: <code>날짜_시간</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-destinationdomain.html">차원: <code>대상 도메인</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-destinationpath.html">차원: <code>대상 경로</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-devicemanufacturer.html">치수: <code>장치 제조업체</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-devicetype.html">치수: <code>장치 유형</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-deviceos.html">치수: <code>장치_os</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-city.html">치수: <code>도시</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-country.html">치수: <code>국가</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-region.html">차원: <code>영역</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-livestream.html">치수: <code>라이브_스트림</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-referrerdomain.html">차원: <code>참조_도메인</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-sourcetype.html">치수: <code>소스 유형</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-searchterms.html">차원: <code>검색_용어</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-socialplatform.html">치수: <code>소셜 플랫폼</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-player.html">치수: <code>플레이어</code></a></li>
-                        
-                        <li><a href="/analytics/dimension-guides/dimension-video.html">치수: <code>비디오</code></a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/analytics/code-samples/index.html">코드 샘플 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/analytics/code-samples/analytics-api-sample-concurrent-viewers-live-events.html">실시간 이벤트에 대한 동시 시청자</a></li>
-                        
-                        <li><a href="/analytics/code-samples/analytics-api-sample-daily-analytics-report-generator.html">일일 분석 보고서 생성기</a></li>
-                        
-                        <li><a href="/analytics/code-samples/analytics-api-sample-destinations-report.html">목적지 보고서</a></li>
-                        
-                        <li><a href="/analytics/code-samples/analytics-api-sample-geographical-analytics-report.html">지리적 분석 보고서</a></li>
-                        
-                        <li><a href="/analytics/code-samples/analytics-api-sample-unique-users-day.html">일별 고유 사용자</a></li>
-                        
-                        <li><a href="/analytics/code-samples/analytics-api-sample-video-engagement-graph.html">비디오 참여 그래프</a></li>
-                        
-                        <li><a href="/analytics/code-samples/analytics-api-sample-video-report-player-and-day.html">플레이어 및 날별 비디오 보고서</a></li>
-                        
-                        <li><a href="/analytics/code-samples/analytics-api-sample-video-report-reference-id.html">참조 ID별 비디오 보고서</a></li>
-                        
-                        <li><a href="/analytics/code-samples/analytics-api-sample-video-report-tags.html">태그별 비디오 보고서</a></li>
-                        
-                        <li><a href="/analytics/code-samples/analyticscms-apis-sample-analytics-playlists.html">재생목록별 분석</a></li>
-                        
-                        <li><a href="/analytics/code-samples/analyticscms-apis-sample-recently-added-videos.html">최근에 추가된 동영상</a></li>
-                        
-                        <li><a href="/analytics/code-samples/code-sample-video-analytics-report-country-and-day.html">국가 및 일별 동영상 분석 보고서</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/cms/index.html">CMS API <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/cms/getting-started/index.html">시작하기 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/cms/getting-started/overview-cms-api.html">개요: CMS API</a></li>
-                        
-                        <li><a href="/cms/getting-started/practice-area-cms-api.html">실천 분야: CMS API</a></li>
-                        
-                        <li><a href="/cms/getting-started/best-practices-cms-and-playback-apis.html">모범 사례: CMS 및 재생 API</a></li>
-                        
-                        <li><a href="/cms/getting-started/cms-api-notifications.html">CMS API 알림</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/cms/references/index.html">참고 문헌<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/cms/references/reference.html">CMS API 참조</a></li>
-                        
-                        <li><a href="/cms/references/catalog-apis-cms-api-and-playback-api-release-notes.html">CMS/재생 API 릴리스 노트</a></li>
-                        
-                        <li><a href="/cms/references/known-issues.html">알려진 문제</a></li>
-                        
-                        <li><a href="/cms/references/cms-api-video-fields-reference.html">CMS API 비디오 필드 참조</a></li>
-                        
-                        <li><a href="/cms/references/cms-api-playlist-fields-reference.html">CMS API 재생 목록 필드 참조</a></li>
-                        
-                        <li><a href="/cms/references/cms-api-custom-fields-reference.html">CMS API 사용자 정의 필드 참조</a></li>
-                        
-                        <li><a href="/cms/references/cms-api-folder-fields-reference.html">CMS API 폴더 필드 참조</a></li>
-                        
-                        <li><a href="/cms/references/cms-api-error-message-reference.html">CMS API 오류 메시지 참조</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/cms/searching/index.html">검색<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/cms/searching/cms-and-playback-apis-video-search-v2.html">CMS API: 비디오 검색 v2</a></li>
-                        
-                        <li><a href="/cms/searching/cms-api-playlists-search.html">CMS API: 재생 목록 검색</a></li>
-                        
-                        <li><a href="/cms/searching/using-cms-api-page-search-results.html">페이지 검색 결과</a></li>
-                        
-                        <li><a href="/cms/searching/cmsplayback-api-videos-search.html">CMS 및 재생 API: 비디오 검색 v1</a></li>
-                        
-                        <li><a href="/playback/guides/catalog-search-architecture.html">카탈로그 검색 아키텍처</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/cms/managing-videos/index.html">비디오/에셋 관리<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/cms/managing-videos/using-cms-api-add-geo-filtering.html">지리적 필터링 추가</a></li>
-                        
-                        <li><a href="/cms/managing-videos/digital-master-delete-api.html">디지털 마스터 삭제 API</a></li>
-                        
-                        <li><a href="/cms/managing-videos/deleting-videos.html">비디오 삭제</a></li>
-                        
-                        <li><a href="/cms/managing-videos/getting-counts-videos-and-playlists.html">동영상 및 재생목록 수 얻기</a></li>
-                        
-                        <li><a href="/cms/managing-videos/managing-playlists-using-cms-api.html">CMS API를 사용하여 재생 목록 관리</a></li>
-                        
-                        <li><a href="/cms/managing-videos/using-cms-api-managing-clips.html">클립 관리</a></li>
-                        
-                        <li><a href="/cms/managing-videos/media-sharing-cms-api.html">미디어 공유</a></li>
-                        
-                        <li><a href="/cms/managing-videos/multilingual-metadata.html">다국어 메타데이터</a></li>
-                        
-                        <li><a href="/cms/managing-videos/using-cms-api-retrieve-video-data.html">비디오 데이터 검색</a></li>
-                        
-                        <li><a href="/cms/managing-videos/setting-360-degree-video-properties-cms-api.html">360도 비디오 속성 설정</a></li>
-                        
-                        <li><a href="/cms/managing-videos/using-cms-api-remote-assets.html">원격 자산</a></li>
-                        
-                        <li><a href="/cms/managing-videos/using-cms-api-add-webvtt-captions-text-tracks.html">WebVTT 캡션 추가 (텍스트 트랙)</a></li>
-                        
-                        <li><a href="/cms/managing-videos/generate-video-sitemaps.html">비디오 사이트 맵 생성</a></li>
-                        
-                        <li><a href="/cms/managing-videos/identifying-low-performing-content.html">성능 저조한 컨텐츠 식별</a></li>
-                        
-                        <li><a href="/cms/managing-videos/cms-api-working-folders.html">폴더 작업</a></li>
-                        
-                        <li><a href="/cms/managing-videos/working-with-labels.html">레이블 작업</a></li>
-                        
-                        <li><a href="/cms/managing-videos/linking-zencoder-and-video-cloud-video-demand.html">Zencoder와 비디오 클라우드 연결</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/cms/code-samples/index.html">코드 샘플 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-add-multiple-affiliate-accounts-media-sharing.html">여러 제휴사 계정 추가</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-share-multiple-videos.html">여러 비디오 공유</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-media-sharing-report.html">미디어 공유 보고서</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-shared-media-report.html">공유 미디어 보고서</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-update-videos.html">비디오 업데이트</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-add-custom-field-multiple-videos.html">여러 비디오에 사용자 정의 필드 추가</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-update-geo-properties.html">지역 등록 정보 업데이트</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-add-cue-points.html">큐 포인트 추가</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-video-report-generator.html">비디오 보고서 생성기</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-videos-delivery-type.html">배달 유형별 동영상</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-download-links.html">다운로드 링크</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-video-sitemap-generator.html">동영상 사이트 맵 생성기</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-mrss-generator.html">MRSS 발전기</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-mrss-feed-playlist.html">재생 목록에서 MRSS 피드</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-generate-rss-podcast-feed-itunes.html">아이튠즈에 대한 RSS 팟캐스트 피드</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-video-renditions-inspector.html">비디오 변환 관리자</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-report-audio-only-content.html">오디오 전용 콘텐츠 보고</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-video-schema-builder.html">비디오 스키마 빌더</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-python-code-get-request.html">GET 요청을위한 파이썬 코드</a></li>
-                        
-                        <li><a href="/cms/code-samples/cms-api-sample-video-search-app.html">동영상 검색 앱</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/xdr/index.html">교차 장치 다시 시작 (XDR) API <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/xdr/getting-started/index.html">시작하기 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/xdr/getting-started/xdr-overview.html">개요: 장치 간 재개</a></li>
-                        
-                        <li><a href="/xdr/getting-started/get-playback-position.html">XDR API에서 재생 위치 가져오기</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/xdr/index.html">가이드 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="https://player.support.brightcove.com/playback/xdr-with-bcplayer.html">브라이트코브 플레이어로 장치 간 재개</a></li>
-                        
-                        <li><a href="https://sdks.support.brightcove.com/features/cross-device-resume-sdks.html">기본 SDK를 사용하여 장치 간 재개</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/xdr/references/index.html">참고 문헌<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/xdr/getting-started/xdr-overview.html">교차 장치 재개 API 참조</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/data-collection/index.html">데이터 수집 API <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/data-collection/overview-data-collection-api-v2.html">개요: 데이터 수집 API</a></li>
-                  
-                
-                  
-                    <li><a href="/data-collection/data-collection-api-sample.html">데이터 수집 API 샘플</a></li>
-                  
-                
-                  
-                    <li><a href="/data-collection/references/reference.html">데이터 수집 API 참조</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/delivery-system/index.html">딜리버리 시스템 API <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/delivery-system/overview-delivery-system-api.html">개요: 전송 시스템 API</a></li>
-                  
-                
-                  
-                    <li><a href="/delivery-system/step-step-delivery-system-api.html">단계별: 전송 시스템 API</a></li>
-                  
-                
-                  
-                    <li><a href="/delivery-system/delivery-system-api-git-overview.html">힘내 개요</a></li>
-                  
-                
-                  
-                    <li><a href="/delivery-system/references/reference.html">전송 시스템 API 참조</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/dynamic-ingest/index.html">동적 인제스트 API <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/dynamic-ingest/getting-started/index.html">시작하기 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/dynamic-ingest/getting-started/overview-dynamic-ingest-api-dynamic-delivery.html">개요: 동적 인제스트 API</a></li>
-                        
-                        <li><a href="/dynamic-ingest/getting-started/quick-start-dynamic-ingest-api.html">빠른 시작: 동적 인제스트 API</a></li>
-                        
-                        <li><a href="/dynamic-ingest/getting-started/source-file-upload-api-dynamic-ingest.html">동적 인제스트를 위한 소스 파일 업로드 API</a></li>
-                        
-                        <li><a href="/dynamic-ingest/getting-started/overview-dynamic-delivery.html">동적 딜리버리 개요</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/dynamic-ingest/general/index.html">일반 정보<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/dynamic-ingest/general/dynamic-ingest-api-best-practices.html">동적 인제스트 API: 모범 사례</a></li>
-                        
-                        <li><a href="/dynamic-ingest/general/notifications-dynamic-delivery-video-cloud.html">동적 인제스트 알림</a></li>
-                        
-                        <li><a href="/dynamic-ingest/general/get-status-dynamic-ingest-requests-dynamic-delivery.html">동적 인제스트 요청의 상태 가져오기</a></li>
-                        
-                        <li><a href="/dynamic-ingest/general/fallback-retry-strategy.html">대체/재시도 전략</a></li>
-                        
-                        <li><a href="/dynamic-ingest/general/using-dynamic-ingest-s3.html">S3에서 동적 인제스트 사용</a></li>
-                        
-                        <li><a href="/dynamic-ingest/general/ugc-strategies.html">UGC 전략</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/dynamic-ingest/references/index.html">참고 문헌<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/dynamic-ingest/references/reference.html">동적 인제스트 API 참조</a></li>
-                        
-                        <li><a href="/dynamic-ingest/references/dynamic-ingest-api-release-notes.html">동적 인제스트 API 릴리스 정보</a></li>
-                        
-                        <li><a href="/dynamic-ingest/references/known-issues.html">알려진 문제</a></li>
-                        
-                        <li><a href="/dynamic-ingest/references/dynamic-ingest-ingest-fields.html">인제스트 필드 참조</a></li>
-                        
-                        <li><a href="/dynamic-ingest/references/dynamic-ingest-error-message-reference.html">동적 인제스트 오류 메시지 참조</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/dynamic-ingest/ingest-guides/index.html">인제스트 가이드<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/dynamic-ingest/ingest-guides/context-aware-encoding.html">컨텍스트 인식 인코딩 사용</a></li>
-                        
-                        <li><a href="/dynamic-ingest/ingest-guides/dynamic-delivery-ingest-priority-queueing.html">동적 배달 수집 우선 순위 큐</a></li>
-                        
-                        <li><a href="/ingest-profiles/guides/archiving-masters.html">아카이브 마스터</a></li>
-                        
-                        <li><a href="/dynamic-ingest/ingest-guides/implementing-multiple-audio-tracks-using-apis.html">다중 오디오 트랙 구현</a></li>
-                        
-                        <li><a href="/dynamic-ingest/ingest-guides/images-and-dynamic-ingest-api.html">이미지 및 동적 인제스트 API</a></li>
-                        
-                        <li><a href="/dynamic-ingest/ingest-guides/dynamic-ingest-media-sharing.html">미디어 공유를 통한 동적 인제스트</a></li>
-                        
-                        <li><a href="/dynamic-ingest/ingest-guides/ingesting-content-drm.html">DRM을 사용하여 콘텐츠 수집</a></li>
-                        
-                        <li><a href="/dynamic-ingest/ingest-guides/ingesting-webvtt-files-text-trackscaptions.html">웹VTT 파일 수집</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/dynamic-ingest/code-samples/index.html">코드 샘플 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-tester-dynamic-delivery.html">동적 인제스트 API 테스터</a></li>
-                        
-                        <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-ingesting-videos-dynamic-delivery.html">비디오 인제스팅</a></li>
-                        
-                        <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-re-transcoding-videos-dynamic-delivery.html">비디오 다시 코드 변환</a></li>
-                        
-                        <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-replacing-videos-dynamic-delivery.html">비디오 바꾸기</a></li>
-                        
-                        <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-add-scheduled-videos-dynamic-delivery.html">예약된 비디오 추가</a></li>
-                        
-                        <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-adding-text-tracks.html">텍스트 트랙 추가</a></li>
-                        
-                        <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-ingesting-low-priority-videos-dynamic-delivery.html">낮은 우선 순위 비디오 수집</a></li>
-                        
-                        <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-python-code.html">파이썬 코드</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/ingest-profiles/index.html">인제스트 프로파일 API <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/ingest-profiles/getting-started/index.html">시작하기<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/ingest-profiles/getting-started/overview-ingest-profiles-api-dynamic-delivery-context-aware-encoding.html">개요: 인제스트 프로파일 API</a></li>
-                        
-                        <li><a href="/ingest-profiles/getting-started/practice-area-ingest-profiles-api-dynamic-delivery.html">실천 분야: 인제스트 프로파일 API</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/ingest-profiles/guides/index.html">가이드 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/ingest-profiles/guides/archiving-masters.html">아카이브 마스터</a></li>
-                        
-                        <li><a href="/ingest-profiles/guides/hevc-video.html">HEVC 비디오</a></li>
-                        
-                        <li><a href="/ingest-profiles/guides/cae-fast-publish.html">CAE 빠른 게시</a></li>
-                        
-                        <li><a href="/general/audio-content.html">오디오 콘텐츠</a></li>
-                        
-                        <li><a href="/ingest-profiles/guides/mp4s-dynamic-delivery.html">동적 딜리버리의 MP4</a></li>
-                        
-                        <li><a href="https://studio.support.brightcove.com/admin/ingest-profiles-best-practices.html">모범 사례</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/ingest-profiles/references/index.html">참고 문헌<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/ingest-profiles/references/reference.html">인제스트 프로파일 API 참조</a></li>
-                        
-                        <li><a href="/ingest-profiles/references/ingest-profiles-api-fields-reference-dynamic-delivery-and-context-aware-encoding.html">인제스트 프로파일 필드 참조</a></li>
-                        
-                        <li><a href="/ingest-profiles/references/standard-ingest-profiles-dynamic-delivery-and-context-aware-encoding.html">표준 인제스트 프로파일</a></li>
-                        
-                        <li><a href="/ingest-profiles/references/standard-live-ingest-profiles.html">표준 라이브 인제스트 프로파일</a></li>
-                        
-                        <li><a href="/ingest-profiles/references/fields-custom-live-ingest-profiles.html">사용자 정의 라이브 인제스트 프로파일에 대한 필드</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/ingest-profiles/code-samples/index.html">코드 샘플 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/ingest-profiles/code-samples/ingest-profiles-api-sample-create-custom-dynamic-delivery-profile.html">사용자 지정 동적 배달 프로필 만들기</a></li>
-                        
-                        <li><a href="/ingest-profiles/code-samples/ingest-profiles-api-sample-create-custom-context-aware-encoding-profile.html">사용자 정의 CAE 프로필 만들기</a></li>
-                        
-                        <li><a href="/ingest-profiles/code-samples/ingest-profiles-api-sample-add-profile-multiple-accounts.html">여러 계정에 프로필 추가</a></li>
-                        
-                        <li><a href="/ingest-profiles/code-samples/ingest-profiles-api-sample-get-all-profiles-account.html">계정에 대한 모든 프로필 가져오기</a></li>
-                        
-                        <li><a href="/ingest-profiles/code-samples/ingest-profiles-api-sample-set-default-profile-dynamic-delivery.html">기본 프로파일 설정</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/oauth/index.html"><strong>OAuth API</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/oauth/getting-started/index.html">시작하기 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/oauth/getting-started/overview-oauth-api-v4.html">개요: OAuth API</a></li>
-                        
-                        <li><a href="/oauth/getting-started/quick-start-oauth.html">빠른 시작: OAuth API</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/oauth/guides/index.html">가이드 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/oauth/guides/oauth-create-client-credentials-using-curl.html">클라이언트 자격 증명 생성: cURL</a></li>
-                        
-                        <li><a href="/oauth/guides/oauth-create-client-credentials-using-postman.html">클라이언트 자격 증명 생성: 우편 배달부</a></li>
-                        
-                        <li><a href="/oauth/guides/getting-access-tokens.html">액세스 토큰 얻기</a></li>
-                        
-                        <li><a href="/oauth/guides/api-operations-client-credentials-requests.html">클라이언트 자격 증명 요청에 대한 API 작업</a></li>
-                        
-                        <li><a href="/oauth/guides/get-your-bc-token.html">BC_토큰 얻기</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/oauth/references/index.html">참고 문헌<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/oauth/references/reference.html">OAuth API 참조</a></li>
-                        
-                        <li><a href="/oauth/references/oauth-api-error-message-reference.html">OAuth API 오류 메시지 참조</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/oauth/code-samples/index.html">코드 샘플 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/oauth/code-samples/oauth-api-sample-create-client-credentials.html">클라이언트 자격 증명 생성</a></li>
-                        
-                        <li><a href="/oauth/code-samples/oauth-api-sample-get-access-token.html">액세스 토큰 받기</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/playback/index.html">재생 API <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/playback/getting-started/index.html">시작하기 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/playback/getting-started/overview-playback-api.html">개요: 재생 API</a></li>
-                        
-                        <li><a href="/playback/getting-started/quick-start-playback-api.html">빠른 시작: 재생 API</a></li>
-                        
-                        <li><a href="/cms/getting-started/best-practices-cms-and-playback-apis.html">모범 사례: CMS 및 재생 API</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/playback/guides/index.html">가이드 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/cms/searching/cmsplayback-api-videos-search.html">CMS 및 재생 API: 비디오 검색</a></li>
-                        
-                        <li><a href="/cms/getting-started/best-practices-cms-and-playback-apis.html">카탈로그 검색 아키텍처</a></li>
-                        
-                        <li><a href="/playback/guides/static-url-delivery.html">정적 URL 전송</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/playback/references/index.html">참고 문헌<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/playback/references/reference_v1.html">재생 API 참조</a></li>
-                        
-                        <li><a href="/playback/references/playback-api-video-fields-reference.html">비디오 필드 참조</a></li>
-                        
-                        <li><a href="/playback/references/playback-api-playlist-fields-reference.html">재생 목록 필드 참조</a></li>
-                        
-                        <li><a href="/playback/references/playback-api-error-reference.html">오류 참조</a></li>
-                        
-                        <li><a href="/cms/references/catalog-apis-cms-api-and-playback-api-release-notes.html">CMS/재생 API 릴리스 노트</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/playback/code-samples/index.html">코드 샘플 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/playback/code-samples/thumbnail-grid.html">비디오 축소판 격자</a></li>
-                        
-                        <li><a href="/playback/code-samples/playback-api-sample-mrss-generator.html">MRSS 발전기</a></li>
-                        
-                        <li><a href="/playback/code-samples/playback-api-sample-jsonmrss-feed-playlist.html">재생 목록에서 JSON/MRSS 피드</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/player-management/index.html">플레이어 관리 API <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/player-management/getting-started/index.html">시작하기 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/player-management/getting-started/overview-player-management-api.html">개요: 플레이어 관리 API</a></li>
-                        
-                        <li><a href="/player-management/getting-started/step-step-player-management.html">단계별: 플레이어 관리</a></li>
-                        
-                        <li><a href="/player-management/getting-started/training-demand-quick-start-player-management.html">주문형 교육: 플레이어 관리 빠른 시작</a></li>
-                        
-                        <li><a href="/player-management/getting-started/oauth-guide.html">OAuth 가이드</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/player-management/guides/index.html">가이드<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/player-management/guides/player-configuration-guide.html">플레이어 구성 가이드</a></li>
-                        
-                        <li><a href="/player-management/guides/plugin-registry.html">플러그인 레지스트리</a></li>
-                        
-                        <li><a href="/player-management/guides/pre-release-player.html">프리릴리즈 플레이어</a></li>
-                        
-                        <li><a href="/player-management/guides/player-repositories.html">플레이어 리포지토리</a></li>
-                        
-                        <li><a href="/player-management/guides/guide-embed-apis.html">API 포함</a></li>
-                        
-                        <li><a href="/player-management/guides/opting-out-automatic-player-updates.html">자동 플레이어 업데이트 수신 거부</a></li>
-                        
-                        <li><a href="/player-management/guides/embedding-brightcove-players-cms.html">CMS에 브라이트코브 플레이어 삽입</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/player-management/references/index.html">참고 문헌<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/player-management/references/reference.html">플레이어 관리 API 참조</a></li>
-                        
-                        <li><a href="/player-management/references/player-management-api-release-notes.html">릴리즈 노트</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/player-management/code-samples/index.html">코드 샘플 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/player-management/code-samples/setup-player-management-samples.html">플레이어 관리 샘플 설정</a></li>
-                        
-                        <li><a href="/player-management/code-samples/bulk-updating-brightcove-default-player.html">기본 플레이어 대량 업데이트</a></li>
-                        
-                        <li><a href="/player-management/code-samples/player-management-api-sample-create-player.html">플레이어 만들기</a></li>
-                        
-                        <li><a href="/player-management/code-samples/player-management-api-sample-display-players.html">플레이어 표시</a></li>
-                        
-                        <li><a href="/player-management/code-samples/player-management-api-sample-delete-players.html">플레이어 삭제</a></li>
-                        
-                        <li><a href="/player-management/code-samples/player-management-api-sample-using-lastviewed-data.html">마지막으로 본 데이터 사용</a></li>
-                        
-                        <li><a href="/player-management/code-samples/player-management-api-sample-programmatically-update-players.html">프로그래밍 방식으로 플레이어 업데이트</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/policy/index.html">정책 API <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/policy/getting-started/index.html">시작하기<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/policy/getting-started/overview-policy-api.html">개요: 정책 API</a></li>
-                        
-                        <li><a href="/policy/getting-started/quick-start-policy-api.html">코드 샘플: 정책 키 생성</a></li>
-                        
-                        <li><a href="/policy/getting-started/policy-keys.html">플레이어의 정책 키</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/policy/references/index.html">참고 문헌<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/policy/references/reference.html">정책 API 참조</a></li>
-                        
-                        <li><a href="/policy/references/policy-api-release-notes.html">릴리즈 노트</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/social-syndication/index.html">소셜 신디케이션 API <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/social-syndication/getting-started/index.html">시작하기<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/social-syndication/getting-started/public-syndication-api-overview.html">개요: 신디케이션 구성 API</a></li>
-                        
-                        <li><a href="/social-syndication/getting-started/feed-syndication-api-overview.html">개요: 신디케이션 피드 API</a></li>
-                        
-                        <li><a href="/social-syndication/getting-started/sample-templates-universal-syndication.html">범용 신디케이션을 위한 템플릿</a></li>
-                        
-                        <li><a href="/cms/searching/cms-and-playback-apis-video-search-v2.html">CMS 및 재생 API: 비디오 검색 v2</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/social-syndication/references/index.html">참고 문헌<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/social-syndication/references/configuration-reference.html">신디케이션 구성 API 참조</a></li>
-                        
-                        <li><a href="/social-syndication/references/feed-reference.html">신디케이션 피드 API 참조</a></li>
-                        
-                        <li><a href="/policy/references/policy-api-release-notes.html">릴리즈 노트</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/dynamic-ingest-legacy/index.html">동적 인제스트 API 레거시 <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/dynamic-ingest-legacy/getting-started/index.html">시작하기<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/dynamic-ingest-legacy/getting-started/overview-dynamic-ingest-api-legacy-ingest.html">개요: 동적 인제스트 API</a></li>
-                        
-                        <li><a href="/dynamic-ingest-legacy/getting-started/quick-start-dynamic-ingest-api-legacy-ingest.html">빠른 시작: 동적 인제스트 API</a></li>
-                        
-                        <li><a href="/dynamic-ingest-legacy/getting-started/migrating-legacy-ingest-system-dynamic-delivery.html">동적 딜리버리로 마이그레이션</a></li>
-                        
-                        <li><a href="/dynamic-ingest/getting-started/source-file-upload-api-dynamic-ingest.html">동적 인제스트를 위한 소스 파일 업로드 API</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/dynamic-ingest-legacy/general/index.html">일반 정보<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/dynamic-ingest/general/dynamic-ingest-api-best-practices.html">동적 인제스트 API: 모범 사례</a></li>
-                        
-                        <li><a href="/dynamic-ingest-legacy/general/dynamic-ingest-notifications-legacy-ingest.html">동적 인제스트 알림</a></li>
-                        
-                        <li><a href="/dynamic-ingest-legacy/general/get-status-dynamic-ingest-requests-legacy-ingest.html">요청 상태 가져오기</a></li>
-                        
-                        <li><a href="/dynamic-ingest/general/fallback-retry-strategy.html">대체/재시도 전략</a></li>
-                        
-                        <li><a href="/dynamic-ingest/general/using-dynamic-ingest-s3.html">S3에서 동적 인제스트 사용</a></li>
-                        
-                        <li><a href="/dynamic-ingest/general/ugc-strategies.html">UGC 전략</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/dynamic-ingest-legacy/references/index.html">참고 문헌<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/dynamic-ingest/references/reference.html">동적 인제스트 API 참조</a></li>
-                        
-                        <li><a href="/dynamic-ingest/references/dynamic-ingest-api-release-notes.html">동적 인제스트 API 릴리스 정보</a></li>
-                        
-                        <li><a href="/dynamic-ingest/references/dynamic-ingest-ingest-fields.html">인제스트 필드 참조</a></li>
-                        
-                        <li><a href="/dynamic-ingest/references/dynamic-ingest-error-message-reference.html">동적 인제스트 오류 메시지 참조</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/dynamic-ingest-legacy/ingest-guides/index.html">인제스트 가이드<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/dynamic-ingest/ingest-guides/images-and-dynamic-ingest-api.html">이미지 및 동적 인제스트 API</a></li>
-                        
-                        <li><a href="/dynamic-ingest/ingest-guides/dynamic-ingest-media-sharing.html">미디어 공유를 통한 동적 인제스트</a></li>
-                        
-                        <li><a href="/dynamic-ingest/ingest-guides/ingesting-webvtt-files-text-trackscaptions.html">웹VTT 파일 수집</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/dynamic-ingest-legacy/code-samples/index.html">코드 샘플 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/dynamic-ingest-legacy/code-samples/dynamic-ingest-api-sample-ingesting-videos-legacy-ingest.html">비디오 인제스팅</a></li>
-                        
-                        <li><a href="/dynamic-ingest-legacy/code-samples/dynamic-ingest-api-sample-re-transcoding-videos-legacy-ingest.html">비디오 다시 코드 변환</a></li>
-                        
-                        <li><a href="/dynamic-ingest-legacy/code-samples/dynamic-ingest-api-sample-replacing-videos-legacy-ingest.html">비디오 바꾸기</a></li>
-                        
-                        <li><a href="/dynamic-ingest-legacy/code-samples/dynamic-ingest-api-sample-add-scheduled-videos-legacy-ingest.html">예약된 비디오 추가</a></li>
-                        
-                        <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-adding-text-tracks.html">텍스트 트랙 추가</a></li>
-                        
-                        <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-python-code.html">파이썬 코드</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/ingest-profiles-legacy/index.html">인제스트 프로파일 API 레거시<strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/ingest-profiles-legacy/getting-started/index.html">시작하기 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/ingest-profiles-legacy/getting-started/overview-ingest-profiles-api-legacy-ingest.html">개요: 인제스트 프로파일 API</a></li>
-                        
-                        <li><a href="/ingest-profiles-legacy/getting-started/quick-start-ingest-profiles-api.html">빠른 시작: 인제스트 프로파일 API</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/ingest-profiles-legacy/guides/index.html">가이드 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/ingest-profiles/guides/archiving-masters.html">아카이브 마스터</a></li>
-                        
-                        <li><a href="/ingest-profiles-legacy/guides/rendition-settings-and-video-quality.html">변환 설정 및 비디오 품질</a></li>
-                        
-                        <li><a href="/ingest-profiles-legacy/guides/conditional-output.html">조건부 출력</a></li>
-                        
-                        <li><a href="/general/audio-content.html">오디오 콘텐츠</a></li>
-                        
-                        <li><a href="https://studio.support.brightcove.com/admin/ingest-profiles-best-practices.html">모범 사례</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/ingest-profiles-legacy/references/index.html">참고 문헌<strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/ingest-profiles/references/reference.html">인제스트 프로파일 API 참조</a></li>
-                        
-                        <li><a href="/ingest-profiles-legacy/references/ingest-profiles-api-fields-reference-legacy-ingest.html">인제스트 프로파일 필드 참조</a></li>
-                        
-                        <li><a href="/ingest-profiles-legacy/references/standard-ingest-profiles-legacy-transcoding.html">표준 인제스트 프로파일: 레거시 시스템</a></li>
-                        
-                        <li><a href="/ingest-profiles/references/standard-live-ingest-profiles.html">표준 라이브 인제스트 프로파일</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-                  
-                    <li class="submenu-header">
-                      <a href="/ingest-profiles-legacy/code-samples/index.html">코드 샘플 <strong>+</strong></a>
-                      <ul class="sidenav-subsubmenu" style="display:none;">
-                        
-                        <li><a href="/ingest-profiles/code-samples/ingest-profiles-api-sample-add-profile-multiple-accounts.html">여러 계정에 프로필 추가</a></li>
-                        
-                        <li><a href="/ingest-profiles/code-samples/ingest-profiles-api-sample-get-all-profiles-account.html">계정에 대한 모든 프로필 가져오기</a></li>
-                        
-                        <li><a href="/ingest-profiles-legacy/code-samples/ingest-profiles-api-sample-set-default-profile-multiple-accounts-legacy-ingest.html">기본 프로필 복수 계정 설정</a></li>
-                        
-                      </ul>
-                    </li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/training/index.html">교육 <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
-                    <li><a href="/training/online-training-courses.html">온라인 교육 과정</a></li>
-                  
-                
-                  
-                    <li><a href="/training/register-training.html">강사 주도식 교육 등록</a></li>
-                  
-                
-                  
-                    <li><a href="/training/brightcove-university.html">브라이트코브 대학교 교육 과정</a></li>
-                  
-                
-              </ul>
-            
-          
-            
-              <h5 class="submenu-header"><a href="/support/index.html">지원 <strong>+</strong></a></h5>
-              <ul class="sidenav-submenu" style="display:none;">
-                
-                  
                     
-                  
-                
-                  
-                    <li><a href="/support/viewing-brightcove-system-status-page.html">브라이트코브 시스템 상태 페이지 보기</a></li>
-                  
-                
-                  
-                    <li><a href="/support/contact-sales.html">영업팀에 문의</a></li>
-                  
-                
-                  
-                    <li><a href="/support/opening-case-with-brightcove-support.html">지원 사례 열기</a></li>
-                  
-                
+                    <li><a href="/getting-started/authentication-brightcove-api-requests.html">API 요청에 대한 인증</a></li>
+                    
+                    <li><a href="/getting-started/concepts-testing-tools-brightcove-apis.html">Brightcove API용 테스트 도구</a></li>
+                    
+                    <li><a href="/getting-started/learning-guide-using-rest-apis.html">학습 가이드: REST API 사용</a></li>
+                   
               </ul>
-            
-          
+              
+              <h5 class="submenu-header"><a href="/general/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;일반 정보</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/general/all-api-references.html">모든 API 참조</a></li>
+                    
+                    <li><a href="/general/overview-context-aware-encoding.html">컨텍스트 인식 인코딩 개요</a></li>
+                    
+                    <li><a href="/general/managing-api-authentication-credentials.html">API 인증 자격 증명 관리</a></li>
+                    
+                    <li><a href="/general/overview-forensic-watermarking.html">개요: 포렌식 워터마킹</a></li>
+                    
+                    <li><a href="/general/faq-forensic-watermarking.html">자주하는 질문: 포렌식 워터마킹</a></li>
+                    
+                    <li><a href="/general/integrating-your-cms-video-cloud.html">CMS를 Video Cloud와 통합</a></li>
+                    
+                    <li><a href="/general/platform-api-code-samples.html">플랫폼 API 코드 샘플</a></li>
+                    
+                    <li><a href="/general/video-cloud-api-training-videos.html">플랫폼 API 교육 동영상</a></li>
+                    
+                    <li><a href="/general/concepts-api-tester.html">온라인 API 테스터</a></li>
+                    
+                    <li><a href="/general/use-insomnia-api-requests.html">API 요청에 불면증 사용</a></li>
+                    
+                    <li><a href="/general/use-postman-api-requests.html">API 요청에 Postman 사용</a></li>
+                    
+                    <li><a href="/general/audio-content.html">오디오 콘텐츠</a></li>
+                    
+                    <li><a href="/general/known-issues.html">플랫폼 API 알려진 문제</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/analytics/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Analytics API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/analytics/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/analytics/getting-started/overview-analytics-api-v1.html">개요: Analytics API</a></li>
+                            
+                            <li><a href="/analytics/getting-started/analytics-api-explorer.html">Analytics API 탐색기</a></li>
+                            
+                            <li><a href="/analytics/getting-started/overview-video-data-endpoint.html">개요: 비디오 데이터 엔드포인트</a></li>
+                            
+                            <li><a href="/analytics/getting-started/analytics-api-overview-dimensions-fields-and-parameters.html">개요: 차원, 필드 및 매개변수</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/analytics/general/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;일반 정보</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/analytics/general/faq-analytics-api.html">자주하는 질문: Analytics API</a></li>
+                            
+                            <li><a href="/analytics/general/analytics-api-glossary.html">Analytics API 용어집</a></li>
+                            
+                            <li><a href="/analytics/general/analytics-api-unique-users.html">고유 사용자</a></li>
+                            
+                            <li><a href="/analytics/general/live-metrics.html">라이브 메트릭</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/analytics/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/analytics/references/reference.html">Analytics API 참조</a></li>
+                            
+                            <li><a href="/analytics/references/analytics-api-release-notes.html">릴리즈 노트</a></li>
+                            
+                            <li><a href="/analytics/references/known-issues.html">알려진 문제</a></li>
+                            
+                            <li><a href="/analytics/references/analytics-api-error-reference.html">오류 참조</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/analytics/dimension-guides/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;치수 가이드</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/analytics/dimension-guides/dimension-account.html">치수: <code translate="No">account</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-browsertype.html">치수: <code translate="No">browser_type</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-date.html">치수: <code translate="No">date</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-datehour.html">치수: <code translate="No">date_hour</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-destinationdomain.html">치수: <code translate="No">destination_domain</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-destinationpath.html">치수: <code translate="No">destination_path</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-devicemanufacturer.html">치수: <code translate="No">device_manufacturer</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-devicetype.html">치수: <code translate="No">device_type</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-deviceos.html">치수: <code translate="No">device_os</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-city.html">치수: <code translate="No">city</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-country.html">치수: <code translate="No">country</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-region.html">치수: <code translate="No">region</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-livestream.html">치수: <code translate="No">live_stream</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-referrerdomain.html">치수: <code translate="No">referrer_domain</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-sourcetype.html">치수: <code translate="No">source_type</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-searchterms.html">치수: <code translate="No">search_terms</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-socialplatform.html">치수: <code translate="No">social_platform</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-player.html">치수: <code translate="No">player</code></a></li>
+                            
+                            <li><a href="/analytics/dimension-guides/dimension-video.html">치수: <code translate="No">video</code></a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/analytics/code-samples/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;코드 샘플</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/analytics/code-samples/analytics-api-sample-concurrent-viewers-live-events.html">라이브 이벤트 동시 시청자</a></li>
+                            
+                            <li><a href="/analytics/code-samples/analytics-api-sample-daily-analytics-report-generator.html">일일 분석 보고서 생성기</a></li>
+                            
+                            <li><a href="/analytics/code-samples/analytics-api-sample-destinations-report.html">목적지 보고서</a></li>
+                            
+                            <li><a href="/analytics/code-samples/analytics-api-sample-geographical-analytics-report.html">지리적 분석 보고서</a></li>
+                            
+                            <li><a href="/analytics/code-samples/analytics-api-sample-unique-users-day.html">일별 순 사용자</a></li>
+                            
+                            <li><a href="/analytics/code-samples/analytics-api-sample-video-engagement-graph.html">동영상 참여 그래프</a></li>
+                            
+                            <li><a href="/analytics/code-samples/analytics-api-sample-video-report-player-and-day.html">플레이어 및 요일별 동영상 보고서</a></li>
+                            
+                            <li><a href="/analytics/code-samples/analytics-api-sample-video-report-reference-id.html">참조 ID별 동영상 보고서</a></li>
+                            
+                            <li><a href="/analytics/code-samples/analytics-api-sample-video-report-tags.html">태그별 동영상 보고서</a></li>
+                            
+                            <li><a href="/analytics/code-samples/analyticscms-apis-sample-analytics-playlists.html">재생 목록별 분석</a></li>
+                            
+                            <li><a href="/analytics/code-samples/analyticscms-apis-sample-recently-added-videos.html">최근에 추가된 동영상</a></li>
+                            
+                            <li><a href="/analytics/code-samples/code-sample-video-analytics-report-country-and-day.html">국가 및 요일별 비디오 분석 보고서</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/audience/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Audience API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href=" /audience/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/audience/getting-started/overview-audience-api.html">개요: Audience API</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/audience/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/audience/references/reference.html">대상 API 참조</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/cloud-playout-apis/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Cloud Playout APIs</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href=" /cloud-playout-apis/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/cloud-playout-apis/getting-started/overview-channel-api.html">개요: Channels API</a></li>
+                            
+                            <li><a href="/cloud-playout-apis/getting-started/overview-epg-api.html">개요: EPG API</a></li>
+                            
+                            <li><a href="/cloud-playout-apis/getting-started/epg-best-practices.html"> 모범 사례</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/cloud-playout-apis/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/cloud-playout-apis/references/reference-epg.html">EPG API 참조</a></li>
+                            
+                            <li><a href="/cloud-playout-apis/references/reference-channels.html">Channels API 참조</a></li>
+                            
+                            <li><a href="/cloud-playout-apis/references/reference-cms-interactions.html">Cloud Playout용 CMS API 참조</a></li>
+                            
+                            <li><a href="/cloud-playout-apis/references/release-notes.html">Cloud Playout API 출시 정보</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/cms/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;CMS API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/cms/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/cms/getting-started/overview-cms-api.html">개요: CMS API</a></li>
+                            
+                            <li><a href="/cms/getting-started/practice-area-cms-api.html">실습 영역: CMS API</a></li>
+                            
+                            <li><a href="/cms/getting-started/best-practices-cms-and-playback-apis.html">모범 사례: CMS 및 Playback API</a></li>
+                            
+                            <li><a href="/cms/getting-started/cms-api-notifications.html">CMS API 알림</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/cms/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/cms/references/reference.html">CMS API 참조</a></li>
+                            
+                            <li><a href="/cms/references/catalog-apis-cms-api-and-playback-api-release-notes.html">CMS/Playback API 출시 정보</a></li>
+                            
+                            <li><a href="/cms/references/known-issues.html">알려진 문제</a></li>
+                            
+                            <li><a href="/cms/references/cms-api-video-fields-reference.html">CMS API 비디오 필드 참조</a></li>
+                            
+                            <li><a href="/cms/references/cms-api-playlist-fields-reference.html">CMS API 재생 목록 필드 참조</a></li>
+                            
+                            <li><a href="/cms/references/cms-api-custom-fields-reference.html">CMS API 사용자 정의 필드 참조</a></li>
+                            
+                            <li><a href="/cms/references/cms-api-folder-fields-reference.html">CMS API 폴더 필드 참조</a></li>
+                            
+                            <li><a href="/cms/references/cms-api-error-message-reference.html">CMS API 오류 메시지 참조</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/cms/searching/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;수색</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/cms/searching/cms-and-playback-apis-video-search-v2.html">CMS API: 동영상 검색 v2</a></li>
+                            
+                            <li><a href="/cms/searching/cms-api-playlists-search.html">CMS API: 재생 목록 검색</a></li>
+                            
+                            <li><a href="/cms/searching/using-cms-api-page-search-results.html">페이지 검색 결과</a></li>
+                            
+                            <li><a href="/cms/searching/cmsplayback-api-videos-search.html">CMS 및 Playback API: 동영상 검색 v1</a></li>
+                            
+                            <li><a href="/playback/guides/catalog-search-architecture.html">카탈로그 검색 아키텍처</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/cms/managing-videos/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;비디오/자산 관리</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/cms/managing-videos/activate-deactivate-videos.html">비디오 활성화/비활성화 또는 예약</a></li>
+                            
+                            <li><a href="/cms/managing-videos/using-cms-api-add-geo-filtering.html">지역 필터링 추가</a></li>
+                            
+                            <li><a href="/cms/managing-videos/digital-master-delete-api.html">디지털 마스터 삭제 API</a></li>
+                            
+                            <li><a href="/cms/managing-videos/deleting-videos.html">동영상 삭제</a></li>
+                            
+                            <li><a href="/cms/managing-videos/getting-counts-videos-and-playlists.html">비디오 및 재생 목록 수 얻기</a></li>
+                            
+                            <li><a href="/cms/managing-videos/managing-playlists-using-cms-api.html">CMS API를 사용하여 재생 목록 관리</a></li>
+                            
+                            <li><a href="/cms/managing-videos/using-cms-api-managing-clips.html">클립 관리</a></li>
+                            
+                            <li><a href="/cms/managing-videos/media-sharing-cms-api.html">미디어 공유</a></li>
+                            
+                            <li><a href="/cms/managing-videos/multilingual-metadata.html">다국어 메타데이터</a></li>
+                            
+                            <li><a href="/cms/managing-videos/using-cms-api-retrieve-video-data.html">비디오 데이터 검색</a></li>
+                            
+                            <li><a href="/cms/managing-videos/setting-360-degree-video-properties-cms-api.html">360도 비디오 속성 설정</a></li>
+                            
+                            <li><a href="/cms/managing-videos/using-cms-api-remote-assets.html">원격 자산</a></li>
+                            
+                            <li><a href="/cms/managing-videos/using-cms-api-add-webvtt-captions-text-tracks.html">WebVTT 캡션 추가(텍스트 트랙)</a></li>
+                            
+                            <li><a href="/cms/managing-videos/managing-text-tracks.html">CMS API를 사용하여 텍스트 트랙 관리</a></li>
+                            
+                            <li><a href="/cms/managing-videos/generate-video-sitemaps.html">비디오 Sitemap 생성</a></li>
+                            
+                            <li><a href="/cms/managing-videos/identifying-low-performing-content.html">저성과 콘텐츠 식별</a></li>
+                            
+                            <li><a href="/cms/managing-videos/cms-api-working-folders.html">폴더 작업</a></li>
+                            
+                            <li><a href="/cms/managing-videos/working-with-labels.html">레이블 작업</a></li>
+                            
+                            <li><a href="/cms/managing-videos/linking-zencoder-and-video-cloud-video-demand.html">Zencoder와 Video Cloud 연결하기</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/cms/code-samples/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;코드 샘플</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/cms/code-samples/cms-api-sample-add-multiple-affiliate-accounts-media-sharing.html">여러 제휴 계정 추가</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-share-multiple-videos.html">여러 비디오 공유</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-media-sharing-report.html">미디어 공유 보고서</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-shared-media-report.html">공유 미디어 보고서</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-update-videos.html">비디오 업데이트</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-add-custom-field-multiple-videos.html">여러 비디오에 사용자 정의 필드 추가</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-update-geo-properties.html">지역 속성 업데이트</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-add-cue-points.html">큐 포인트 추가</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-video-report-generator.html">비디오 보고서 생성기</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-videos-delivery-type.html">배달 유형별 동영상</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-download-links.html">다운로드 링크</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-video-sitemap-generator.html">비디오 사이트맵 생성기</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-mrss-generator.html">MRSS 생성기</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-mrss-feed-playlist.html">재생 목록의 MRSS 피드</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-generate-rss-podcast-feed-itunes.html">iTunes용 RSS 팟캐스트 피드</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-video-renditions-inspector.html">비디오 변환 검사기</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-report-audio-only-content.html">오디오 전용 콘텐츠에 대한 보고서</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-video-schema-builder.html">비디오 스키마 빌더</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-python-code-get-request.html">GET 요청에 대한 Python 코드</a></li>
+                            
+                            <li><a href="/cms/code-samples/cms-api-sample-video-search-app.html">비디오 검색 앱</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/xdr/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;교차 기기 이력서(XDR) API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/xdr/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/xdr/getting-started/xdr-overview.html">개요: 교차 기기 이력서</a></li>
+                            
+                            <li><a href="/xdr/getting-started/get-playback-position.html">XDR API에서 재생 위치 가져오기</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/xdr/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;가이드</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="https://player.support.brightcove.com/playback/xdr-with-bcplayer.html">Brightcove Player를 사용한 교차 장치 이력서</a></li>
+                            
+                            <li><a href="https://sdks.support.brightcove.com/features/cross-device-resume-sdks.html">네이티브 SDK를 사용한 교차 기기 이력서</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/xdr/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/xdr/getting-started/xdr-overview.html">교차 기기 이력서 API 참조</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/data-collection/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Data Collection API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/data-collection/getting-started/overview-data-collection-api-v2.html">Data Collection API</a></li>
+                    
+                    <li><a href="/data-collection/getting-started/data-collection-api-sample.html">Data Collection API 샘플</a></li>
+                    
+                    <li><a href="/data-collection/references/reference.html">Data Collection API 참조</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/delivery-rules/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Delivery Rules API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/delivery-rules/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/delivery-rules/getting-started/overview-delivery-rules.html">개요: 배달 규칙</a></li>
+                            
+                            <li><a href="/delivery-rules/getting-started/implementing-delivery-rules.html">배달 규칙 구현</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/delivery-rules/guides/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;가이드</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="https://player.support.brightcove.com/playback/using-delivery-rules-with-bcp.html">Brightcove Player에서 배달 규칙 사용</a></li>
+                            
+                            <li><a href="https://sdks.support.brightcove.com/features/using-delivery-rules-with-sdks.html">네이티브 SDK와 함께 배달 규칙 사용</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/delivery-rules/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/delivery-rules/references/reference.html">Delivery Rules API 참조</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/delivery-system/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Delivery System API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/delivery-system/overview-delivery-system-api.html">개요: Delivery System API</a></li>
+                    
+                    <li><a href="/delivery-system/step-step-delivery-system-api.html">단계별: Delivery System API</a></li>
+                    
+                    <li><a href="/delivery-system/delivery-system-api-git-overview.html">힘내 개요</a></li>
+                    
+                    <li><a href="/delivery-system/references/reference.html">전달 시스템 API 참조</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/dynamic-ingest/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Dynamic Ingest API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/dynamic-ingest/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/dynamic-ingest/getting-started/overview-dynamic-ingest-api-dynamic-delivery.html">개요: Dynamic Ingest API</a></li>
+                            
+                            <li><a href="/dynamic-ingest/getting-started/quick-start-dynamic-ingest-api.html">빠른 시작: Dynamic Ingest API</a></li>
+                            
+                            <li><a href="/dynamic-ingest/getting-started/source-file-upload-api-dynamic-ingest.html">동적 수집을 위한 소스 파일 업로드 API</a></li>
+                            
+                            <li><a href="/dynamic-ingest/getting-started/overview-dynamic-delivery.html">Dynamic Delivery 개요</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/dynamic-ingest/general/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;일반 정보</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/dynamic-ingest/general/dynamic-ingest-api-best-practices.html">Dynamic Ingest API: 모범 사례</a></li>
+                            
+                            <li><a href="/dynamic-ingest/general/notifications-dynamic-delivery-video-cloud.html">동적 수집에 대한 알림</a></li>
+                            
+                            <li><a href="/dynamic-ingest/general/get-status-dynamic-ingest-requests-dynamic-delivery.html">동적 수집 요청 상태 가져오기</a></li>
+                            
+                            <li><a href="/dynamic-ingest/general/fallback-retry-strategy.html">대체/재시도 전략</a></li>
+                            
+                            <li><a href="/dynamic-ingest/general/using-dynamic-ingest-s3.html">S3에서 동적 수집 사용</a></li>
+                            
+                            <li><a href="/dynamic-ingest/general/ugc-strategies.html">UGC 전략</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/dynamic-ingest/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/dynamic-ingest/references/reference.html">Dynamic Ingest API 참조</a></li>
+                            
+                            <li><a href="/dynamic-ingest/references/dynamic-ingest-api-release-notes.html">Dynamic Ingest API 출시 정보</a></li>
+                            
+                            <li><a href="/dynamic-ingest/references/known-issues.html">알려진 문제</a></li>
+                            
+                            <li><a href="/dynamic-ingest/references/dynamic-ingest-ingest-fields.html">수집 필드 참조</a></li>
+                            
+                            <li><a href="/dynamic-ingest/references/dynamic-ingest-error-message-reference.html">동적 수집 오류 메시지 참조</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/dynamic-ingest/ingest-guides/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;인제스트 가이드</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/dynamic-ingest/ingest-guides/context-aware-encoding.html">컨텍스트 인식 인코딩 사용</a></li>
+                            
+                            <li><a href="/dynamic-ingest/ingest-guides/dynamic-delivery-ingest-priority-queueing.html">동적 전달 수집 우선 순위 큐</a></li>
+                            
+                            <li><a href="/ingest-profiles/guides/archiving-masters.html">아카이빙 마스터</a></li>
+                            
+                            <li><a href="/dynamic-ingest/ingest-guides/implementing-multiple-audio-tracks-using-apis.html">다중 오디오 트랙 구현</a></li>
+                            
+                            <li><a href="/dynamic-ingest/ingest-guides/images-and-dynamic-ingest-api.html">이미지 및 Dynamic Ingest API</a></li>
+                            
+                            <li><a href="/dynamic-ingest/ingest-guides/dynamic-ingest-media-sharing.html">미디어 공유를 통한 동적 수집</a></li>
+                            
+                            <li><a href="/dynamic-ingest/ingest-guides/ingesting-content-drm.html">DRM으로 콘텐츠 수집</a></li>
+                            
+                            <li><a href="/dynamic-ingest/ingest-guides/ingesting-webvtt-files-text-trackscaptions.html">WebVTT 파일 수집</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/dynamic-ingest/code-samples/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;코드 샘플</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-tester-dynamic-delivery.html">Dynamic Ingest API 테스터</a></li>
+                            
+                            <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-ingesting-videos-dynamic-delivery.html">비디오 수집</a></li>
+                            
+                            <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-re-transcoding-videos-dynamic-delivery.html">비디오 재변환</a></li>
+                            
+                            <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-replacing-videos-dynamic-delivery.html">비디오 교체</a></li>
+                            
+                            <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-add-scheduled-videos-dynamic-delivery.html">예약된 비디오 추가</a></li>
+                            
+                            <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-adding-text-tracks.html">텍스트 트랙 추가</a></li>
+                            
+                            <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-ingesting-low-priority-videos-dynamic-delivery.html">우선 순위가 낮은 비디오 수집</a></li>
+                            
+                            <li><a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-python-code.html">파이썬 코드</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/ingest-profiles/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Ingest Profiles API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/ingest-profiles/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/ingest-profiles/getting-started/overview-ingest-profiles-api-dynamic-delivery-context-aware-encoding.html">개요: Ingest Profiles API</a></li>
+                            
+                            <li><a href="/ingest-profiles/getting-started/practice-area-ingest-profiles-api-dynamic-delivery.html">실습 영역: Ingest Profiles API</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/ingest-profiles/guides/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;가이드</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/ingest-profiles/guides/archiving-masters.html">아카이빙 마스터</a></li>
+                            
+                            <li><a href="/ingest-profiles/guides/hevc-video.html">HEVC 비디오</a></li>
+                            
+                            <li><a href="/ingest-profiles/guides/cae-fast-publish.html">CAE 빠른 게시</a></li>
+                            
+                            <li><a href="/general/audio-content.html">오디오 콘텐츠</a></li>
+                            
+                            <li><a href="/ingest-profiles/guides/mp4s-dynamic-delivery.html">Dynamic Delivery의 MP4</a></li>
+                            
+                            <li><a href="https://studio.support.brightcove.com/admin/ingest-profiles-best-practices.html">모범 사례</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/ingest-profiles/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/ingest-profiles/references/reference.html">수집 프로필 API 참조</a></li>
+                            
+                            <li><a href="/ingest-profiles/references/ingest-profiles-api-fields-reference-dynamic-delivery-and-context-aware-encoding.html">수집 프로필 필드 참조</a></li>
+                            
+                            <li><a href="/ingest-profiles/references/standard-ingest-profiles-dynamic-delivery-and-context-aware-encoding.html">표준 수집 프로필</a></li>
+                            
+                            <li><a href="/ingest-profiles/references/standard-live-ingest-profiles.html">표준 라이브 수집 프로필</a></li>
+                            
+                            <li><a href="/ingest-profiles/references/fields-custom-live-ingest-profiles.html">사용자 지정 라이브 수집 프로필 필드</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/ingest-profiles/code-samples/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;코드 샘플</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/ingest-profiles/code-samples/ingest-profiles-api-sample-create-custom-dynamic-delivery-profile.html">사용자 지정 동적 배달 프로필 만들기</a></li>
+                            
+                            <li><a href="/ingest-profiles/code-samples/ingest-profiles-api-sample-create-custom-context-aware-encoding-profile.html">사용자 지정 CAE 프로필 만들기</a></li>
+                            
+                            <li><a href="/ingest-profiles/code-samples/ingest-profiles-api-sample-add-profile-multiple-accounts.html">여러 계정에 프로필 추가</a></li>
+                            
+                            <li><a href="/ingest-profiles/code-samples/ingest-profiles-api-sample-get-all-profiles-account.html">계정에 대한 모든 프로필 가져오기</a></li>
+                            
+                            <li><a href="/ingest-profiles/code-samples/ingest-profiles-api-sample-set-default-profile-dynamic-delivery.html">기본 프로필 설정</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/ipx/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;In-Page Experience API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href=" /ipx/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/ipx/getting-started/overview-page-experience-api.html">개요: In-Page Experience API</a></li>
+                            
+                            <li><a href="/ipx/getting-started/quick-start-page-experience-platform-rest-api.html">빠른 시작: 인페이지 경험 플랫폼(REST) API</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/ipx/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/ipx/references/reference.html">In-Page Experience API 참조</a></li>
+                            
+                            <li><a href="/ipx/references/page-experience-api-error-reference.html">In-Page Experience API 오류 참조</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/live-api/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Live API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/live-api/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/live-api/getting-started/overview-brightcove-live-api.html">개요: Live API</a></li>
+                            
+                            <li><a href="/live-api/getting-started/quick-start-create-live-stream-using-brightcove-live-api.html">API를 사용하여 라이브 스트림 만들기</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/live-api/code-samples/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;코드 샘플</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/live-api/code-samples/live-api-sample-create-live-job.html">라이브 작업 만들기</a></li>
+                            
+                            <li><a href="/live-api/code-samples/quick-start-create-live-job-mpeg2-ts-input.html">MPEG2-TS 입력용 라이브 작업 생성</a></li>
+                            
+                            <li><a href="/live-api/code-samples/quick-start-using-rtmp-outputs-live-events.html">라이브 이벤트에 RTMP 출력 사용</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/live-api/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/live-api/references/live-api-error-messages.html">오류 메시지</a></li>
+                            
+                            <li><a href="/live-api/references/live-api-release-notes.html">릴리즈 노트</a></li>
+                            
+                            <li><a href="/live-api/references/reference.html">Live API 참조</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/live-api/ssai/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;싸이</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/live-api/ssai/live-api-cue-points-and-ad-beacons-ssai.html">SSAI를 사용한 큐 포인트 및 광고 비콘</a></li>
+                            
+                            <li><a href="/live-api/ssai/live-api-server-side-ad-insertion-ssai.html">서버 측 광고 삽입(SSAI)</a></li>
+                            
+                            <li><a href="/live-api/ssai/overview-player-enhancements-live-ssai.html">개요: 라이브 SSAI를 위한 플레이어 개선 사항</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/live-api/guides/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;가이드</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="https://live.support.brightcove.com/get-started/live-module-guidelines-and-best-practices.html">Brightcove 라이브 모범 사례</a></li>
+                            
+                            <li><a href="/live-api/guides/brightcove-live-program-ad-metadata-api.html">Brightcove 라이브 프로그램 광고 메타데이터 API</a></li>
+                            
+                            <li><a href="/live-api/guides/live-api-creating-frame-accurate-clip.html">프레임에 정확한 클립 만들기</a></li>
+                            
+                            <li><a href="/live-api/guides/live-api-creating-vod-clips.html">VOD 클립 만들기</a></li>
+                            
+                            <li><a href="/live-api/guides/getting-list-live-or-vod-jobs.html">라이브 또는 VOD 작업 목록 가져오기</a></li>
+                            
+                            <li><a href="/live-api/guides/live-api-insert-id3-timed-metadata.html">ID3 시간 메타데이터 삽입</a></li>
+                            
+                            <li><a href="/live-api/guides/live-drm-live-api.html">Live API를 통한 라이브 DRM</a></li>
+                            
+                            <li><a href="/live-api/guides/managing-credentials-live-api.html">Live API에 대한 자격 증명 관리</a></li>
+                            
+                            <li><a href="/live-api/guides/live-api-notifications.html">알림</a></li>
+                            
+                            <li><a href="/live-api/guides/live-playback-restrictions.html">라이브 스트림의 Playback Restrictions</a></li>
+                            
+                            <li><a href="/live-api/guides/reducing-latency-live-streams.html">라이브 스트림의 지연 시간 줄이기</a></li>
+                            
+                            <li><a href="/live-api/guides/live-api-rtmp-outputs.html">RTMP 출력</a></li>
+                            
+                            <li><a href="/live-api/guides/live-api-static-entry-points.html">정적 진입점</a></li>
+                            
+                            <li><a href="/live-api/guides/signed-urls-and-token-auth-live-stream.html">라이브 스트림을 사용한 서명된 URL 및 토큰 인증</a></li>
+                            
+                            <li><a href="/live-api/guides/using-live-redundancy.html">라이브 중복 사용</a></li>
+                            
+                            <li><a href="/live-api/guides/live-api-vod-live-event.html">라이브 이벤트 VOD</a></li>
+                            
+                            <li><a href="/live-api/guides/live-scheduler.html">개요: 라이브 스케줄러</a></li>
+                            
+                            <li><a href="/live-api/guides/live-scheduler-stop-start.html">SEP 스트림의 활성화/비활성화 스케줄링</a></li>
+                            
+                            <li><a href="/live-api/guides/live-scheduler-clips.html">라이브 스트림을 위한 클립 생성 일정 잡기</a></li>
+                            
+                            <li><a href="/live-api/guides/live-scheduler-notifications.html">라이브 스케줄러 알림</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/oauth/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;OAuth API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/oauth/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/oauth/getting-started/overview-oauth-api-v4.html">개요: OAuth API</a></li>
+                            
+                            <li><a href="/oauth/getting-started/quick-start-oauth.html">빠른 시작: OAuth API</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/oauth/guides/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;가이드</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/oauth/guides/oauth-create-client-credentials-using-curl.html">클라이언트 자격 증명 생성: cURL</a></li>
+                            
+                            <li><a href="/oauth/guides/oauth-create-client-credentials-using-postman.html">클라이언트 자격 증명 생성: 우편 집배원</a></li>
+                            
+                            <li><a href="/oauth/guides/getting-access-tokens.html">액세스 토큰 받기</a></li>
+                            
+                            <li><a href="/oauth/guides/api-operations-client-credentials-requests.html">클라이언트 자격 증명 요청에 대한 API 작업</a></li>
+                            
+                            <li><a href="/oauth/guides/get-your-bc-token.html">BC_TOKEN 받기</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/oauth/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/oauth/references/reference.html">OAuth API 참조</a></li>
+                            
+                            <li><a href="/oauth/references/oauth-api-error-message-reference.html">OAuth API 오류 메시지 참조</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/oauth/code-samples/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;코드 샘플</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/oauth/code-samples/oauth-api-sample-create-client-credentials.html">클라이언트 자격 증명 생성</a></li>
+                            
+                            <li><a href="/oauth/code-samples/oauth-api-sample-get-access-token.html">액세스 토큰 받기</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/playback/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Playback API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/playback/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/playback/getting-started/overview-playback-api.html">개요: Playback API</a></li>
+                            
+                            <li><a href="/playback/getting-started/quick-start-playback-api.html">빠른 시작: Playback API</a></li>
+                            
+                            <li><a href="/cms/getting-started/best-practices-cms-and-playback-apis.html">모범 사례: CMS 및 Playback API</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/playback/guides/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;가이드</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/cms/searching/cmsplayback-api-videos-search.html">CMS 및 Playback API: 비디오 검색</a></li>
+                            
+                            <li><a href="/cms/getting-started/best-practices-cms-and-playback-apis.html">카탈로그 검색 아키텍처</a></li>
+                            
+                            <li><a href="/playback/guides/static-url-delivery.html">정적 URL 전달</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/playback/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/playback/references/reference_v2.html">Playback API 참조</a></li>
+                            
+                            <li><a href="/playback/references/playback-api-video-fields-reference.html">비디오 필드 참조</a></li>
+                            
+                            <li><a href="/playback/references/playback-api-playlist-fields-reference.html">재생 목록 필드 참조</a></li>
+                            
+                            <li><a href="/playback/references/playback-api-error-reference.html">오류 참조</a></li>
+                            
+                            <li><a href="/cms/references/catalog-apis-cms-api-and-playback-api-release-notes.html">CMS/Playback API 출시 정보</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/playback/code-samples/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;코드 샘플</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/playback/code-samples/thumbnail-grid.html">비디오 썸네일 그리드</a></li>
+                            
+                            <li><a href="/playback/code-samples/playback-api-sample-mrss-generator.html">MRSS 생성기</a></li>
+                            
+                            <li><a href="/playback/code-samples/playback-api-sample-jsonmrss-feed-playlist.html">재생 목록의 JSON/MRSS 피드</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/player-management/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Player Management API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/player-management/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/player-management/getting-started/overview-player-management-api.html">개요: Player Management API</a></li>
+                            
+                            <li><a href="/player-management/getting-started/step-step-player-management.html">단계별: 선수 관리</a></li>
+                            
+                            <li><a href="/player-management/getting-started/training-demand-quick-start-player-management.html">주문형 교육: 플레이어 관리에 대한 빠른 시작</a></li>
+                            
+                            <li><a href="/player-management/getting-started/oauth-guide.html">OAuth 가이드</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/player-management/guides/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;가이드</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/player-management/guides/player-configuration-guide.html">플레이어 구성 가이드</a></li>
+                            
+                            <li><a href="/player-management/guides/plugin-registry.html">플러그인 레지스트리</a></li>
+                            
+                            <li><a href="/player-management/guides/pre-release-player.html">시험판 플레이어</a></li>
+                            
+                            <li><a href="/player-management/guides/player-repositories.html">플레이어 저장소</a></li>
+                            
+                            <li><a href="/player-management/guides/guide-embed-apis.html">포함 API</a></li>
+                            
+                            <li><a href="/player-management/guides/opting-out-automatic-player-updates.html">자동 플레이어 업데이트 옵트아웃</a></li>
+                            
+                            <li><a href="/player-management/guides/embedding-brightcove-players-cms.html">CMS에 Brightcove 플레이어 포함</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/player-management/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/player-management/references/reference.html">Player Management API 참조</a></li>
+                            
+                            <li><a href="/player-management/references/player-management-api-release-notes.html">릴리즈 노트</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/player-management/code-samples/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;코드 샘플</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/player-management/code-samples/setup-player-management-samples.html">플레이어 관리 샘플 설정</a></li>
+                            
+                            <li><a href="/player-management/code-samples/bulk-updating-brightcove-default-player.html">기본 플레이어 일괄 업데이트</a></li>
+                            
+                            <li><a href="/player-management/code-samples/player-management-api-sample-create-player.html">플레이어 만들기</a></li>
+                            
+                            <li><a href="/player-management/code-samples/player-management-api-sample-display-players.html">디스플레이 플레이어</a></li>
+                            
+                            <li><a href="/player-management/code-samples/player-management-api-sample-delete-players.html">플레이어 삭제</a></li>
+                            
+                            <li><a href="/player-management/code-samples/player-management-api-sample-using-lastviewed-data.html">last_viewed 데이터 사용</a></li>
+                            
+                            <li><a href="/player-management/code-samples/player-management-api-sample-programmatically-update-players.html">프로그래밍 방식으로 플레이어 업데이트</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/playback-restrictions/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Playback Restrictions</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/playback-restrictions/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/playback-restrictions/getting-started/overview-playback-restrictions.html">개요: Brightcove Playback Restrictions</a></li>
+                            
+                            <li><a href="/playback-restrictions/getting-started/implementing-playback-rights.html">재생 권한 구현</a></li>
+                            
+                            <li><a href="https://studio.support.brightcove.com/admin/managing-playback-rights.html">비디오 클라우드 스튜디오: 재생 권한</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/playback-restrictions/guides/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;가이드</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="https://general.support.brightcove.com/developer/create-json-web-token.html">JSON 웹 토큰(JWT) 생성</a></li>
+                            
+                            <li><a href="/playback-restrictions/guides/authentication-apis.html">인증 API 사용</a></li>
+                            
+                            <li><a href="/playback-restrictions/guides/stream-concurrency.html">뷰어당 동시 스트림 제한</a></li>
+                            
+                            <li><a href="/playback-restrictions/guides/device-limits.html">장치 제한 구현</a></li>
+                            
+                            <li><a href="https://player.support.brightcove.com/playback/playback-restrictions-with-bcp.html">Brightcove Player로 Playback Restrictions</a></li>
+                            
+                            <li><a href="https://sdks.support.brightcove.com/features/playback-restrictions-with-sdks.html">네이티브 SDK의 Playback Restrictions 사항</a></li>
+                            
+                            <li><a href="/live-api/guides/live-playback-restrictions.html">라이브 스트림의 Playback Restrictions</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/playback-restrictions/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;입증</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/playback-restrictions/references/key-api/reference.html">주요 API 참조</a></li>
+                            
+                            <li><a href="/playback-restrictions/references/blacklist-api/reference.html">블랙리스트 API 참조</a></li>
+                            
+                            <li><a href="/playback-restrictions/references/audit-api/reference.html">감사 API 참조</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/playback-restrictions/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/playback-restrictions/references/playback-rights/reference.html">재생 권한 API 참조</a></li>
+                            
+                            <li><a href="/cms/references/reference.html">CMS API 참조</a></li>
+                            
+                            <li><a href="/playback-restrictions/references/devices-api/reference.html">기기 API 참조</a></li>
+                            
+                            <li><a href="/playback-restrictions/references/playback-rights-errors.html">Playback Restrictions 오류</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/policy/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Policy API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/policy/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/policy/getting-started/overview-policy-api.html">개요: Policy API</a></li>
+                            
+                            <li><a href="/policy/getting-started/quick-start-policy-api.html">코드 샘플: 정책 키 생성</a></li>
+                            
+                            <li><a href="/policy/getting-started/policy-keys.html">플레이어의 정책 키</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/policy/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/policy/references/reference.html">Policy API 참조</a></li>
+                            
+                            <li><a href="/policy/references/policy-api-release-notes.html">릴리즈 노트</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/social/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Social API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/social/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/social/getting-started/overview-social-api.html">개요: Social API</a></li>
+                            
+                            <li><a href="/social/getting-started/quick-start-social-api.html">빠른 시작: Social API</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/social/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/social/references/reference.html">Social API 참조</a></li>
+                            
+                            <li><a href="/social/references/social-api-error-reference.html">Social API: 오류 참조</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/social-syndication/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;Social Syndication API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/social-syndication/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/social-syndication/getting-started/public-syndication-api-overview.html">개요: 신디케이션 구성 API</a></li>
+                            
+                            <li><a href="/social-syndication/getting-started/feed-syndication-api-overview.html">개요: 신디케이션 피드 API</a></li>
+                            
+                            <li><a href="/social-syndication/getting-started/sample-templates-universal-syndication.html">범용 신디케이션용 템플릿</a></li>
+                            
+                            <li><a href="/cms/searching/cms-and-playback-apis-video-search-v2.html">CMS 및 Playback API: 동영상 검색 v2</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/social-syndication/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/social-syndication/references/configuration-reference.html">신디케이션 구성 API 참조</a></li>
+                            
+                            <li><a href="/social-syndication/references/feed-reference.html">신디케이션 피드 API 참조</a></li>
+                            
+                            <li><a href="/policy/references/policy-api-release-notes.html">릴리즈 노트</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/ssai/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;SSAI API</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li class="submenu-header">
+                      <a href="/ssai/getting-started/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;시작하기</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/ssai/getting-started/video-cloud-ssai-ad-config-api.html">비디오 클라우드 SSAI API</a></li>
+                           
+                      </ul>
+                    </li>
+                    
+                    <li class="submenu-header">
+                      <a href="/ssai/references/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;참고문헌</a>
+                      <ul class="sidenav-subsubmenu" style="display:none;">
+                         
+                            <li><a href="/ssai/references/reference.html">SSAI API 참조</a></li>
+                            
+                            <li><a href="/ssai/references/ssai-api-error-reference.html">SSAI API 오류 참조</a></li>
+                           
+                      </ul>
+                    </li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/training/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;훈련</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/training/online-training-courses.html">온라인 교육 과정</a></li>
+                    
+                    <li><a href="/training/register-training.html">강사 주도 교육 등록</a></li>
+                    
+                    <li><a href="/training/brightcove-university.html">Brightcove 대학 교육 과정</a></li>
+                   
+              </ul>
+              
+              <h5 class="submenu-header"><a href="/support/index.html"><span style="color:#8E9093">+ </span>&nbsp;&nbsp;지원하다</a></h5>
+              <ul class="sidenav-submenu" style="display:none;">
+                 
+                    <li><a href="/support/viewing-brightcove-system-status-page.html">Brightcove 시스템 상태 페이지 보기</a></li>
+                    
+                    <li><a href="/support/contact-sales.html">영업팀에 문의</a></li>
+                    
+                    <li><a href="/support/opening-case-with-brightcove-support.html">지원 사례 열기</a></li>
+                    
+                    <li><a href="/support/reset-support-portal-password.html">지원 포털 비밀번호 재설정</a></li>
+                   
+              </ul>
+             
       </nav>
     </div>
     <div class="col-lg-7" style="background-color: white;color: #333333;margin-top: -1em;margin-bottom: -1em;padding-bottom:1em;">
   <!-- bootstrap layout -->
-
-<p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="네비게이션 메뉴"/></p>
+ <p id="bc_veggie_burger_wrapper" style="display: none;"><img id="bc_veggie_burger" src="/assets/images/feather/menu.svg" alt="Navigation Menu"></p>
 
 <!-- search bar -->
 <div id="nav-search-box" style="margin-top: 1rem;"></div>
@@ -1306,63 +1302,23 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   <ul id="centered_in_page_toc" class="list-none"></ul>
 </details>
 <!-- open in new tab/window -->
-<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="새 탭에서 열기" style="margin-top:4em;width: 1.5em;"/></a>
-
-
-
-
+<a id="open_new_tab" href="#" target="_blank" style="display: none;"><img src="/assets/images/feather/external-link.svg" alt="open in new tab" style="margin-top:4em;width: 1.5em;"></a>  ---
+title: Policy API 참조
+parent: Policy API
+description: This section provides guides to help you get started with Brightcove Beacon ---
 
 
 <article class="landing-page-wrapper">
-  <h1>시작하기 홈</h1>
+  <h1></h1>
   <section class="landing-page-header" id="landing_page_header">
-    <p>이 섹션에서는 브라이트코브 비콘을 시작하는 데 도움이 되는 가이드를 제공합니다.</p>
+    <p></p>
   </section>
-  <br/>
-<section class="card-wrapper">
-  <section onclick="window.location.pathname = '/getting-started/learning-guide-bc-beacon.html';" class="bcls-card">
-    <div class="card-icon">
-      <i class="far fa-book-reader"></i>
-    </div>
-    <div class="card-content">
-      <h3 id="learning-guide">학습 가이드</h3>
-      <p>브라이트코브 비콘 설명</p>
-    </div>
+  <section class="bcls-section">
+    <h2 id="topics">주제</h2>
+    <p><a href="/policy/references/reference.html">Policy API 참조</a></p>
+    <p><a href="/policy/references/policy-api-release-notes.html">Policy API 출시 정보</a></p>
   </section>
-
-  <section onclick="window.location.pathname = '/getting-started/implementation-phases.html';" class="bcls-card">
-    <div class="card-icon">
-      <i class="fal fa-project-diagram"></i>
-    </div>
-    <div class="card-content">
-      <h3 id="implementation-phases">구현 단계</h3>
-      <p>구현 프로세스에 대한 세부 정보</p>
-    </div>
-  </section>
-
-  <section onclick="window.location.pathname = '/getting-started/app-design-considerations.html';" class="bcls-card">
-    <div class="card-icon">
-      <i class="far fa-pencil-ruler"></i>
-    </div>
-    <div class="card-content">
-      <h3 id="app-design-considerations">응용 프로그램 설계 고려 사항</h3>
-      <p>응용 프로그램 설계에 대한 예제 및 팁 제공</p>
-    </div>
-  </section>
-
-  <section onclick="window.location.pathname = '/getting-started/creating-your-app-design.html';" class="bcls-card">
-    <div class="card-icon">
-      <i class="far fa-edit"></i>
-    </div>
-    <div class="card-content">
-      <h3 id="create-app-design">응용 프로그램 디자인 만들기</h3>
-      <p>애플리케이션 설계에 대한 대안을 안내합니다.</p>
-    </div>
-  </section>
-</section>
-</article>
-
-<!-- complete bootstrap layout -->
+</article> <!-- complete bootstrap layout -->
     </div>
     <div class="col-sm-2 right-side-bar">
       
@@ -1371,10 +1327,14 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
 </div>
 
 <hr>
-<footer class="bcls-footer" role="contentinfo">
+<div class="last-updated">
+  페이지 마지막 업데이트 날짜14 Feb 2022
+</div>
+ <footer class="bcls-footer" role="contentinfo">
   <div class="row">
     <div class="region region-footer-top-center col-md-12">
       <nav role="navigation" aria-labelledby="block-brightcovesupport-menu" id="block-brightcovesupport" class="footer-menu">
+        <img src="https://support.brightcove.com/site-assets/images/site/SVG/COVE004_Brightcove_Logo_093020_RGB_KO.svg" class="bc-footer-logo" alt="Brightcove">
 
         <h2>브라이트코브 지원</h2>
 
@@ -1383,24 +1343,24 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
             <a href="https://status.brightcove.com">시스템 상태</a>
           </li>
           <li>
-            <a href="https://supportportal.brightcove.com/s/login/?">고객 지원 문의</a>
+            <a href="https://supportportal.brightcove.com/s/login/?">연락처 지원</a>
           </li>
           <li>
-            <a href="https://support.brightcove.com/">문서화</a>
+            <a href="https://support.brightcove.com/">선적 서류 비치</a>
           </li>
         </ul>
 
       </nav>
       <nav role="navigation" aria-labelledby="block-training-menu" id="block-training" class="footer-menu">
 
-        <h2>교육</h2>
+        <h2>훈련</h2>
 
         <ul class="menu">
           <li>
-            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">온라인 강좌</a>
+            <a href="https://studio.support.brightcove.com/training/online-training-courses.html">온라인 코스</a>
           </li>
           <li>
-            <a href="https://studio.support.brightcove.com/training/register-training.html">강좌 등록</a>
+            <a href="https://studio.support.brightcove.com/training/register-training.html">코스 등록</a>
           </li>
           <li>
             <a href="https://university.brightcove.com/">브라이트코브 대학교</a>
@@ -1410,14 +1370,14 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
       </nav>
       <nav role="navigation" aria-labelledby="block-brightcove-menu" class="footer-menu">
 
-        <h2>Brightcove</h2>
+        <h2>브라이트코브</h2>
 
         <ul class="menu">
           <li>
             <a href="https://www.brightcove.com">브라이트코브닷컴</a>
           </li>
           <li>
-            <a href="https://supportportal.brightcove.com/s/login/?">연락처</a>
+            <a href="https://supportportal.brightcove.com/s/login/?">문의하기</a>
           </li>
         </ul>
       </nav>
@@ -1429,12 +1389,12 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
         <table>
           <tr>
             <td>
-              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> 브라이트코브 Inc. 모든 판권 소유.</div>
+              <div id="bc_copyright" class="field field--name-field-copyright-year field--type-string field--label-hidden field--item" style="float: left;"> Brightcove Inc. 판권 소유.</div>
             </td>
-            <td><a href="https://www.brightcove.com/en/legal/privacy">개인 정보 보호</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">이용 약관</a></td>
+            <td><a href="https://www.brightcove.com/en/legal/privacy">은둔</a> | <a href="https://www.brightcove.com/en/terms-and-conditions">이용약관</a></td>
             <td>
               <div class="gf-links-cols footer-menu">
-                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin"><i class="fab fa-linkedin-in" style="font-size: 1.5rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter"><i class="fab fa-twitter" style="font-size: 1.5rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i class="fab fa-facebook-f" style="font-size: 1.5rem;"></i></a>
+                <div class="gf-social"><a href="https://www.linkedin.com/company/16439" title="LinkedIn" newtab="newtab" class="gf-social-linkedin" style="margin-right: 1rem;"><i data-feather="linkedin" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://twitter.com/brightcove" title="Twitter" newtab="newtab" class="gf-social-twitter" style="margin-right: 1rem;"><i data-feather="twitter" style="color:#8E9093;height: 1.25rem;"></i></a><a href="https://www.facebook.com/Brightcove" title="Facebook" newtab="newtab" class="gf-social-facebook"><i data-feather="facebook" style="color:#8E9093;height: 1.25rem;"></i></a>
                 </div>
               </div>
             </td>
@@ -1445,27 +1405,12 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   </div>
 </footer>
 
-</div>
-</div>
 <script>
       
-  var searchBox = sajari.init({
-    mode: "search-box",
-    project: "1588255093746585379", // Set this to your project.
-    collection: "brightcove-documenation", // Set this to your collection.
-    instantPipeline: "autocomplete", // Pipeline used as you type
-    inputPlaceholder: "Search", // Input element placeholder
-    maxSuggestions: 5, // Maximum number of suggestions to show
-    attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to
-  });
-  
-    searchBox("sub", "pipeline.search-sent", function (_, query) {
-      window.location = "/search.html?q=" + encodeURIComponent(query.q);
-    });
+  var searchBox = sajari.init( { mode: "search-box", project: "1588255093746585379", // Set this to your project. collection: "brightcove-documenation", // Set this to your collection. instantPipeline: "autocomplete", // Pipeline used as you type inputPlaceholder: "Search", // Input element placeholder maxSuggestions: 5, // Maximum number of suggestions to show attachSearchBox: document.getElementById("nav-search-box") // DOM element to attach to } ); searchBox("sub", "pipeline.search-sent", 함수(_, 쿼리) { window.location = "/search.html?q=" + encodeURIComponent(query.q); } );
   
 
-</script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
+</script>   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://support.brightcove.com/site-assets/js/site/https-fix.js"></script>
@@ -1483,34 +1428,14 @@ function doGTranslate(lang_pair) {if(lang_pair.value)lang_pair=lang_pair.value;i
   
   <script src="/assets/js/sajari-search-foot.js"></script>
   
+	<script>
+		깃털.교체()
+	</script>
   <!-- <script src="/assets/js/sajari-index.js"></script> -->
   <style>
-    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 {
-      background-color: lightblue;
-    }
-    div.sj-tabs__tab {
-      margin-top: 3rem;
-      margin-left: .3rem;
-      border-top-left-radius: .4rem;
-      border-top-right-radius: .4rem;
-      background-color:#e8e8e8;
-    }
-
-    div.sj-tabs__tab.sj-tabs__tab--selected {
-      border-bottom-color: crimson;
-      background-color: #f8f8f8;
-    }
-
-    p.sj-results__result__description.css-p9jvyt {
-      font-size: 1rem;
-    }
-
-    .sj-result__text.css-31l7gp h3 {
-      color: navy;
-      font-size: 1.4rem;
-    }
+    a.sj-paginator__page-number.sj-paginator__page-number--current.css-so0ov7 { background-color: lightblue; } div.sj-tabs__tab { margin-top: 3rem; margin-left: .3rem; border-top-left-radius: .4rem; border-top-right-radius: .4rem; background-color:#e8e8e8; } div.sj-tabs__tab.sj-tabs__tab--선택됨{ border-bottom-color: crimson; background-color: #f8f8f8; } p.sj-results__result__description.css-p9jvyt { font-size: 1rem; } .sj-result__text.css-31l7gp h3 { color: navy; font-size: 1.4rem; }
     </style>
 
 </body>
 
-</html>
+</html> 

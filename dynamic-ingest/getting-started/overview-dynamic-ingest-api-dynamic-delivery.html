@@ -1,7 +1,6 @@
-
 ---
-title: '개요: 동적 수집 API'
-description: '이 항목에서는 사용 방법을 배웁니다. <span translate="No">동적 수집 API</span> Dynamic Delivery를 통해 전달할 수 있도록 비디오를 수집합니다. '
+title: '개요: Dynamic Ingest API'
+description: '이 항목에서는 사용 방법을 배웁니다. <span translate="No">Dynamic Ingest API</span> Dynamic Delivery를 통해 전달할 수 있도록 비디오를 수집합니다. '
 parent: Getting Started 
 grandparent: Dynamic Ingest API
 ---
@@ -11,7 +10,7 @@ grandparent: Dynamic Ingest API
     <section class="bcls-section">
     <h2 id="Introduction">소개</h2>
 
-    <p>브라이트코브의<span translate="No">동적 수집 API</span>비디오 소스 파일이 고객의 저장 위치에서 다운로드되고 소스 파일의 지정된 변환이 생성되는 기능을 기반으로 합니다. (옵션도 있습니다. <a href="/dynamic-ingest/getting-started/source-file-upload-api-dynamic-ingest.html">소스 파일 업로드</a> Dynamic Ingest가 액세스할 수 있는 임시 위치로 이동합니다.) 이 플랫폼은 클라우드 중심이고 전 세계에 분산되어 있으며 동급 최고의 일관성과 속도를 제공하기 위해 최신 방식을 기반으로 합니다.</p>
+    <p>브라이트코브의<span translate="No">Dynamic Ingest API</span>비디오 소스 파일이 고객의 저장 위치에서 다운로드되고 소스 파일의 지정된 변환이 생성되는 기능을 기반으로 합니다. (옵션도 있습니다. <a href="/dynamic-ingest/getting-started/source-file-upload-api-dynamic-ingest.html">소스 파일 업로드</a> Dynamic Ingest가 액세스할 수 있는 임시 위치로 이동합니다.) 이 플랫폼은 클라우드 중심이고 전 세계에 분산되어 있으며 동급 최고의 일관성과 속도를 제공하기 위해 최신 방식을 기반으로 합니다.</p>
 
     <p>또한 참조<a href="/dynamic-ingest/references/reference.html"> API 참조</a> .</p>
     </section>
@@ -71,7 +70,7 @@ grandparent: Dynamic Ingest API
     <section class="bcls-section">
     <h2 id="best_practices">모범 사례</h2>
 
-    <p>보다<a href="/dynamic-ingest/general/dynamic-ingest-api-best-practices.html">동적 수집 API: 모범 사례</a> .</p>
+    <p>보다<a href="/dynamic-ingest/general/dynamic-ingest-api-best-practices.html">Dynamic Ingest API: 모범 사례</a> .</p>
     </section>
 
     <section class="bcls-section">
@@ -353,7 +352,7 @@ ftp://<span class="bcls-highlight">user%40example.com:pass%21word</span>@example
 
     <ol>
       <li>를 불러<span translate="No"> CMS API</span> Video Cloud 시스템에서 비디오 개체를 만들고 ID를 얻으려면</li>
-      <li>를 불러<span translate="No">동적 수집 API</span>비디오 소스 파일의 URL을 제공하고 필요에 따라 수집을 위한 다른 파일 및 설정을 지정합니다.</li>
+      <li>를 불러<span translate="No">Dynamic Ingest API</span>비디오 소스 파일의 URL을 제공하고 필요에 따라 수집을 위한 다른 파일 및 설정을 지정합니다.</li>
     </ol>
 
     <p>기본 요청의 샘플 세트는 다음과 같습니다.</p>
@@ -418,13 +417,13 @@ ftp://<span class="bcls-highlight">user%40example.com:pass%21word</span>@example
 
     <p>변환의 전체 속성을 보려면 다음을 사용할 수 있습니다. <a href="#retrieveRenditions">아래에 자세히 설명된 CMS API 요청</a> .</p>
 
-    <p>재생할 URL을 검색하려면 다음을 사용할 수 있습니다. <a href="#retrieveRenditions2">아래에 자세히 설명된 재생 API 요청</a> .</p>
+    <p>재생할 URL을 검색하려면 다음을 사용할 수 있습니다. <a href="#retrieveRenditions2">아래에 자세히 설명된 Playback API 요청</a> .</p>
     </section>
 
     <section class="bcls-section">
     <h2 id="replaceVideo">비디오 교체</h2>
 
-    <p>비디오를 새 버전이나 새 변환 세트로 교체하려면<span translate="No">동적 수집 API</span>호출은 정확히 동일합니다. <a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-ingesting-videos-dynamic-delivery.html">새 비디오 수집</a> - 유일한 차이점은 사전에 전화를 걸 필요가 없다는 것입니다. <span translate="No"> CMS API</span> Video Cloud 시스템에서 비디오 개체를 만들고 ID를 가져옵니다. 지정된 URL의 소스 비디오 파일이 원래 수집된 것과 동일한 경우 단순히 새로운 변환 세트를 얻게 됩니다. 소스 파일이 새 파일인 경우 기존 비디오를 교체합니다. 모든 비디오는 재변환이 완료될 때까지 기존 변환으로 계속 재생할 수 있습니다.</p>
+    <p>비디오를 새 버전이나 새 변환 세트로 교체하려면<span translate="No">Dynamic Ingest API</span>호출은 정확히 동일합니다. <a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-ingesting-videos-dynamic-delivery.html">새 비디오 수집</a> - 유일한 차이점은 사전에 전화를 걸 필요가 없다는 것입니다. <span translate="No"> CMS API</span> Video Cloud 시스템에서 비디오 개체를 만들고 ID를 가져옵니다. 지정된 URL의 소스 비디오 파일이 원래 수집된 것과 동일한 경우 단순히 새로운 변환 세트를 얻게 됩니다. 소스 파일이 새 파일인 경우 기존 비디오를 교체합니다. 모든 비디오는 재변환이 완료될 때까지 기존 변환으로 계속 재생할 수 있습니다.</p>
 
     <p>참조<a href="/dynamic-ingest/code-samples/dynamic-ingest-api-sample-replacing-videos-dynamic-delivery.html">여기에서 작업 샘플</a> .</p>
     </section>
@@ -432,7 +431,7 @@ ftp://<span class="bcls-highlight">user%40example.com:pass%21word</span>@example
     <section class="bcls-section">
     <h2 id="retranscode">비디오 재코드 변환</h2>
 
-    <p>선택했다면<a href="/ingest-profiles/guides/archiving-masters.html">마스터를 아카이브</a>동영상을 통해<span translate="No">동적 수집 API</span>또는 Studio 업로드 모듈을 사용하는 경우 마스터에서 비디오를 다시 트랜스코딩할 수도 있습니다. 다시 수집 요청에 대한 URL은 동일하지만 요청 본문에는 다음이 포함됩니다.</p>
+    <p>선택했다면<a href="/ingest-profiles/guides/archiving-masters.html">마스터를 아카이브</a>동영상을 통해<span translate="No">Dynamic Ingest API</span>또는 Studio 업로드 모듈을 사용하는 경우 마스터에서 비디오를 다시 트랜스코딩할 수도 있습니다. 다시 수집 요청에 대한 URL은 동일하지만 요청 본문에는 다음이 포함됩니다.</p>
 
     <pre class="line-numbers">
     <code class="language-javascript" translate="No">// request
@@ -986,7 +985,7 @@ ftp://<span class="bcls-highlight">user%40example.com:pass%21word</span>@example
     <section class="bcls-section">
     <h2 id="sample_code">샘플 코드</h2>
 
-    <p>학습 서비스는 웹 인터페이스를 제공하고 전송하는 여러 샘플 앱을 제공합니다. <span translate="No">동적 수집 API</span> PHP 프록시를 통한 요청. <a href="/dynamic-ingest/code-samples/index.html">샘플 앱 보기</a> .</p>
+    <p>학습 서비스는 웹 인터페이스를 제공하고 전송하는 여러 샘플 앱을 제공합니다. <span translate="No">Dynamic Ingest API</span> PHP 프록시를 통한 요청. <a href="/dynamic-ingest/code-samples/index.html">샘플 앱 보기</a> .</p>
 
     <p>또한 다음 GitHub 리포지토리에는 Java, Python 및 C#의 샘플 코드가 포함되어 있습니다. 이 샘플 코드는<strong>지원되지 않음</strong>브라이트코브 제공:</p>
 

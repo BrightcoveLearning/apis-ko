@@ -1,12 +1,11 @@
-
 ---
-title: '라이브 API 샘플: 라이브 작업 만들기'
+title: 'Live API 샘플: 라이브 작업 만들기'
 parent: Code Samples 
-grandparent: Live API 
+grandparent: Live API
 ---
 
 <article class="bcls-article">
-  <h1>라이브 API 샘플: 라이브 작업 만들기</h1>
+  <h1>Live API 샘플: 라이브 작업 만들기</h1>
   <summary>이 샘플에서는 간단한 라이브 작업을 만드는 방법을 배웁니다.</summary>
 
 
@@ -15,14 +14,14 @@ grandparent: Live API
 
 <p>이 샘플은 세 가지 출력 변환으로 간단한 라이브 작업을 만듭니다. 1080p, 720p 및 480p.</p>
 
-<p>왜냐하면<span translate="No">라이브 API</span> CORS가 활성화되지 않고 서버 측 앱에서 액세스해야 하며 API 요청은 PHP로 작성된 간단한 프록시를 통해 전송됩니다. 모든 서버 측 언어로 이를 재현할 수 있습니다. JavaScript에서 보낸 요청 매개변수를 수집하고, API에 요청을 보내고, JavaScript에 응답을 반환하기만 하면 됩니다. 모든 코드는 다음에서 찾을 수 있습니다. <a href="#code">아래 코드 섹션</a> .</p>
+<p>왜냐하면<span translate="No">Live API</span> CORS가 활성화되지 않고 서버 측 앱에서 액세스해야 하며 API 요청은 PHP로 작성된 간단한 프록시를 통해 전송됩니다. 모든 서버 측 언어로 이를 재현할 수 있습니다. JavaScript에서 보낸 요청 매개변수를 수집하고, API에 요청을 보내고, JavaScript에 응답을 반환하기만 하면 됩니다. 모든 코드는 다음에서 찾을 수 있습니다. <a href="#code">아래 코드 섹션</a> .</p>
 </section>
 
 <section class="bcls-section">
 <h2 id="create_live_job_app">라이브 작업 앱 만들기</h2>
 이 샘플과 관련된 모든 코드 찾기<a href="https://github.com/BrightcoveLearning/18519-live-api-sample-create-live-job"> GitHub 저장소</a> .
 
-<p data-height="1400" data-theme-id="dark" data-slug-hash="ZoYoVY" data-default-tab="result" data-user="rcrooks1969" data-embed-version="2" data-pen-title="Live API Sample: Create a Live Job" class="codepen">펜 보기<a href="https://codepen.io/team/rcrooks1969/pen/ZoYoVY/">라이브 API 샘플: 라이브 작업 만들기</a> Brightcove 학습 서비스 제공( <a href="https://codepen.io/rcrooks1969"> @rkooks1969</a> ) 에<a href="https://codepen.io">코드펜</a> .</p>
+<p data-height="1400" data-theme-id="dark" data-slug-hash="ZoYoVY" data-default-tab="result" data-user="rcrooks1969" data-embed-version="2" data-pen-title="Live API Sample: Create a Live Job" class="codepen">펜 보기<a href="https://codepen.io/team/rcrooks1969/pen/ZoYoVY/">Live API 샘플: 라이브 작업 만들기</a> Brightcove 학습 서비스 제공( <a href="https://codepen.io/rcrooks1969"> @rkooks1969</a> ) 에<a href="https://codepen.io">코드펜</a> .</p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script></section>
 
 <section class="bcls-section">
@@ -48,7 +47,7 @@ grandparent: Live API
 <details>
 	<summary>프록시 샘플 코드</summary>
 	<pre class="line-numbers">
-	<code class="language-php">&lt;?php /** * live-proxy.php - Brightcove Live API용 프록시 * 요청을 하고 응답을 반환합니다. * 액세스: * (*항상* HTTPS를 통해 프록시에 액세스해야 함) * 방법: 포스트 * * @포스트{string} url - API 요청의 URL * @post {string} [requestType=GET] - 요청에 대한 HTTP 메소드 * @post {string} [requestBody] - 쓰기 요청과 함께 보낼 JSON 데이터 * @post {string} apiKey - 라이브 API 키 * * @returns {string} $response - API에서 받은 JSON 응답 */ // CORS 활성화 및 기타 헤더 header("Access-Control-Allow-Origin: *"); header("콘텐츠 유형: 애플리케이션/json"); header("X 콘텐츠 유형 옵션: nosniff"); header("X-XSS-보호"); $requestData = json_decode(file_get_contents('php://input')); // API 호출 설정 // API 키 가져오기 $apikey = $requestData-&gt;apiKey; // 요청 유형을 가져오거나 기본적으로 GET if ($requestData-&gt;requestType) { $method = $requestData-&gt;requestType; }또 다른{ $method = "GET"; } // 더 많은 보안 검사 $needle = '.io'; $endapi = strpos($requestData-&gt;url, $needle) + 3; $nextChar = substr($requestData-&gt;url, $endapi, 1); if (strpos($requestData-&gt;url, 'api.bcovlive.io') == false) { exit('{"ERROR":"Only requests to Brightcove Live APIs are accepted by this proxy"} '); } else if ($nextChar !== '/'  &amp;&amp; $nextChar !== '?') { exit('{"ERROR": "There was a problem with your API request - please check the URL"} '); } // 데이터 형식에서 URL 및 인증 정보를 얻습니다. $request = $requestData-&gt;url; //($requestData-&gt;requestBody)인 경우 http 요청을 보냅니다. { $ch = curl_init($request); curl_setopt_array($ch, array( CURLOPT_CUSTOMREQUEST =&gt; $method, CURLOPT_RETURNTRANSFER =&gt; TRUE, CURLOPT_SSL_VERIFYPEER =&gt; FALSE, CURLOPT_HTTPHEADER =&gt; array( 'Content-type: application/json', "X-API-KEY: {$apikey} ", ), CURLOPT_POSTFIELDS =&gt; $requestData-&gt;requestBody )); $response = curl_exec($ch); curl_close($ch); } else { $ch = curl_init($request); curl_setopt_array($ch, array( CURLOPT_CUSTOMREQUEST =&gt; $method, CURLOPT_RETURNTRANSFER =&gt; TRUE, CURLOPT_SSL_VERIFYPEER =&gt; FALSE, CURLOPT_HTTPHEADER =&gt; array( 'Content-type: application/json', "X-API-KEY: {$apikey} ", ) )); $response = curl_exec($ch); curl_close($ch); } // ($response === FALSE)인 경우 오류 확인{ $logEntry = "\nError:\n". "\n".date("Y-m-d H:i:s")." UTC \n" .$response; $logFileLocation = "log.txt"; $fileHandle = fopen($logFileLocation, 'a') or die("-1"); fwrite($fileHandle, $logEntry); fclose($fileHandle); echo '{"ERROR": "There was a problem with your API call"} '+ die(curl_error($ch)); } // 응답 디코딩 // $responseData = json_decode($response, TRUE); // AJAX 호출자에게 응답을 반환합니다. $responseDecoded = json_decode($response); // if (!isset($responseDecoded)) { // $response = '{null} '; // } 에코 $response; ?&gt;</code></pre>
+	<code class="language-php">&lt;?php /** * live-proxy.php - Brightcove Live API용 프록시 * 요청을 하고 응답을 반환합니다. * 액세스: * (*항상* HTTPS를 통해 프록시에 액세스해야 함) * 방법: 포스트 * * @포스트{string} url - API 요청의 URL * @post {string} [requestType=GET] - 요청에 대한 HTTP 메소드 * @post {string} [requestBody] - 쓰기 요청과 함께 보낼 JSON 데이터 * @post {string} apiKey - Live API 키 * * @returns {string} $response - API에서 받은 JSON 응답 */ // CORS 활성화 및 기타 헤더 header("Access-Control-Allow-Origin: *"); header("콘텐츠 유형: 애플리케이션/json"); header("X 콘텐츠 유형 옵션: nosniff"); header("X-XSS-보호"); $requestData = json_decode(file_get_contents('php://input')); // API 호출 설정 // API 키 가져오기 $apikey = $requestData-&gt;apiKey; // 요청 유형을 가져오거나 기본적으로 GET if ($requestData-&gt;requestType) { $method = $requestData-&gt;requestType; }또 다른{ $method = "GET"; } // 더 많은 보안 검사 $needle = '.io'; $endapi = strpos($requestData-&gt;url, $needle) + 3; $nextChar = substr($requestData-&gt;url, $endapi, 1); if (strpos($requestData-&gt;url, 'api.bcovlive.io') == false) { exit('{"ERROR":"Only requests to Brightcove Live APIs are accepted by this proxy"} '); } else if ($nextChar !== '/'  &amp;&amp; $nextChar !== '?') { exit('{"ERROR": "There was a problem with your API request - please check the URL"} '); } // 데이터 형식에서 URL 및 인증 정보를 얻습니다. $request = $requestData-&gt;url; //($requestData-&gt;requestBody)인 경우 http 요청을 보냅니다. { $ch = curl_init($request); curl_setopt_array($ch, array( CURLOPT_CUSTOMREQUEST =&gt; $method, CURLOPT_RETURNTRANSFER =&gt; TRUE, CURLOPT_SSL_VERIFYPEER =&gt; FALSE, CURLOPT_HTTPHEADER =&gt; array( 'Content-type: application/json', "X-API-KEY: {$apikey} ", ), CURLOPT_POSTFIELDS =&gt; $requestData-&gt;requestBody )); $response = curl_exec($ch); curl_close($ch); } else { $ch = curl_init($request); curl_setopt_array($ch, array( CURLOPT_CUSTOMREQUEST =&gt; $method, CURLOPT_RETURNTRANSFER =&gt; TRUE, CURLOPT_SSL_VERIFYPEER =&gt; FALSE, CURLOPT_HTTPHEADER =&gt; array( 'Content-type: application/json', "X-API-KEY: {$apikey} ", ) )); $response = curl_exec($ch); curl_close($ch); } // ($response === FALSE)인 경우 오류 확인{ $logEntry = "\nError:\n". "\n".date("Y-m-d H:i:s")." UTC \n" .$response; $logFileLocation = "log.txt"; $fileHandle = fopen($logFileLocation, 'a') or die("-1"); fwrite($fileHandle, $logEntry); fclose($fileHandle); echo '{"ERROR": "There was a problem with your API call"} '+ die(curl_error($ch)); } // 응답 디코딩 // $responseData = json_decode($response, TRUE); // AJAX 호출자에게 응답을 반환합니다. $responseDecoded = json_decode($response); // if (!isset($responseDecoded)) { // $response = '{null} '; // } 에코 $response; ?&gt;</code></pre>
 </details>
 </section>
 

@@ -1,9 +1,8 @@
-
 ---
 title: '개요: 차원, 필드 및 매개변수'
-description: '차원은 다음의 주요 데이터 범주입니다. <span translate="No">애널리틱스 API</span>데이터 보고서. 이 항목에서는 차원 및 해당 차원에 대해 반환될 수 있는 필드에 대한 대화형 가이드를 제공합니다. 또한 보고서에서 결합할 수 있는 차원과 다양한 조합에 사용할 수 있는 필드를 보여줍니다.'
+description: '차원은 다음의 주요 데이터 범주입니다. <span translate="No">Analytics API</span>데이터 보고서. 이 항목에서는 차원 및 해당 차원에 대해 반환될 수 있는 필드에 대한 대화형 가이드를 제공합니다. 또한 보고서에서 결합할 수 있는 차원과 다양한 조합에 사용할 수 있는 필드를 보여줍니다.'
 parent: Getting Started 
-grandparent: Analytics API 
+grandparent: Analytics API
 ---
 
 
@@ -70,7 +69,7 @@ grandparent: Analytics API
 
 <h3>예시 요청</h3>
 
-<p>여러 측정기준에 대한 보고서를 가져오는 일반적인 사용 사례: 데스크톱과 휴대기기 간의 동영상 조회수를 분석하고 iOS와 Android 기기의 모바일 기기 조회수, 데스크톱의 조회수를 알고 싶습니다. 조회수는 Mac 대 Windows 컴퓨터에 있었습니다. 현재 이 정보를 제공하는 Studio Analytics 모듈에는 표준 보고서가 없지만 다음을 통해 얻을 수 있습니다. <span translate="No">애널리틱스 API</span>전화:</p>
+<p>여러 측정기준에 대한 보고서를 가져오는 일반적인 사용 사례: 데스크톱과 휴대기기 간의 동영상 조회수를 분석하고 iOS와 Android 기기의 모바일 기기 조회수, 데스크톱의 조회수를 알고 싶습니다. 조회수는 Mac 대 Windows 컴퓨터에 있었습니다. 현재 이 정보를 제공하는 Studio Analytics 모듈에는 표준 보고서가 없지만 다음을 통해 얻을 수 있습니다. <span translate="No">Analytics API</span>전화:</p>
 
 <pre>
   <code class="language-http" translate="No">https://analytics.api.brightcove.com/v1/data?accounts=57838016001&amp;dimensions=video,device_type,device_os&amp;from=2014-01-01&amp;to=2014-04-01&amp;fields=video_view</code></pre>
@@ -554,7 +553,7 @@ grandparent: Analytics API
 <section class="bcls-section">
 <h2 id="params">매개변수</h2>
 
-<p>아래는 사용 가능한 매개변수를 요약한 표입니다. <span translate="No">애널리틱스 API</span> . 매개변수의 사용은 다음 섹션에서 더 자세히 설명합니다.</p>
+<p>아래는 사용 가능한 매개변수를 요약한 표입니다. <span translate="No">Analytics API</span> . 매개변수의 사용은 다음 섹션에서 더 자세히 설명합니다.</p>
 
 <table class="bcls-table">
 	<thead class="bcls-table__head">
@@ -697,7 +696,8 @@ grandparent: Analytics API
 
 <aside class="bcls-aside bcls-aside--information">메모: <code translate="No">%20</code>위의 예에서 URI로 인코딩된 공간입니다. 요청하는 데 사용하는 클라이언트에 따라 인코딩해야 할 수도 있습니다. <code translate="No">+</code>로 서명<code translate="No">%2B</code> .</aside>
 
-<p>이 쿼리 구문에 대한 전체 설명은 다음을 참조하세요. <a href="/cms/searching/cms-and-playback-apis-video-search-v2.html"> CMS API 사용: 동영상 검색</a> .</p>
+<p>이 쿼리 구문에 대한 전체 설명은 다음을 참조하세요. <a href="/cms/searching/cms-and-playback-apis-video-search-v2.html"> CMS API 
+description: 동영상 검색</a> .</p>
 
 <aside class="bcls-aside bcls-aside--information">이 필터를 사용하여 가져온 데이터는 24시간 동안 캐시되므로 지난 날의 변경 사항이 반영되지 않습니다.</aside>
 

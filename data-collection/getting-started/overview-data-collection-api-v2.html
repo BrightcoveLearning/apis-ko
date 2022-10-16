@@ -1,6 +1,5 @@
-
 ---
-title: '개요: 데이터 수집 API v2'
+title: 'Data Collection API v2'
 description: '이 주제에서는 Brightcove가 이벤트를 직접 추적할 수 없는 상황에서 Video Cloud Analytics 데이터에 이벤트를 추가할 수 있는 Analytics Data Collection API v2에 대한 개요를 제공합니다. '
 parent: Data Collection API
 ---
@@ -13,7 +12,7 @@ parent: Data Collection API
 
     <p>분석 데이터는 Native Player SDK에서 제공하는 데이터를 포함하여 Brightcove Player에서 자동으로 전송됩니다. 당신이있는 경우<strong> ~ 아니다</strong> Brightcove Player를 사용하여 Video Cloud 비디오를 제공하려면 데이터 수집기로 데이터를 보내는 데 사용하는 플레이어를 계측해야 합니다.</p>
 
-    <p>데이터 수집 API v2가 현재 표준입니다. v1 버전은 더 이상 사용되지 않습니다. v1 구현이 있는 경우 다음을 참조하십시오. <a href="#changesFromV1"> v1의 변경 사항</a>아래 섹션.</p>
+    <p>Data Collection API v2가 현재 표준입니다. v1 버전은 더 이상 사용되지 않습니다. v1 구현이 있는 경우 다음을 참조하십시오. <a href="#changesFromV1"> v1의 변경 사항</a>아래 섹션.</p>
 
     <p>이 개요 및<a href="/data-collection/references/reference.html"> API 참조</a> , 이것도 참조<a href="/data-collection/getting-started/data-collection-api-sample.html">샘플 구현</a> .</p>
 
@@ -54,7 +53,7 @@ parent: Data Collection API
   <section class="bcls-section">
     <h2 id="responseTypes">응답 유형</h2>
 
-    <p>분석 데이터 수집 API 요청에 대한 응답에는 HTTP 응답 코드와 사람이 읽을 수 있는 메시지가 포함됩니다.</p>
+    <p>분석 Data Collection API 요청에 대한 응답에는 HTTP 응답 코드와 사람이 읽을 수 있는 메시지가 포함됩니다.</p>
 
     <table class="bcls-table">
       <thead class="bcls-table__head">
@@ -155,7 +154,7 @@ parent: Data Collection API
     <ol>
       <li>플레이어에 대한 데이터 수집 스크립트를 빌드합니다.</li>
       <li>최소한 하루 동안 통제된 환경에서 테스트하십시오.</li>
-      <li>분석 모듈 또는<span translate="No">애널리틱스 API</span>수집된 내용이 귀하의 기대와 일치하는지 확인합니다.</li>
+      <li>분석 모듈 또는<span translate="No">Analytics API</span>수집된 내용이 귀하의 기대와 일치하는지 확인합니다.</li>
     </ol>
 
     <h3>요청 보내기 - CORS 문제 방지</h3>
@@ -182,7 +181,7 @@ parent: Data Collection API
   <section class="bcls-section">
     <h2 id="encoding">URI 인코딩</h2>
 
-    <p>공백이나 특수 문자를 포함할 수 있는 데이터 수집 API에 보내는 모든 문자열<strong> URI로 인코딩되어야 합니다.</strong>요청이 성공하려면. JavaScript를 통해 요청을 제출하는 경우 다음을 사용할 수 있습니다. <code class="language-javascript" translate="No">encodeURI()</code>메서드는 요청 문자열을 인코딩합니다. 예를 들면 다음과 같습니다.</p>
+    <p>공백이나 특수 문자를 포함할 수 있는 Data Collection API에 보내는 모든 문자열<strong> URI로 인코딩되어야 합니다.</strong>요청이 성공하려면. JavaScript를 통해 요청을 제출하는 경우 다음을 사용할 수 있습니다. <code class="language-javascript" translate="No">encodeURI()</code>메서드는 요청 문자열을 인코딩합니다. 예를 들면 다음과 같습니다.</p>
 
     <pre class="line-numbers">
   <code class="language-javascript" translate="No">urlStr += "&amp;video=" + currentVideo.id + "&amp;video_name=" + encodeURI(currentVideo.video_name);
@@ -630,26 +629,18 @@ parent: Data Collection API
     <pre>
   <code translate="No">&lt;scheme name&gt; : &lt;hierarchical part&gt; [ ? &lt;query&gt; ] [ # &lt;fragment&gt; ]
   ex. https://www.example.com/foo/bar/baz
- 
----
----
----
------/
----
+ ---
+------
+-----/---
 ---
 ----/
   |             |
   authority        path
- 
----
-/   
----
----
----
----
----
----
----
+ ---
+/   ---
+------
+------
+------
 ----/
   |                |
   scheme       hierarchical part

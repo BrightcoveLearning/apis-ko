@@ -1,6 +1,5 @@
-
 ---
-title: '자주하는 질문: 애널리틱스 API'
+title: '자주하는 질문: Analytics API'
 description: '다음은 Analytics API에 대해 자주 묻는 질문입니다. Video Cloud Studio Analytics 모듈에 대한 몇 가지 일반적인 질문에 대한 답변은 다음을 참조하십시오. <a href="https://studio.support.brightcove.com/analytics/faq-analytics-module.html">자주하는 질문: 분석 모듈</a> . '
 parent: 'General Information' 
 grandparent: Analytics API
@@ -16,7 +15,7 @@ grandparent: Analytics API
       <dd class="bcls-answer">Set <code translate="No">from=alltime</code> in the request. You can also set <code translate="No">to=now</code>, but this isn't necessary, since <code translate="No">now</code> is the default value. Note: <code translate="No">alltime</code> does <em>not</em> work for a <strong>Rollup</strong> - instead you will need to set <code translate="No">from</code> to a date far enough in the past.</dd> -->
       <dt class="bcls-question">특정 날짜의 데이터는 어떻게 얻나요?</dt>
       <dd class="bcls-answer">둘 다 설정<code translate="No">from</code>그리고<code translate="No">to</code>그 날짜까지의 값. 예를 들어: <code translate="No">from=2013-05-12&amp;to=2013-05-12</code> . 또한 다음을 통해 쿼리할 수 있습니다. <a href="/analytics/dimension-guides/dimension-date.html"><code translate="No">date</code>치수</a> , 다른 차원과 결합할 수 있습니다.</dd>
-      <dt class="bcls-question">분석 모듈과<span translate="No">애널리틱스 API</span>동일한 날짜 범위에 대한 식별 데이터를 제공하시겠습니까?</dt>
+      <dt class="bcls-question">분석 모듈과<span translate="No">Analytics API</span>동일한 날짜 범위에 대한 식별 데이터를 제공하시겠습니까?</dt>
       <dd class="bcls-answer">예. 하지만 비교적 최근의 데이터를 비교하고 Studio와 API에서 서로 다른 시간에 데이터를 얻는 경우 다를 수 있습니다.
       <ol>
         <li>데이터가 3일 미만입니다. 3일 미만의 분석 데이터는 잠정적이며 언제든지 변경될 수 있습니다.</li>
@@ -31,7 +30,7 @@ grandparent: Analytics API
     
     <dl>
       <dt class="bcls-question">최근 Analytics 데이터의 세분성은 무엇입니까?</dt>
-      <dd class="bcls-answer">최근 32일(당일 포함) 동안<span translate="No">애널리틱스 API</span>값을 시간별 버킷에 저장하기 때문에 시간 단위로 보고합니다. 그러나 현재 시간은 여전히 채워지고 있으므로 현재 시간에 속하는 데이터를 요청할 때 API가 시간보다 더 세분화된 것처럼 보일 수 있습니다.
+      <dd class="bcls-answer">최근 32일(당일 포함) 동안<span translate="No">Analytics API</span>값을 시간별 버킷에 저장하기 때문에 시간 단위로 보고합니다. 그러나 현재 시간은 여전히 채워지고 있으므로 현재 시간에 속하는 데이터를 요청할 때 API가 시간보다 더 세분화된 것처럼 보일 수 있습니다.
       <p>예를 들면 다음과 같습니다.</p>
     
       <ol>
@@ -42,7 +41,7 @@ grandparent: Analytics API
       <dt class="bcls-question">분석 데이터의 새로 고침 간격은 얼마입니까?</dt>
       <dd class="bcls-answer">/data 엔드포인트는 현재 쿼리 사이에 5분 동안 캐시되므로 지난 1시간 동안 트래픽이 있는 비디오 목록의 경우 5분 간격은 작업할 델타를 제공하는 가장 작은 지연입니다.</dd>
       <dt class="bcls-question">과거 Analytics 데이터의 단위는 무엇입니까?</dt>
-      <dd class="bcls-answer">지난 32일 이전 날짜의 경우<span translate="No">애널리틱스 API</span>하루 값을 보고합니다. 이것은 귀하가 요청한 경우<code translate="No">from=1368334306919&amp;to=1378446336919</code> (2013년 5월 12일 일요일 04:51:46 GMT부터 2013년 9월 6일 금요일 05:45:36 GMT까지) <code translate="No">from=2013-05-12&amp;to=2013-09-06</code></dd>
+      <dd class="bcls-answer">지난 32일 이전 날짜의 경우<span translate="No">Analytics API</span>하루 값을 보고합니다. 이것은 귀하가 요청한 경우<code translate="No">from=1368334306919&amp;to=1378446336919</code> (2013년 5월 12일 일요일 04:51:46 GMT부터 2013년 9월 6일 금요일 05:45:36 GMT까지) <code translate="No">from=2013-05-12&amp;to=2013-09-06</code></dd>
     </dl>
     </section>
     

@@ -1,7 +1,6 @@
-
 ---
-title: '개요: 정책 API'
-description: '이 주제에서는 정책 API의 용도와 사용 방법에 대해 알아봅니다. 정책 API는 정책 키를 생성하거나 가져오는 데 사용됩니다. '
+title: '개요: Policy API'
+description: '이 주제에서는 Policy API의 용도와 사용 방법에 대해 알아봅니다. Policy API는 정책 키를 생성하거나 가져오는 데 사용됩니다. '
 parent: Getting Started 
 grandparent: Policy API
 ---
@@ -14,7 +13,7 @@ grandparent: Policy API
     <section class="bcls-section">
     <h2 id="Introduction">소개</h2>
     
-    <p>NS <a href="/policy/getting-started/policy-keys.html">정책 키</a>다음을 사용하여 Video Cloud 라이브러리에서 비디오 및 재생 목록 콘텐츠를 검색하는 데 사용됩니다. <a href="/playback/getting-started/overview-playback-api.html">재생 API</a> .</p>
+    <p>NS <a href="/policy/getting-started/policy-keys.html">정책 키</a>다음을 사용하여 Video Cloud 라이브러리에서 비디오 및 재생 목록 콘텐츠를 검색하는 데 사용됩니다. <a href="/playback/getting-started/overview-playback-api.html">Playback API</a> .</p>
     
     <p>또한 참조<a href="/policy/references/reference.html"> API 참조</a> .</p>
     </section>
@@ -29,9 +28,9 @@ grandparent: Policy API
       <li>비디오 검색 요청 수행:
       <ul>
         <li>다음을 사용해야 합니다. <a href="#Search_videos">검색 가능 정책 키</a> .</li>
-        <li>새 Brightcove Player에 대해 생성된 정책 키는 기본적으로 검색이 활성화되어 있지 않습니다. 다음을 사용하여 수동으로 설정해야 합니다. <a href="#Search_videos">정책 API</a> .</li>
+        <li>새 Brightcove Player에 대해 생성된 정책 키는 기본적으로 검색이 활성화되어 있지 않습니다. 다음을 사용하여 수동으로 설정해야 합니다. <a href="#Search_videos">Policy API</a> .</li>
         <li>일반적으로 검색 가능한 정책 키는 재생 가능한 모든 비디오를 나열하는 데 사용할 수 있으므로 브라우저 플레이어나 모바일 앱이 아닌 서버에만 저장해야 합니다. 일부 계정의 경우 재생 가능한 모든 동영상이 검색될 수 있다는 사실이 마음에 들지 않으면 적용되지 않을 수 있습니다.</li>
-        <li>검색 요청은 재생 가능한 비디오만 반환합니다. API 요청/응답에 대한 자세한 내용은<strong>비디오 가져오기</strong>섹션<a href="/playback/references/reference_v1.html">재생 API 참조</a> .</li>
+        <li>검색 요청은 재생 가능한 비디오만 반환합니다. API 요청/응답에 대한 자세한 내용은<strong>비디오 가져오기</strong>섹션<a href="/playback/references/reference_v1.html">Playback API 참조</a> .</li>
       </ul>
       </li>
     </ul>
@@ -57,7 +56,7 @@ grandparent: Policy API
     <section class="bcls-section">
     <h2 id="Base_URL">기본 URL</h2>
     
-    <p>정책 API의 기본 URL은 다음과 같습니다.</p>
+    <p>Policy API의 기본 URL은 다음과 같습니다.</p>
     
     <pre>
     <code class="language-http" translate="No">https://policy.api.brightcove.com/v1</code></pre>
@@ -157,7 +156,7 @@ grandparent: Policy API
     <section class="bcls-section">
     <h2 id="Geo_restriction">지리적 제한</h2>
     
-    <p>정책 API를 사용하여 플레이어 대신 또는 추가로 플레이어에 대한 지리 필터링을 구현할 수 있습니다. <a href="/cms/managing-videos/using-cms-api-add-geo-filtering.html">개별 동영상.</a></p>
+    <p>Policy API를 사용하여 플레이어 대신 또는 추가로 플레이어에 대한 지리 필터링을 구현할 수 있습니다. <a href="/cms/managing-videos/using-cms-api-add-geo-filtering.html">개별 동영상.</a></p>
     
     <aside class="bcls-aside bcls-aside--information">
     <ul>
@@ -199,7 +198,7 @@ grandparent: Policy API
       }
     }</code></pre>
     
-    <p>사용에 대한 자세한 내용은<code translate="No">ad_config_id </code> Playback API 요청과 함께<a href="/playback/getting-started/overview-playback-api.html#Video_request_with_SSAI">재생 API 개요: SSAI에 영상 요청</a>문서.</p>
+    <p>사용에 대한 자세한 내용은<code translate="No">ad_config_id </code> Playback API 요청과 함께<a href="/playback/getting-started/overview-playback-api.html#Video_request_with_SSAI">Playback API 개요: SSAI에 영상 요청</a>문서.</p>
     </section>
     
     <section class="bcls-section">

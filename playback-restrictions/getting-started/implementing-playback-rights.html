@@ -1,8 +1,8 @@
-
 ---
-title: 재생 권한 설명 구현: "이 항목에서는 Brightcove 재생 권한을 사용하여 비디오 재생을 관리하는 방법을 배웁니다."
+title: 재생 권한 설명 
+description: "이 항목에서는 Brightcove 재생 권한을 사용하여 비디오 재생을 관리하는 방법을 배웁니다."
 parent: Getting Started 
-grandparent: Playback Rights
+grandparent: Playback Restrictions
 ---
  <h1>{{ page.title }}</h1>
 <article class="bcls-article">
@@ -16,7 +16,7 @@ grandparent: Playback Rights
 
 <p>Brightcove의 재생 권한 관리 서비스는 확장 가능하고 표현력이 뛰어난 비디오 재생 관리 방법을 제공합니다.</p>
 
-<p>이 기능에 익숙하지 않은 경우 다음을 참조하십시오. <a href="/playback-restrictions/getting-started/overview-playback-restrictions.html">개요: Brightcove 재생 제한</a>문서.</p>
+<p>이 기능에 익숙하지 않은 경우 다음을 참조하십시오. <a href="/playback-restrictions/getting-started/overview-playback-restrictions.html">개요: Brightcove Playback Restrictions</a>문서.</p>
 
 <aside class="bcls-aside bcls-aside--information">
   <p>노트:</p>
@@ -84,7 +84,7 @@ grandparent: Playback Rights
 <section class="bcls-section">
 <h2 id="Workflow">워크플로</h2>
 
-<p>재생 제한을 관리하려면 다음 단계를 따르세요.</p>
+<p>Playback Restrictions을 관리하려면 다음 단계를 따르세요.</p>
 <ol class="bcls-tasklist-restart">
   <li>
     <a href="#Set_up_your_account">계정 설정</a>
@@ -169,7 +169,7 @@ window.prompt(";BC_TOKEN:", cookiesObj.BC_TOKEN);</code></pre>
 <section class="bcls-section">
 <h2 id="Define_restrictions">제한 정의</h2>
 
-<p>재생 권한 API를 사용하여 비디오 재생 제한을 정의합니다.</p>
+<p>재생 권한 API를 사용하여 비디오 Playback Restrictions을 정의합니다.</p>
 
 <h3 id="Playback_Rights_API">재생 권한 API</h3>
 <p>
@@ -618,20 +618,20 @@ window.prompt(";BC_TOKEN:", cookiesObj.BC_TOKEN);</code></pre>
 <section class="bcls-section">
 <h2 id="Configure_your_player">플레이어 구성</h2>
 <p>
-  기본적으로 Brightcove Player는 Brightcove Playback API(PAPI)와 통신합니다. 재생 제한을 관리하는 새로운 시스템이 Playback API 앞에 있습니다. 플레이어를 구성하려면 다음을 참조하십시오.
+  기본적으로 Brightcove Player는 Brightcove Playback API(PAPI)와 통신합니다. Playback Restrictions을 관리하는 새로운 시스템이 Playback API 앞에 있습니다. 플레이어를 구성하려면 다음을 참조하십시오.
 </p>
 <h3>웹 플레이어</h3>
 <p>
-  Brightcove 웹 플레이어를 구성하려면 다음을 참조하십시오. <a href="https://player.support.brightcove.com/playback/playback-restrictions-with-bcp.html"> Brightcove Player로 재생 제한</a>문서.
+  Brightcove 웹 플레이어를 구성하려면 다음을 참조하십시오. <a href="https://player.support.brightcove.com/playback/playback-restrictions-with-bcp.html"> Brightcove Player로 Playback Restrictions</a>문서.
 </p>
 <h3>기본 Android 또는 iOS 플레이어</h3>
 <p>
-  Android 또는 iOS용 기본 플레이어를 구성하려면<a href="https://sdks.support.brightcove.com/features/playback-restrictions-with-sdks.html">네이티브 SDK의 재생 제한 사항</a>문서.
+  Android 또는 iOS용 기본 플레이어를 구성하려면<a href="https://sdks.support.brightcove.com/features/playback-restrictions-with-sdks.html">네이티브 SDK의 Playback Restrictions 사항</a>문서.
 </p>
 
 <h3>나만의 플레이어</h3>
 <p>
-  콘텐츠가 Video Cloud 라이브러리에 있지만 자신의 플레이어를 사용하는 경우 다음과 같이 Playback API를 호출할 수 있습니다. <a href="/playback/getting-started/overview-playback-api.html">개요: 재생 API</a>문서. 기본 URL을 다음으로 바꿉니다.
+  콘텐츠가 Video Cloud 라이브러리에 있지만 자신의 플레이어를 사용하는 경우 다음과 같이 Playback API를 호출할 수 있습니다. <a href="/playback/getting-started/overview-playback-api.html">개요: Playback API</a>문서. 기본 URL을 다음으로 바꿉니다.
 </p>
 <pre ><code class="language-http" translate="No">https://edge-auth.api.brigthcove.com</code></pre>
 <p>
