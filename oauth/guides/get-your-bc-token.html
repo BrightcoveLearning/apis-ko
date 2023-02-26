@@ -45,18 +45,25 @@ grandparent: OAuth API
     <ol class="bcls-tasklist">
       <li>평소와 같이 Studio에 로그인합니다.</li>
       <li>Studio의 페이지를 연 상태에서 브라우저용 개발자 도구를 열고 콘솔로 이동하여 다음 코드를 붙여넣습니다.
-        <textarea class="bcls-code" style="height:13em;">
-var cookieArray = document.cookie.split(";"), cookieObj = {} , 나, tmpArray = []; (i = 0; i &lt; cookieArray.length; i++) { tmpArray = cookiesArray[i].split("="); if (tmpArray[0].indexOf('BC_TOKEN') &gt; -1) { cookiesObj.BC_TOKEN = tmpArray[1]; } } window.prompt("BC_TOKEN:", cookieObj.BC_TOKEN);</textarea>
+<pre class="line-numbers"><code class="language-javascript" translate="No">
+var cookiesArray = document.cookie.split(";"), cookiesObj = {}, i, tmpArray = [];
+for (i = 0; i < cookiesArray.length; i++) {
+  tmpArray = cookiesArray[i].split("=");
+  if (tmpArray[0].indexOf('BC_TOKEN') > -1) {
+      cookiesObj.BC_TOKEN = tmpArray[1];
+  }
+}
+window.prompt("BC_TOKEN:", cookiesObj.BC_TOKEN);</code></pre>
       <p>그리고 누르다<strong>반품</strong> .</p>
       </li>
       <li>다음을 포함하는 프롬프트가 표시되어야 합니다. <code translate="No">BC_TOKEN</code> :
-      <figure class="bcls-figure"><img class="bcls-image" alt="BC_TOKEN" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/oauth-api/guides/get-client-credentials-curl/prompt-with-token-safari.png" />
+      <figure class="bcls-figure"><img class="bcls-image" alt="BC_TOKEN" src="/assets/images/oauth/guides/prompt-with-token-safari.png" />
       <figcaption class="bcls-caption--image">BC_TOKEN</figcaption>
       </figure>
       </li>
       <li>BC_TOKEN이 있는 경우 다음으로 이동하십시오. <a href="#getClientCredentials">클라이언트 자격 증명 가져오기</a>부분; 어떤 이유로 이전 단계를 사용하여 BC_TOKEN을 얻지 못한 경우 콘솔로 이동하여 다음을 입력하십시오. <code class="language-javascript" translate="No">document.cookie</code> , Return 키를 누릅니다.</li>
       <li>페이지의 모든 쿠키는 세미콜론으로 구분된 목록으로 반환됩니다. 목록에서 BC_TOKEN 쿠키를 찾아 값을 복사합니다.
-      <figure class="bcls-figure"><img class="bcls-image" alt="BC_TOKEN in Chrome Developer Tools" src="//learning-services-media.brightcove.com/doc-assets/video-cloud-apis/oauth-api/guides/get-client-credentials-curl/get-access-token-console.png" />
+      <figure class="bcls-figure"><img class="bcls-image" alt="BC_TOKEN in Chrome Developer Tools" src="/assets/images/oauth/guides/get-access-token-console.png" />
       <figcaption class="bcls-caption--image">Chrome 개발자 도구의 BC_TOKEN"</figcaption>
       </figure>
       </li>

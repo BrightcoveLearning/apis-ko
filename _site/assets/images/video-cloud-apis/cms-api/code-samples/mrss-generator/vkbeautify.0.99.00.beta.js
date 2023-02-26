@@ -4,11 +4,11 @@
 * Version - 0.99.00.beta 
 * Copyright (c) 2012 Vadim Kiryukhin
 * vkiryukhin @ gmail.com
-* http://www.eslinstructor.net/vkbeautify/
+* https://www.eslinstructor.net/vkbeautify/
 * 
 * Dual licensed under the MIT and GPL licenses:
-*   http://www.opensource.org/licenses/mit-license.php
-*   http://www.gnu.org/licenses/gpl.html
+*   https://www.opensource.org/licenses/mit-license.php
+*   https://www.gnu.org/licenses/gpl.html
 *
 *   Pretty print
 *
@@ -36,8 +36,7 @@
 *        vkbeautify.xml(text); // pretty print XML
 *        vkbeautify.json(text, 4 ); // pretty print JSON
 *        vkbeautify.css(text, '. . . .'); // pretty print CSS
-*        vkbeautify.sql(text, '
-----'); // pretty print SQL
+*        vkbeautify.sql(text, '----'); // pretty print SQL
 *
 *        vkbeautify.xmlmin(text, true);// minify XML, preserve comments
 *        vkbeautify.jsonmin(text);// minify JSON
