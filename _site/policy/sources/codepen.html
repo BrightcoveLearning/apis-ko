@@ -1,44 +1,44 @@
-<fieldset><legend>정책 키 생성</legend>
+﻿<fieldset><legend>정책 키 만들기</legend>
 
-  <p>계정 정보를 입력하지 않으면 Brightcove 샘플 계정이 사용됩니다.</p>
+  <p>계정 정보를 입력하지 않으면 브라이트코브 샘플 계정이 사용됩니다.</p>
 
-  <p>정책 키 옵션에 대한 자세한 내용은<a href="https://apis.support.brightcove.com/policy/getting-started/overview-policy-api.html">정책 키 API 개요</a> .</p>
+  <p>정책 키 옵션에 대한 자세한 내용은<a href="https://apis.support.brightcove.com/policy/getting-started/overview-policy-api.html">정책 키 API 개요를 참조하십시오</a> .</p>
   
   <p>계정 ID: <input id="account_id" type="text" value="" placeholder="1752604059001" /></p>
   
   <p>클라이언트 ID: <input id="client_id" type="text" size="60" value="" placeholder="c5d0a622-5479-46d8-8d8a-5f034b943fab" /></p>
   
-  <p>클라이언트 암호: <input id="client_secret" type="text" size="60" value="" placeholder="w7NQYu0vUloM4GYYy2SXAxrvyFpt8fwI35qAFZcS13-VIgs0itwKNsAwHOS80sOWKJ1BUwHIvSFG2I" /></p>
+  <p>클라이언트 암호: <input id="client_secret" type="text" size="60" value="" placeholder="W7nqyu0vulom4gyy2sxaxrvyfpt8fwi35qafzcs13-vigs0itwknsawhos80 sowkj1buwhivsfg2i" /></p>
     
-    <p><input type="checkbox" id="search_enabled" checked> <label for="search_enabled">검색 가능 정책 키?</label></p>
+    <p><input type="checkbox" id="search_enabled" checked> <label for="search_enabled">검색 사용 정책 키?</label></p>
     <p><input type="checkbox" id="restrict_domains"> <label for="restrict_domains">도메인 제한을 추가하시겠습니까?</label></p>
     <div>
-      쉼표로 구분된 도메인 목록을 입력하십시오. <strong>허용 된</strong> ( <code translate="No">https://mysite.com,https://somesite.com</code> )
+      <strong>허용되는 도메인의 쉼표로 구분된 목록을 입력합니다</strong> ( <code translate="No">https://mysite.com,https://somesite.com</code> )
       <p>
         <input type="text" id="domain_list" size="60">
       </p>
     </div>
     <p><input type="checkbox" id="restrict_geo"> <label for="restrict_geo">지역 제한을 추가하시겠습니까?</label></p>
     <div>
-      쉼표로 구분된 국가 약어 목록을 입력하십시오( <code translate="No">us,usmil,pr,gu,vi,as,mp</code> )
+      쉼표로 구분된 국가 약어 목록 입력 ( <code translate="No">us,usmil,pr,gu,vi,as,mp</code> )
       <p>
         <input type="text" id="country_list" size="60">
       </p>
-      <p><input type="checkbox" id="disallowed"> <label for="disallowed">보기<strong> ~ 아니다</strong>이 국가에서 허용</label> (체크를 해제하면 보기가 허용됩니다. <strong>오직</strong>이 국가에서)</p>
+      <p><input type="checkbox" id="disallowed"> <label for="disallowed"><strong>해당 국가에서 볼 수 없음</strong></label> (체크하지 않은 경우 해당<strong></strong>국가에서만 시청이 가능합니다.)</p>
     </div>
-    <p><input type="checkbox" id="require_ssai"> <label for="require_ssai">SSAI 필요</label> (체크를 해제하면 보기가 허용됩니다. <strong>오직</strong>이 국가에서)</p>
+    <p><input type="checkbox" id="require_ssai"> <label for="require_ssai">SSAI가 필요합니다</label> (체크하지 않은 경우 해당<strong></strong>국가에서만 시청이 가능합니다.)</p>
   
-  <p><button class="bcls-button" id="generateKey" style="color:#eeeeee;font-weight:normal">정책 키 생성</button></p>
+  <p><button class="bcls-button" id="generateKey" style="color:#eeeeee;font-weight:normal">정책 키 만들기</button></p>
   
   <h4>API 요청</h4>
   
   <pre class="line-numbers">
-  <code id="apiRequest" class="language-http">이것은 동적으로 채워질 것입니다</code></pre>
+  <code id="apiRequest" class="language-http">이것은 동적으로 채워질 것입니다.</code></pre>
   
   <h4>요청 본문</h4>
   
   <pre class="line-numbers">
-  <code id="requestBody" class="language-json">이것은 동적으로 채워질 것입니다</code></pre>
+  <code id="requestBody" class="language-json">이것은 동적으로 채워질 것입니다.</code></pre>
 
   <h4>정책 키</h4>
     <textarea name="policy_key" id="policy_key" cols="100" rows="3"></textarea>
@@ -46,5 +46,5 @@
   <h4>전체 응답</h4>
   
   <pre class="line-numbers">
-  <code id="apiResponse" class="language-json">이것은 동적으로 채워질 것입니다</code></pre>
+  <code id="apiResponse" class="language-json">이것은 동적으로 채워질 것입니다.</code></pre>
   </fieldset>
