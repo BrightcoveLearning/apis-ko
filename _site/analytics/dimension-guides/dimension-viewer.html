@@ -3653,61 +3653,69 @@
     </section>
 
     <section class="bcls-section">
-  <h2 id="Send_viewer_id_web_player">뷰어 ID 보내기 - Brightcove 플레이어</h2>
-
-  <p>먼저 시청 활동을 저장할 사용자 식별자를 설정해야 합니다.</p>
-  <h3>브라이트코브 플레이어</h3>
-  <p>
-    Brightcove Player를 사용하는 경우 다음 단계를 따르십시오.
-  </p>
-
-  <ol class="bcls-tasklist-restart">
-    <li>
+      <h2 id="Send_viewer_id_web_player">뷰어 ID 보내기 - Brightcove 플레이어</h2>
+      <aside class="bcls-aside bcls-aside--information language-editable">참고: 네이티브 SDK 플레이어에서 뷰어 ID를 설정하는 방법에 대한 자세한 내용은 <a href="https://sdks.support.brightcove.com/features/cross-device-resume-sdks.html">네이티브 SDK를 사용한 크로스 디바이스 이력서</a>를 참조하세요.</aside>
+      <h2 id="Requirements">요구 사항</h2>
+      <p>뷰어 ID 추적에는 다음 요구 사항이 필요합니다.</p>
+      <ul>
+      <li>Brightcove Player v7.18.0 이상</li>
+      </ul>
+      <p>먼저 해당 사용자의 시청 활동을 저장하기 위해 사용자 식별자를 설정해야 합니다.</p>
+      <h3>Brightcove Player</h3>
       <p>
-        시청자 데이터가 브라이트코브 분석으로 자동으로 전송되더라도 사용자 식별자를 설정해야 합니다. 이렇게하려면<code translate="No">setUser()</code>방법. 예:
+      Brightcove Player를 사용하는 경우 다음 단계를 따르세요.
       </p>
-      <pre class="line-numbers"><code class="language-javascript" translate="No">myPlayer.bcAnalytics.client.setUser('<span class="bcls-input">viewer id</span>');</code></pre>
-      <p>Brightcove Player를 호스팅하는 웹 사이트에서 인증 게이트웨이 또는 일부 ID 관리 솔루션을 사용하여 뷰어를 추적할 수 있습니다. 이 뷰어 ID를 뷰어 식별자로 사용하여 Brightcove 분석에 전달합니다.</p>
-      <aside class="bcls-aside bcls-aside--warning"><span class="bcls-input">뷰어 ID</span> 값은 고유한 문자열이어야 합니다. 숫자와 같은 유효하지 않은 값은 무시됩니다. </aside>
-    </li>
-    <li>
+      
+      <ol class="bcls-tasklist-restart">
+      <li>
       <p>
-        플레이어에 소스를 설정하기 전에 뷰어 ID를 설정하는 것이 중요합니다. 플레이어를 초기화 한 직후에 호출해야합니다.
+      시청자 데이터가 Brightcove 분석에 자동으로 전송되더라도 사용자 식별자를 설정해야 합니다. 이를 위해 <code translate="No">user()</code> 메서드를 사용하세요. 예:
       </p>
-      <pre class="line-numbers"><code class="language-javascript" translate="No">&lt;video-js
-  id="myPlayerID"
-  data-account="1752604059001"
-  data-player="hyQW6GByl"
-  data-embed="default"
-  controls=""
-  data-video-id="6156696074001"
-  data-playlist-id=""
-  data-application-id=""
-  width="640" height="360"&gt;&lt;/video-js&gt;
-&lt;script src="https://players.brightcove.net/1752604059001/hyQW6GByl_default/index.min.js"&gt;&lt;/script&gt;
-
-&lt;script&gt;
-  videojs.getPlayer('myPlayerID').ready(function() {
-    var myPlayer = this;
-
-    // Set the viewer id for Brightcove analytics
-    myPlayer.bcAnalytics.client.setUser('<span class="bcls-input">viewer id</span>');
-  });
-&lt;/script&gt;</code></pre>
-    </li>
-    <li>때<code translate="No">setUser()</code>메서드가 사용되면 값은 해시되지 않으며 모든 후속 비콘과 함께 일반 상태로 전송됩니다.
+      <pre class="line-numbers"><code class="language-javascript" translate="No">myPlayer.bcAnalytics.client.user('<span class="bcls-input">viewer id</span>');</code></pre>
+      <p>Brightcove Player를 호스팅하는 웹사이트에서 인증 게이트웨이나 일부 ID 관리 솔루션을 사용하여 시청자를 추적할 수 있습니다. 이 뷰어 ID를 Brightcove 분석에 전달할 뷰어 식별자로 사용합니다.</p>
+      <aside class="bcls-aside bcls-aside--warning"><span class="bcls-input">뷰어 ID</span> 값은 고유한 문자열이어야 합니다. 숫자와 같은 잘못된 값은 무시됩니다.</aside>
+      <p></p>
+      <aside class="bcls-aside bcls-aside--tip language-editable">여기에 추가된 값은 Insights 보고서에서 <code translate="No">customerId</code>라고 합니다.</aside>
+      <p></p>
+      </li>
+      <li>
       <p>
-        참고<code translate="No">player_init</code>이벤트에는<code translate="No">user</code>이 경우 필드이지만 모두<code translate="No">video_*</code>이벤트에 포함되어야합니다.
+      플레이어에 소스를 설정하기 전에 뷰어 ID를 설정하는 것이 중요합니다. 플레이어를 초기화한 직후에 호출해야 합니다.
       </p>
-    </li>
-  </ol>
-  <h3>맞춤형 웹 플레이어</h3>
-  <p>
-    Brightcove Player를 사용하지 않는 사용자 지정 구현을 빌드하는 경우 데이터 수집 API 요청에<code translate="No">user</code>파라미터를 추가하십시오. 자세한 내용은<a href="https://apis.support.brightcove.com/data-collection/overview-data-collection-api-v2.html#all-event-parameters">개요 : 데이터 수집 API v2</a>문서.
-  </p>
-  <p>플레이어를 호스팅하는 웹 사이트에서 인증 게이트웨이 또는 일부 ID 관리 솔루션을 사용하여 시청자를 추적 할 수 있습니다. 이 뷰어 ID를 뷰어 식별자로 사용하여 Brightcove 분석에 전달합니다.</p>
-  
-</section>
+      <pre class="line-numbers"><code class="language-javascript" translate="아니요">&lt;video-js
+      id="myPlayerID"
+      data-account="1752604059001"
+      data-player="hyQW6GByl"
+      data-embed="기본값"
+      controls="""
+      data-video-id="6156696074001"
+      data-playlist-id="""
+      data-application-id="""
+      width="640" height="360"&gt;&lt;/video-js&gt;
+      &lt;script src=&quot;https://players.brightcove.net/1752604059001/hyQW6GByl_default/index.min.js&quot;&gt;&lt;/script&gt;
+      
+      &lt;script&gt;
+      videojs.getPlayer('myPlayerID').ready(function() {
+      var myPlayer = this;
+      
+      // Brightcove 분석에 대한 뷰어 ID 설정
+      myPlayer.bcAnalytics.client.user('<span class="bcls-input">viewer id</span>');
+      });
+      &lt;/script&gt;</code></pre>
+      </li>
+      <li><code translate="No">user()</code> 메서드를 사용하면 값이 해시되지 않고 모든 후속 비콘과 함께 일반 텍스트로 전송됩니다.
+      <p>
+      이 경우 <code translate="No">player_init</code> 이벤트에는 <code translate="No">user</code> 필드가 포함되지 않지만 모든 <code translate="No">video_*</code> 이벤트에는 포함되어야 합니다.
+      </p>
+      </li>
+      </ol>
+      <h3>사용자 지정 플레이어</h3>
+      <p>
+      Brightcove Player를 사용하지 않는 사용자 지정 구현을 빌드하는 경우 <code translate="No">user</code> 매개변수를 Data Collection API 요청에 추가합니다. 자세한 내용은 <a href="https://apis.support.brightcove.com/data-collection/overview-data-collection-api-v2.html#all-event-parameters">개요: Data Collection API v2</a> 문서를 참조하세요.
+      </p>
+      <p>인증 게이트웨이 또는 ID 관리 솔루션을 사용하여 플레이어를 호스팅하는 사이트에서 시청자를 추적할 수 있습니다. 이 뷰어 ID를 뷰어 식별자로 사용하여 Brightcove 분석에 전달합니다.</p>
+      
+      </section>
 
     <section class="bcls-section">
       <h2 id="send-viewer-id-sdk-players"></h2>
